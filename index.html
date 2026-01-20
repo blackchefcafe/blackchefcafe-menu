@@ -1,90 +1,90 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>BlackChefCafe QR Menü</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="bg-neutral-900 text-white">
 
-  <main class="max-w-5xl mx-auto px-5 py-10">
+<main class="max-w-5xl mx-auto px-5 py-10">
 
-    <h1 class="text-3xl font-bold text-yellow-400 mb-10 text-center">
-      BlackChefCafe QR Menü
-    </h1>
+  <h1 class="text-3xl font-bold text-yellow-400 mb-10 text-center">
+    BlackChefCafe QR Menü
+  </h1>
 
-    <h2 class="text-xl font-semibold text-yellow-400 mb-4">
-      Soğuk İçecekler
-    </h2>
+  <!-- ================= SOĞUK İÇECEKLER ================= -->
+  <h2 class="text-xl font-semibold text-yellow-400 mb-4">Soğuk İçecekler</h2>
 
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-12">
 
-      <!-- KART 1 -->
-      <div class="relative rounded-lg overflow-hidden bg-neutral-800 cursor-pointer"
-           onclick="openImage('https://images.unsplash.com/photo-1622484212850-eb5969b0c7f4')">
-        <img src="https://images.unsplash.com/photo-1622484212850-eb5969b0c7f4"
-             class="w-full h-56 object-cover" />
-        <div class="absolute inset-0 bg-black/40"></div>
-        <div class="absolute bottom-0 p-4">
-          <h3 class="text-yellow-400 font-semibold">Şişe Kola</h3>
-          <p>95₺</p>
-        </div>
+    <a href="https://images.unsplash.com/photo-1622484212850-eb5969b0c7f4"
+       target="_blank"
+       class="relative rounded-lg overflow-hidden bg-neutral-800">
+      <img src="https://images.unsplash.com/photo-1622484212850-eb5969b0c7f4"
+           class="w-full h-56 object-cover">
+      <div class="absolute bottom-0 p-4 bg-black/50 w-full">
+        <h3 class="text-yellow-400 font-semibold">Şişe Kola</h3>
+        <p>95₺</p>
       </div>
+    </a>
 
-      <!-- KART 2 -->
-      <div class="relative rounded-lg overflow-hidden bg-neutral-800 cursor-pointer"
-           onclick="openImage('https://images.unsplash.com/photo-1585238342028-4bbc8e08f2b1')">
-        <img src="https://images.unsplash.com/photo-1585238342028-4bbc8e08f2b1"
-             class="w-full h-56 object-cover" />
-        <div class="absolute inset-0 bg-black/40"></div>
-        <div class="absolute bottom-0 p-4">
-          <h3 class="text-yellow-400 font-semibold">Ayran</h3>
-          <p>85₺</p>
-        </div>
+    <a href="https://images.unsplash.com/photo-1585238342028-4bbc8e08f2b1"
+       target="_blank"
+       class="relative rounded-lg overflow-hidden bg-neutral-800">
+      <img src="https://images.unsplash.com/photo-1585238342028-4bbc8e08f2b1"
+           class="w-full h-56 object-cover">
+      <div class="absolute bottom-0 p-4 bg-black/50 w-full">
+        <h3 class="text-yellow-400 font-semibold">Ayran</h3>
+        <p>85₺</p>
       </div>
+    </a>
 
-      <!-- KART 3 -->
-      <div class="relative rounded-lg overflow-hidden bg-neutral-800 cursor-pointer"
-           onclick="openImage('https://images.unsplash.com/photo-1509042239860-f550ce710b93')">
-        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93"
-             class="w-full h-56 object-cover" />
-        <div class="absolute inset-0 bg-black/40"></div>
-        <div class="absolute bottom-0 p-4">
-          <h3 class="text-yellow-400 font-semibold">Filtre Kahve</h3>
-          <p>130₺</p>
-        </div>
+    <a href="https://images.unsplash.com/photo-1509042239860-f550ce710b93"
+       target="_blank"
+       class="relative rounded-lg overflow-hidden bg-neutral-800">
+      <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93"
+           class="w-full h-56 object-cover">
+      <div class="absolute bottom-0 p-4 bg-black/50 w-full">
+        <h3 class="text-yellow-400 font-semibold">Filtre Kahve</h3>
+        <p>130₺</p>
       </div>
+    </a>
 
-    </div>
-
-  </main>
-
-  <!-- LIGHTBOX -->
-  <div id="lightbox"
-       class="fixed inset-0 bg-black/90 hidden items-center justify-center z-50"
-       onclick="closeImage()">
-    <img id="lightbox-img"
-         class="max-h-[90%] max-w-[90%] rounded-lg" />
   </div>
 
-  <!-- SCRIPT -->
-  <script>
-    function openImage(src) {
-      const lightbox = document.getElementById("lightbox");
-      const img = document.getElementById("lightbox-img");
-      img.src = src;
-      lightbox.classList.remove("hidden");
-      lightbox.classList.add("flex");
-    }
+  <!-- ================= SICAK İÇECEKLER ================= -->
+  <h2 class="text-xl font-semibold text-yellow-400 mb-4">Sıcak İçecekler</h2>
 
-    function closeImage() {
-      const lightbox = document.getElementById("lightbox");
-      lightbox.classList.add("hidden");
-      lightbox.classList.remove("flex");
-    }
-  </script>
+  <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+
+    <a href="https://images.unsplash.com/photo-1511920170033-f8396924c348"
+       target="_blank"
+       class="relative rounded-lg overflow-hidden bg-neutral-800">
+      <img src="https://images.unsplash.com/photo-1511920170033-f8396924c348"
+           class="w-full h-56 object-cover">
+      <div class="absolute bottom-0 p-4 bg-black/50 w-full">
+        <h3 class="text-yellow-400 font-semibold">Türk Kahvesi</h3>
+        <p>100₺</p>
+      </div>
+    </a>
+
+    <a href="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085"
+       target="_blank"
+       class="relative rounded-lg overflow-hidden bg-neutral-800">
+      <img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085"
+           class="w-full h-56 object-cover">
+      <div class="absolute bottom-0 p-4 bg-black/50 w-full">
+        <h3 class="text-yellow-400 font-semibold">Cappuccino</h3>
+        <p>100₺</p>
+      </div>
+    </a>
+
+  </div>
+
+</main>
 
 </body>
 </html>
