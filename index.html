@@ -1,27 +1,61 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>BlackChefCafe Menü</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background-color: #000;
-    }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
-    }
-  </style>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<body>
-  <iframe 
-    src="https://drive.google.com/file/d/14Rf0sFafsP7xAKSw-8OK3Bdy3F6BwB3o/preview"
-    allow="autoplay">
-  </iframe>
+
+<body class="bg-neutral-900 text-white font-sans">
+
+  <main class="max-w-6xl mx-auto px-6 py-12">
+
+    <h1 class="text-3xl font-bold text-yellow-400 mb-10">
+      BlackChefCafe Menü
+    </h1>
+
+    <!-- SOĞUK İÇECEKLER -->
+    <h2 class="text-2xl font-semibold text-yellow-400 mb-6 border-b border-neutral-700 pb-2">
+      Soğuk İçecekler
+    </h2>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+
+      <!-- KART -->
+      <div class="group relative rounded-xl overflow-hidden bg-neutral-800 shadow-lg">
+        <div class="h-56 bg-gradient-to-br from-neutral-700 to-neutral-900"></div>
+
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent 
+                    opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        </div>
+
+        <div class="absolute bottom-4 left-4 right-4">
+          <h3 class="text-lg font-semibold text-yellow-400">Şişe Kola</h3>
+          <p class="text-sm text-neutral-200">95₺</p>
+        </div>
+      </div>
+
+      <!-- KART -->
+      <div class="group relative rounded-xl overflow-hidden bg-neutral-800 shadow-lg">
+        <div class="h-56 bg-gradient-to-br from-neutral-700 to-neutral-900"></div>
+
+        <div class="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent 
+                    opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+        </div>
+
+        <div class="absolute bottom-4 left-4 right-4">
+          <h3 class="text-lg font-semibold text-yellow-400">Kutu Kola</h3>
+          <p class="text-sm text-neutral-200">100₺</p>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
 </body>
 </html>
+
