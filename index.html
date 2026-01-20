@@ -5,109 +5,53 @@
   <title>BlackChefCafe Menü</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Tailwind -->
   <script src="https://cdn.tailwindcss.com"></script>
-
-  <!-- React -->
-  <script src="https://unpkg.com/react@18/umd/react.production.min.js"></script>
-  <script src="https://unpkg.com/react-dom@18/umd/react-dom.production.min.js"></script>
-
-  <!-- Babel -->
-  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 </head>
 
 <body class="bg-neutral-900 text-white">
-  <div id="root"></div>
 
-  <script type="text/babel">
+  <main class="max-w-5xl mx-auto px-5 py-10">
 
-    function MenuSection({ title, cover, items }) {
-      return (
-        <section className="mb-16">
+    <h1 class="text-3xl font-bold text-yellow-400 mb-10 text-center">
+      BlackChefCafe QR Menü
+    </h1>
 
-          {/* KATEGORİ BAŞLIĞI */}
-          <h2 className="text-xl font-semibold text-yellow-400 mb-4">
-            {title}
-          </h2>
+    <h2 class="text-xl font-semibold text-yellow-400 mb-4">
+      Soğuk İçecekler
+    </h2>
 
-          {/* KATEGORİ KAPAK GÖRSELİ */}
-          <img
-            src={cover}
-            alt={title}
-            className="w-full h-48 md:h-64 object-cover rounded-lg mb-6"
-          />
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
 
-          {/* ÜRÜNLER */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
-            {items.map((item, i) => (
-              <div
-                key={i}
-                className="group relative rounded-lg overflow-hidden bg-neutral-800
-                           transition-all duration-200
-                           hover:-translate-y-1 hover:shadow-xl"
-              >
-                {/* ÜRÜN GÖRSELİ */}
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="w-full h-56 md:h-40 object-cover"
-                />
+      <!-- KART -->
+      <div class="relative rounded-lg overflow-hidden bg-neutral-800">
+        <img
+          src="https://images.unsplash.com/photo-1622484212850-eb5969b0c7f4"
+          class="w-full h-56 object-cover"
+        />
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute bottom-0 p-4">
+          <h3 class="text-yellow-400 font-semibold">Şişe Kola</h3>
+          <p>95₺</p>
+        </div>
+      </div>
 
-                {/* OVERLAY */}
-                <div className="absolute inset-0 bg-black/40 opacity-0 
-                                group-hover:opacity-100 transition-opacity">
-                </div>
+      <div class="relative rounded-lg overflow-hidden bg-neutral-800">
+        <img
+          src="https://images.unsplash.com/photo-1585238342028-4bbc8e08f2b1"
+          class="w-full h-56 object-cover"
+        />
+        <div class="absolute inset-0 bg-black/40"></div>
+        <div class="absolute bottom-0 p-4">
+          <h3 class="text-yellow-400 font-semibold">Ayran</h3>
+          <p>85₺</p>
+        </div>
+      </div>
 
-                {/* YAZI */}
-                <div className="absolute inset-0 flex flex-col justify-end p-4">
-                  <h3 className="text-yellow-400 font-semibold">
-                    {item.name}
-                  </h3>
-                  <p className="text-neutral-200">
-                    {item.price}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
+    </div>
 
-        </section>
-      )
-    }
+  </main>
 
-    function App() {
-      return (
-        <main className="max-w-5xl mx-auto px-5 py-10">
-
-          <h1 className="text-3xl font-bold text-yellow-400 mb-12 text-center">
-            BlackChefCafe QR Menü
-          </h1>
-
-          <MenuSection
-            title="Soğuk İçecekler"
-            cover="images/covers/soguk-icecekler.jpg"
-            items={[
-              { name: "Şişe Kola", price: "95₺", image: "images/kola.jpg" },
-              { name: "Ayran", price: "85₺", image: "images/ayran.jpg" },
-              { name: "Meyve Suyu", price: "100₺", image: "images/meyve-suyu.jpg" }
-            ]}
-          />
-
-          <MenuSection
-            title="Sıcak İçecekler"
-            cover="images/covers/sicak-icecekler.jpg"
-            items={[
-              { name: "Türk Kahvesi", price: "100₺", image: "images/kahve.jpg" },
-              { name: "Filtre Kahve", price: "130₺", image: "images/filtre.jpg" }
-            ]}
-          />
-
-        </main>
-      )
-    }
-
-    ReactDOM.createRoot(document.getElementById("root")).render(<App />)
-
-  </script>
 </body>
 </html>
+
+
