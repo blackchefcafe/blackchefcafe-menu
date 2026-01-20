@@ -1,113 +1,216 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
-  <meta charset="UTF-8">
-  <title>BlackChefCafe QR Menü</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="https://cdn.tailwindcss.com"></script>
-</head>
+import React, { useState } from 'react';
+import { Coffee, Droplets, UtensilsCrossed, Pizza, Sandwich, Soup, Beef, ChefHat, Cookie, IceCream, Wine } from 'lucide-react';
 
-<body class="bg-neutral-900 text-white">
+const MenuApp = () => {
+  const [activeCategory, setActiveCategory] = useState('soguk');
 
-<main class="max-w-5xl mx-auto px-5 py-10">
+  const menuData = {
+    soguk: {
+      title: 'Soğuk İçecekler',
+      icon: Droplets,
+      items: [
+        { name: 'Kutu Kola', price: 100, emoji: '🥤' },
+        { name: 'Şişe Kola', price: 95, emoji: '🥤' },
+        { name: 'Meyve Suyu', price: 100, emoji: '🧃' },
+        { name: 'Meyveli Soda', price: 85, emoji: '🍹' },
+        { name: 'Fuse Tea', price: 100, emoji: '🍵' },
+        { name: 'Su', price: 30, emoji: '💧' },
+        { name: 'Gazoz', price: 100, emoji: '🥤' },
+        { name: 'Limonata', price: 100, emoji: '🍋' },
+        { name: 'Sprite', price: 100, emoji: '🥤' },
+        { name: 'Ayran', price: 85, emoji: '🥛' },
+        { name: 'Churchill', price: 140, emoji: '🍺' }
+      ]
+    },
+    milkshake: {
+      title: 'Milkshake & Frozen',
+      icon: IceCream,
+      sections: [
+        {
+          subtitle: 'Milkshake',
+          items: [
+            { name: 'Çilek', price: 150, emoji: '🍓' },
+            { name: 'Çikolata', price: 150, emoji: '🍫' },
+            { name: 'Karadut', price: 150, emoji: '🫐' },
+            { name: 'Muz', price: 150, emoji: '🍌' }
+          ]
+        },
+        {
+          subtitle: 'Frozen',
+          items: [
+            { name: 'Çilek', price: 150, emoji: '🍓' },
+            { name: 'Kivi', price: 150, emoji: '🥝' },
+            { name: 'Karpuz', price: 150, emoji: '🍉' },
+            { name: 'Muz', price: 150, emoji: '🍌' }
+          ]
+        }
+      ]
+    },
+    sicak: {
+      title: 'Sıcak İçecekler',
+      icon: Coffee,
+      items: [
+        { name: 'Türk Kahvesi', price: 100, emoji: '☕' },
+        { name: 'Sütlü Türk Kahvesi', price: 110, emoji: '☕' },
+        { name: 'Dibek Kahvesi', price: 100, emoji: '☕' },
+        { name: 'Menengiç Kahvesi', price: 130, emoji: '☕' },
+        { name: 'Damla Sakızlı Türk K.', price: 110, emoji: '☕' },
+        { name: 'Dağ Çilekli Türk K.', price: 120, emoji: '☕' },
+        { name: 'Filtre Kahve', price: 130, emoji: '☕' },
+        { name: 'Sütlü Filtre Kahve', price: 150, emoji: '☕' },
+        { name: 'Cappuccino', price: 100, emoji: '☕' },
+        { name: 'Sıcak Çikolata', price: 130, emoji: '🍫' },
+        { name: 'Salep', price: 130, emoji: '🥛' },
+        { name: 'Çay', price: 25, emoji: '🍵' },
+        { name: 'Bitki S. Çayı', price: 50, emoji: '🌿' },
+        { name: 'Bitki D. Çayı', price: 140, emoji: '🌿' },
+        { name: 'Nescafe Gold', price: 100, emoji: '☕' },
+        { name: 'Hazır Nescafe', price: 90, emoji: '☕' },
+        { name: 'Sütlü Nescafe', price: 110, emoji: '☕' },
+        { name: 'Süt', price: 90, emoji: '🥛' },
+        { name: 'Ballı Süt', price: 130, emoji: '🍯' }
+      ]
+    },
+    tavuk: {
+      title: 'Tavuk Yemekleri',
+      icon: UtensilsCrossed,
+      items: [
+        { name: 'Köri Soslu Tavuk', price: 300, emoji: '🍛' },
+        { name: 'Mexican Soslu Tavuk', price: 300, emoji: '🌮' },
+        { name: 'Soya Soslu Tavuk', price: 300, emoji: '🍗' },
+        { name: 'Kremalı Mantarlı Tavuk', price: 300, emoji: '🍄' },
+        { name: 'Tavuk Kavurma', price: 300, emoji: '🍗' },
+        { name: 'Kremitte Tavuk Sote', price: 300, emoji: '🍗' },
+        { name: 'Tavuk Çökertme', price: 300, emoji: '🍗' },
+        { name: 'Tavuk Fajita', price: 300, emoji: '🌯' },
+        { name: 'Barbekü Soslu Tavuk', price: 300, emoji: '🍗' },
+        { name: 'Tavuk Bonfile', price: 300, emoji: '🍗' },
+        { name: 'Tavuk Şnitzel', price: 300, emoji: '🍗' },
+        { name: 'Tavuk Sote', price: 300, emoji: '🍗' }
+      ]
+    },
+    makarna: {
+      title: 'Makarnalar',
+      icon: Pizza,
+      items: [
+        { name: 'Penne Alfredo Fettucini', price: 300, emoji: '🍝' },
+        { name: 'Etli Penne Arabiata', price: 300, emoji: '🍝' },
+        { name: 'Spagetti A. Fettucini', price: 300, emoji: '🍝' },
+        { name: 'Spagetti Bolonez', price: 300, emoji: '🍝' },
+        { name: 'Mantı Pesto Soslu', price: 300, emoji: '🥟' }
+      ]
+    },
+    aparatif: {
+      title: 'Aparatifler',
+      icon: Sandwich,
+      items: [
+        { name: 'Kavurmalı Menemen', price: 300, emoji: '🍳' },
+        { name: 'Karışık Menemen', price: 200, emoji: '🍳' },
+        { name: 'Kaşarlı Gözleme', price: 200, emoji: '🫓' },
+        { name: 'Karışık Tost', price: 200, emoji: '🥪' },
+        { name: 'Patates Cips', price: 120, emoji: '🍟' }
+      ]
+    }
+  };
 
-<h1 class="text-3xl font-bold text-yellow-400 mb-12 text-center">
-BlackChefCafe QR Menü
-</h1>
+  const categories = [
+    { id: 'soguk', label: 'Soğuk İçecekler' },
+    { id: 'milkshake', label: 'Milkshake & Frozen' },
+    { id: 'sicak', label: 'Sıcak İçecekler' },
+    { id: 'tavuk', label: 'Tavuk Yemekleri' },
+    { id: 'makarna', label: 'Makarnalar' },
+    { id: 'aparatif', label: 'Aparatifler' }
+  ];
 
-<!-- ================= SOĞUK İÇECEKLER ================= -->
-<h2 class="text-xl font-semibold text-yellow-400 mb-4">Soğuk İçecekler</h2>
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-12">
+  const currentMenu = menuData[activeCategory];
+  const Icon = currentMenu.icon;
 
-<a href="https://images.unsplash.com/photo-1622484212850-eb5969b0c7f4" target="_blank" class="menu-card">
-<img src="https://images.unsplash.com/photo-1622484212850-eb5969b0c7f4">
-<div><h3>Şişe Kola</h3><p>95₺</p></div></a>
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-gray-100 to-gray-200">
+      {/* Header */}
+      <div className="bg-gradient-to-r from-gray-800 to-gray-900 text-white py-8 px-4 shadow-lg">
+        <div className="max-w-6xl mx-auto text-center">
+          <h1 className="text-4xl font-bold mb-2 tracking-wider">BLACKCHEF CAFE</h1>
+          <p className="text-yellow-400 text-sm">Lezzetin Adresi</p>
+        </div>
+      </div>
 
-<a href="https://images.unsplash.com/photo-1585238342028-4bbc8e08f2b1" target="_blank" class="menu-card">
-<img src="https://images.unsplash.com/photo-1585238342028-4bbc8e08f2b1">
-<div><h3>Ayran</h3><p>85₺</p></div></a>
+      {/* Category Tabs */}
+      <div className="bg-white shadow-md sticky top-0 z-10">
+        <div className="max-w-6xl mx-auto px-4 py-3 overflow-x-auto">
+          <div className="flex gap-2 min-w-max">
+            {categories.map(cat => (
+              <button
+                key={cat.id}
+                onClick={() => setActiveCategory(cat.id)}
+                className={`px-4 py-2 rounded-full font-medium transition-all whitespace-nowrap ${
+                  activeCategory === cat.id
+                    ? 'bg-yellow-400 text-gray-900 shadow-md'
+                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                }`}
+              >
+                {cat.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
 
-<a href="https://images.unsplash.com/photo-1509042239860-f550ce710b93" target="_blank" class="menu-card">
-<img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93">
-<div><h3>Meyve Suyu</h3><p>100₺</p></div></a>
+      {/* Menu Content */}
+      <div className="max-w-6xl mx-auto px-4 py-8">
+        <div className="bg-white rounded-2xl shadow-xl p-6 md:p-8">
+          <div className="flex items-center gap-3 mb-6 pb-4 border-b-2 border-yellow-400">
+            <Icon className="w-8 h-8 text-gray-800" />
+            <h2 className="text-3xl font-bold text-gray-800">{currentMenu.title}</h2>
+          </div>
 
-<a href="https://images.unsplash.com/photo-1600271886742-f049cd451bba" target="_blank" class="menu-card">
-<img src="https://images.unsplash.com/photo-1600271886742-f049cd451bba">
-<div><h3>Sprite</h3><p>100₺</p></div></a>
+          {currentMenu.sections ? (
+            // For Milkshake/Frozen sections
+            <div className="space-y-8">
+              {currentMenu.sections.map((section, idx) => (
+                <div key={idx}>
+                  <h3 className="text-xl font-semibold text-gray-800 mb-4 ml-2">
+                    {section.subtitle}
+                  </h3>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    {section.items.map((item, itemIdx) => (
+                      <div
+                        key={itemIdx}
+                        className="flex justify-between items-center p-4 bg-gray-50 rounded-lg hover:shadow-md transition-shadow border-l-4 border-yellow-400"
+                      >
+                        <span className="font-medium text-gray-800">{item.name}</span>
+                        <span className="font-bold text-gray-900 text-lg">{item.price} ₺</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          ) : (
+            // For regular menu items
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              {currentMenu.items.map((item, idx) => (
+                <div
+                  key={idx}
+                  className="flex justify-between items-center p-4 bg-gray-50 rounded-lg hover:shadow-md transition-shadow border-l-4 border-yellow-400"
+                >
+                  <span className="font-medium text-gray-800">{item.name}</span>
+                  <span className="font-bold text-gray-900 text-lg">{item.price} ₺</span>
+                </div>
+              ))}
+            </div>
+          )}
+        </div>
+      </div>
 
-<a href="https://images.unsplash.com/photo-1610873167013-2dd675d30ef4" target="_blank" class="menu-card">
-<img src="https://images.unsplash.com/photo-1610873167013-2dd675d30ef4">
-<div><h3>Gazoz</h3><p>100₺</p></div></a>
+      {/* Footer */}
+      <div className="bg-gradient-to-r from-gray-800 to-gray-900 text-white py-6 mt-8">
+        <div className="max-w-6xl mx-auto text-center px-4">
+          <p className="text-sm text-yellow-400">Afiyet olsun!</p>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-<a href="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62" target="_blank" class="menu-card">
-<img src="https://images.unsplash.com/photo-1558642452-9d2a7deb7f62">
-<div><h3>Su</h3><p>30₺</p></div></a>
-
-</div>
-
-<!-- ================= MILKSHAKE ================= -->
-<h2 class="text-xl font-semibold text-yellow-400 mb-4">Milkshake (150₺)</h2>
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-12">
-
-<a href="https://images.unsplash.com/photo-1572490122747-3968b75cc699" target="_blank" class="menu-card">
-<img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699">
-<div><h3>Çilek</h3><p>150₺</p></div></a>
-
-<a href="https://images.unsplash.com/photo-1599785209707-28c9c3fca27b" target="_blank" class="menu-card">
-<img src="https://images.unsplash.com/photo-1599785209707-28c9c3fca27b">
-<div><h3>Çikolata</h3><p>150₺</p></div></a>
-
-<a href="https://images.unsplash.com/photo-1589712235271-f2cbe9e1c9aa" target="_blank" class="menu-card">
-<img src="https://images.unsplash.com/photo-1589712235271-f2cbe9e1c9aa">
-<div><h3>Muz</h3><p>150₺</p></div></a>
-
-</div>
-
-<!-- ================= SICAK İÇECEKLER ================= -->
-<h2 class="text-xl font-semibold text-yellow-400 mb-4">Sıcak İçecekler</h2>
-<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4 mb-12">
-
-<a href="https://images.unsplash.com/photo-1511920170033-f8396924c348" target="_blank" class="menu-card">
-<img src="https://images.unsplash.com/photo-1511920170033-f8396924c348">
-<div><h3>Türk Kahvesi</h3><p>100₺</p></div></a>
-
-<a href="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085" target="_blank" class="menu-card">
-<img src="https://images.unsplash.com/photo-1495474472287-4d71bcdd2085">
-<div><h3>Cappuccino</h3><p>100₺</p></div></a>
-
-<a href="https://images.unsplash.com/photo-1509042239860-f550ce710b93" target="_blank" class="menu-card">
-<img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93">
-<div><h3>Filtre Kahve</h3><p>130₺</p></div></a>
-
-<a href="https://images.unsplash.com/photo-1578374173705-969cbe6f2d6b" target="_blank" class="menu-card">
-<img src="https://images.unsplash.com/photo-1578374173705-969cbe6f2d6b">
-<div><h3>Çay</h3><p>25₺</p></div></a>
-
-</div>
-
-</main>
-
-<style>
-.menu-card{
-position:relative;
-background:#262626;
-border-radius:0.5rem;
-overflow:hidden;
-}
-.menu-card img{
-width:100%;
-height:220px;
-object-fit:cover;
-}
-.menu-card div{
-position:absolute;
-bottom:0;
-width:100%;
-background:rgba(0,0,0,.6);
-padding:1rem;
-}
-.menu-card h3{color:#facc15;font-weight:600}
-</style>
-
-</body>
-</html>
+export default MenuApp;
