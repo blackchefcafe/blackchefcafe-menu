@@ -23,12 +23,9 @@
 
       <!-- KART 1 -->
       <div class="relative rounded-lg overflow-hidden bg-neutral-800 cursor-pointer"
-           onclick="openImage(this)">
-        <img
-          src="https://images.unsplash.com/photo-1622484212850-eb5969b0c7f4"
-          class="w-full h-56 object-cover"
-          alt="Şişe Kola"
-        />
+           onclick="openImage('https://images.unsplash.com/photo-1622484212850-eb5969b0c7f4')">
+        <img src="https://images.unsplash.com/photo-1622484212850-eb5969b0c7f4"
+             class="w-full h-56 object-cover" />
         <div class="absolute inset-0 bg-black/40"></div>
         <div class="absolute bottom-0 p-4">
           <h3 class="text-yellow-400 font-semibold">Şişe Kola</h3>
@@ -38,12 +35,9 @@
 
       <!-- KART 2 -->
       <div class="relative rounded-lg overflow-hidden bg-neutral-800 cursor-pointer"
-           onclick="openImage(this)">
-        <img
-          src="https://images.unsplash.com/photo-1585238342028-4bbc8e08f2b1"
-          class="w-full h-56 object-cover"
-          alt="Ayran"
-        />
+           onclick="openImage('https://images.unsplash.com/photo-1585238342028-4bbc8e08f2b1')">
+        <img src="https://images.unsplash.com/photo-1585238342028-4bbc8e08f2b1"
+             class="w-full h-56 object-cover" />
         <div class="absolute inset-0 bg-black/40"></div>
         <div class="absolute bottom-0 p-4">
           <h3 class="text-yellow-400 font-semibold">Ayran</h3>
@@ -53,12 +47,9 @@
 
       <!-- KART 3 -->
       <div class="relative rounded-lg overflow-hidden bg-neutral-800 cursor-pointer"
-           onclick="openImage(this)">
-        <img
-          src="https://images.unsplash.com/photo-1509042239860-f550ce710b93"
-          class="w-full h-56 object-cover"
-          alt="Filtre Kahve"
-        />
+           onclick="openImage('https://images.unsplash.com/photo-1509042239860-f550ce710b93')">
+        <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93"
+             class="w-full h-56 object-cover" />
         <div class="absolute inset-0 bg-black/40"></div>
         <div class="absolute bottom-0 p-4">
           <h3 class="text-yellow-400 font-semibold">Filtre Kahve</h3>
@@ -70,7 +61,7 @@
 
   </main>
 
-  <!-- LIGHTBOX (TEK DOSYA) -->
+  <!-- LIGHTBOX -->
   <div id="lightbox"
        class="fixed inset-0 bg-black/90 hidden items-center justify-center z-50"
        onclick="closeImage()">
@@ -78,13 +69,12 @@
          class="max-h-[90%] max-w-[90%] rounded-lg" />
   </div>
 
-  <!-- SCRIPT (TEK DOSYA) -->
+  <!-- SCRIPT -->
   <script>
-    function openImage(card) {
-      const imgSrc = card.querySelector("img").src;
+    function openImage(src) {
       const lightbox = document.getElementById("lightbox");
-      const lightboxImg = document.getElementById("lightbox-img");
-      lightboxImg.src = imgSrc;
+      const img = document.getElementById("lightbox-img");
+      img.src = src;
       lightbox.classList.remove("hidden");
       lightbox.classList.add("flex");
     }
