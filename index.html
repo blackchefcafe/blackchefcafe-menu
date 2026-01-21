@@ -1,28 +1,342 @@
 <!DOCTYPE html>
 <html lang="tr">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>BlackChefCafe Menü</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>BlackChef Cafe - Menü</title>
   <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      height: 100%;
-      background-color: #000;
+    :root{
+      --bg:#121215;
+      --card:#1e1e1f;
+      --accent:#f2c94c;
+      --muted:#bdbdbd;
+      --text:#f5f5f5;
+      --shadow: 0 6px 30px rgba(0,0,0,0.6);
+      font-family: "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
     }
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      background:linear-gradient(180deg,#0e0e10,var(--bg));
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:20px;
+    }
+    .container{
+      max-width:1100px;
+      margin:0 auto;
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:20px;
+    }
+    header{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+    }
+    .brand{
+      display:flex;
+      gap:14px;
+      align-items:center;
+    }
+    .logo{
+      width:72px;
+      height:72px;
+      background:linear-gradient(135deg,var(--accent),#e6b93a);
+      color:#111;
+      border-radius:12px;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-weight:800;
+      font-size:22px;
+      box-shadow:var(--shadow);
+    }
+    h1{margin:0;font-size:1.6rem}
+    p.lead{margin:0;color:var(--muted)}
+    main{
+      display:grid;
+      gap:18px;
+      grid-template-columns: 1fr;
+    }
+    @media(min-width:980px){
+      main{
+        grid-template-columns: 1fr 360px;
+        align-items:start;
+      }
+    }
+    .menu-card{
+      background:var(--card);
+      border-radius:12px;
+      padding:18px;
+      box-shadow:var(--shadow);
+      border:1px solid rgba(255,255,255,0.03);
+    }
+    .section{
+      margin-bottom:16px;
+    }
+    .section-header{
+      display:flex;
+      gap:12px;
+      align-items:center;
+      margin-bottom:12px;
+    }
+    .section-header img{
+      width:84px;
+      height:64px;
+      object-fit:cover;
+      border-radius:8px;
+      border:3px solid transparent;
+    }
+    .section-header h2{
+      margin:0;
+      font-size:1.05rem;
+      color:var(--accent);
+    }
+    ul.items{
+      list-style:none;
+      margin:0;
+      padding:0;
+      display:grid;
+      gap:10px;
+    }
+    li.item{
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:center;
+      padding:10px;
+      border-radius:10px;
+      transition:background .12s, transform .08s;
+      background:linear-gradient(180deg, rgba(255,255,255,0.01), transparent);
+    }
+    li.item:hover{transform:translateY(-3px)}
+    .name{font-weight:700;color:var(--text)}
+    .desc{color:var(--muted);font-size:0.9rem}
+    .price{font-weight:800;color:var(--accent)}
+    aside.card{
+      position:sticky;
+      top:24px;
+    }
+    .contact{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+      margin-top:8px;
+      color:var(--muted);
+    }
+    .small{
+      font-size:0.92rem;color:var(--muted)
+    }
+    footer{
+      text-align:center;
+      color:var(--muted);
+      margin-top:8px;
+      font-size:0.9rem;
+    }
+    .hero{
+      display:grid;
+      grid-template-columns: 1fr 1fr;
+      gap:12px;
+      margin-bottom:6px;
+    }
+    .hero img{
+      width:100%; height:220px; object-fit:cover; border-radius:12px; border:4px solid rgba(255,255,255,0.02);
+    }
+    @media(max-width:640px){
+      .hero{grid-template-columns:1fr}
+      .section-header img{display:none}
+    }
+    .category-badge{
+      display:inline-block;
+      background:rgba(242,201,76,0.12);
+      color:var(--accent);
+      padding:6px 10px;
+      border-radius:999px;
+      font-weight:700;
+      font-size:0.9rem;
     }
   </style>
 </head>
 <body>
-  <iframe 
-    src="https://drive.google.com/file/d/14Rf0sFafsP7xAKSw-8OK3Bdy3F6BwB3o/preview"
-    allow="autoplay">
-  </iframe>
+  <div class="container">
+    <header>
+      <div class="brand">
+        <div class="logo">BC</div>
+        <div>
+          <h1>BlackChef Cafe</h1>
+          <p class="lead">Antrasit & Sarı tema — Menü</p>
+        </div>
+      </div>
+      <div class="small">Görseller örnektir. Kendi fotoğraflarınızı eklerseniz değiştiririm.</div>
+    </header>
+
+    <main>
+      <div>
+        <div class="hero">
+          <img src="https://images.unsplash.com/photo-1525251480284-2512a1f6b7d9?auto=format&fit=crop&w=1600&q=80" alt="Cafe iç mekan">
+          <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1600&q=80" alt="Kahve ve atıştırmalık">
+        </div>
+
+        <section class="menu-card section">
+          <div class="section-header">
+            <img src="https://images.unsplash.com/photo-1582719478250-2f5a1c5b0f0f?auto=format&fit=crop&w=1200&q=80" alt="Soğuk içecek">
+            <div>
+              <h2>Soğuk İçecekler <span class="category-badge">Soğuk</span></h2>
+              <div class="desc">Kutu içecekler, sodalar ve meyve suları.</div>
+            </div>
+          </div>
+          <ul class="items">
+            <li class="item"><div><div class="name">Kutu Kola</div><div class="desc">330 ml</div></div><div class="price">100 ₺</div></li>
+            <li class="item"><div><div class="name">Şişe Kola</div><div class="desc">500 ml</div></div><div class="price">95 ₺</div></li>
+            <li class="item"><div><div class="name">Meyve Suyu</div></div><div class="price">100 ₺</div></li>
+            <li class="item"><div><div class="name">Meyveli Soda</div></div><div class="price">85 ₺</div></li>
+            <li class="item"><div><div class="name">Fuse Tea</div></div><div class="price">100 ₺</div></li>
+            <li class="item"><div><div class="name">Su</div></div><div class="price">30 ₺</div></li>
+            <li class="item"><div><div class="name">Gazoz</div></div><div class="price">100 ₺</div></li>
+            <li class="item"><div><div class="name">Limonata</div></div><div class="price">100 ₺</div></li>
+            <li class="item"><div><div class="name">Sprite</div></div><div class="price">100 ₺</div></li>
+            <li class="item"><div><div class="name">Ayran</div></div><div class="price">85 ₺</div></li>
+            <li class="item"><div><div class="name">Churchill</div></div><div class="price">140 ₺</div></li>
+          </ul>
+        </section>
+
+        <section class="menu-card section">
+          <div class="section-header">
+            <img src="https://images.unsplash.com/photo-1563225402-83f2c8a0f8f2?auto=format&fit=crop&w=1200&q=80" alt="Milkshake">
+            <div>
+              <h2>Milkshake & Frozen <span class="category-badge">Tatlı</span></h2>
+              <div class="desc">Taze meyveli ve çikolatalı seçenekler.</div>
+            </div>
+          </div>
+          <ul class="items">
+            <li class="item"><div><div class="name">Milkshake - Çilek</div></div><div class="price">150 ₺</div></li>
+            <li class="item"><div><div class="name">Milkshake - Çikolata</div></div><div class="price">150 ₺</div></li>
+            <li class="item"><div><div class="name">Milkshake - Karadut</div></div><div class="price">150 ₺</div></li>
+            <li class="item"><div><div class="name">Milkshake - Muz</div></div><div class="price">150 ₺</div></li>
+            <li class="item"><div><div class="name">Frozen - Çilek</div></div><div class="price">150 ₺</div></li>
+            <li class="item"><div><div class="name">Frozen - Kivi</div></div><div class="price">150 ₺</div></li>
+            <li class="item"><div><div class="name">Frozen - Karpuz</div></div><div class="price">150 ₺</div></li>
+            <li class="item"><div><div class="name">Frozen - Muz</div></div><div class="price">150 ₺</div></li>
+          </ul>
+        </section>
+
+        <section class="menu-card section">
+          <div class="section-header">
+            <img src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?auto=format&fit=crop&w=1200&q=80" alt="Kahve">
+            <div>
+              <h2>Sıcak İçecekler <span class="category-badge">Sıcak</span></h2>
+              <div class="desc">Türk kahvesi, filtre kahve, çay ve daha fazlası.</div>
+            </div>
+          </div>
+          <ul class="items">
+            <li class="item"><div><div class="name">Türk Kahvesi</div></div><div class="price">100 ₺</div></li>
+            <li class="item"><div><div class="name">Sütlü Türk Kahvesi</div></div><div class="price">110 ₺</div></li>
+            <li class="item"><div><div class="name">Dibek Kahvesi</div></div><div class="price">100 ₺</div></li>
+            <li class="item"><div><div class="name">Menengiç Kahvesi</div></div><div class="price">130 ₺</div></li>
+            <li class="item"><div><div class="name">Damla Sakızlı Türk Kahvesi</div></div><div class="price">110 ₺</div></li>
+            <li class="item"><div><div class="name">Dağ Çilekli Türk Kahvesi</div></div><div class="price">120 ₺</div></li>
+            <li class="item"><div><div class="name">Filtre Kahve</div></div><div class="price">130 ₺</div></li>
+            <li class="item"><div><div class="name">Sütlü Filtre Kahve</div></div><div class="price">150 ₺</div></li>
+            <li class="item"><div><div class="name">Cappuccino</div></div><div class="price">100 ₺</div></li>
+            <li class="item"><div><div class="name">Sıcak Çikolata</div></div><div class="price">130 ₺</div></li>
+            <li class="item"><div><div class="name">Salep</div></div><div class="price">130 ₺</div></li>
+            <li class="item"><div><div class="name">Çay</div></div><div class="price">25 ₺</div></li>
+            <li class="item"><div><div class="name">Bitkisel Çay (Karışık)</div></div><div class="price">50 ₺</div></li>
+            <li class="item"><div><div class="name">Bitkisel Çay (Demlik)</div></div><div class="price">140 ₺</div></li>
+            <li class="item"><div><div class="name">Nescafe Gold</div></div><div class="price">100 ₺</div></li>
+            <li class="item"><div><div class="name">Hazır Nescafe</div></div><div class="price">90 ₺</div></li>
+            <li class="item"><div><div class="name">Sütlü Nescafe</div></div><div class="price">110 ₺</div></li>
+            <li class="item"><div><div class="name">Süt</div></div><div class="price">90 ₺</div></li>
+            <li class="item"><div><div class="name">Ballı Süt</div></div><div class="price">130 ₺</div></li>
+          </ul>
+        </section>
+
+        <section class="menu-card section">
+          <div class="section-header">
+            <img src="https://images.unsplash.com/photo-1604908177228-5f7b3b8b6c1d?auto=format&fit=crop&w=1200&q=80" alt="Tavuk yemek">
+            <div>
+              <h2>Tavuk Yemekleri <span class="category-badge">Ana Yemek</span></h2>
+              <div class="desc">Çeşitli soslarla hazırlanmış tavuk yemekleri.</div>
+            </div>
+          </div>
+          <ul class="items">
+            <li class="item"><div class="name">Körili Soslu Tavuk</div><div class="price">300 ₺</div></li>
+            <li class="item"><div class="name">Mexican Soslu Tavuk</div><div class="price">300 ₺</div></li>
+            <li class="item"><div class="name">Soya Soslu Tavuk</div><div class="price">300 ₺</div></li>
+            <li class="item"><div class="name">Kremalı Mantarlı Tavuk</div><div class="price">300 ₺</div></li>
+            <li class="item"><div class="name">Tavuk Kavurma</div><div class="price">300 ₺</div></li>
+            <li class="item"><div class="name">Kremitte Tavuk Sote</div><div class="price">300 ₺</div></li>
+            <li class="item"><div class="name">Tavuk Çökertme</div><div class="price">300 ₺</div></li>
+            <li class="item"><div class="name">Tavuk Fajita</div><div class="price">300 ₺</div></li>
+            <li class="item"><div class="name">Barbekü Soslu Tavuk</div><div class="price">300 ₺</div></li>
+            <li class="item"><div class="name">Tavuk Bonfile</div><div class="price">300 ₺</div></li>
+            <li class="item"><div class="name">Tavuk Şinitzel</div><div class="price">300 ₺</div></li>
+            <li class="item"><div class="name">Tavuk Sote</div><div class="price">300 ₺</div></li>
+          </ul>
+        </section>
+
+        <section class="menu-card section">
+          <div class="section-header">
+            <img src="https://images.unsplash.com/photo-1525755662778-989d0524087e?auto=format&fit=crop&w=1200&q=80" alt="Makarna">
+            <div>
+              <h2>Makarna & Spagetti <span class="category-badge">Makarnalar</span></h2>
+              <div class="desc">Klasik ve özel soslarla hazırlanmış makarnalar.</div>
+            </div>
+          </div>
+          <ul class="items">
+            <li class="item"><div class="name">Penne Alfredo / Fettucini</div><div class="price">300 ₺</div></li>
+            <li class="item"><div class="name">Etli Penne Arrabbiata</div><div class="price">300 ₺</div></li>
+            <li class="item"><div class="name">Spagetti Alfredo / Fettucini</div><div class="price">300 ₺</div></li>
+            <li class="item"><div class="name">Spagetti Bolonez</div><div class="price">300 ₺</div></li>
+            <li class="item"><div class="name">Mantı Pesto Soslu</div><div class="price">300 ₺</div></li>
+          </ul>
+        </section>
+
+        <section class="menu-card section">
+          <div class="section-header">
+            <img src="https://images.unsplash.com/photo-1541542684-1b4d0b5d1c2b?auto=format&fit=crop&w=1200&q=80" alt="Aperatif">
+            <div>
+              <h2>Aparatifler <span class="category-badge">Atıştırmalık</span></h2>
+              <div class="desc">Hızlı ve lezzetli atıştırmalık seçenekleri.</div>
+            </div>
+          </div>
+          <ul class="items">
+            <li class="item"><div class="name">Kavurmalı Menemen</div><div class="price">300 ₺</div></li>
+            <li class="item"><div class="name">Karışık Menemen</div><div class="price">200 ₺</div></li>
+            <li class="item"><div class="name">Kaşarlı Gözleme</div><div class="price">200 ₺</div></li>
+            <li class="item"><div class="name">Karışık Tost</div><div class="price">200 ₺</div></li>
+            <li class="item"><div class="name">Patates Cips</div><div class="price">120 ₺</div></li>
+          </ul>
+        </section>
+      </div>
+
+      <aside class="card menu-card">
+        <h2 style="color:var(--accent)">Bilgiler & İletişim</h2>
+        <p class="small">BlackChef Cafe menüsü. Fiyatlar Türk Lirası (₺). Görseller Unsplash'tan örnektir.</p>
+        <div class="contact">
+          <div><strong>Adres:</strong> (Adres ekleyin)</div>
+          <div><strong>Telefon:</strong> (Telefon ekleyin)</div>
+          <div><strong>Çalışma Saatleri:</strong> (Saatleri ekleyin)</div>
+        </div>
+
+        <div style="margin-top:12px">
+          <h3 style="margin:8px 0 6px 0;color:var(--accent)">Not</h3>
+          <p class="small">Kendi fotoğraflarınızı gönderebilir veya hangi görsellerin farklı olmasını istediğinizi belirtebilirsiniz. Ayrıca PDF indirme, baskı optimizasyonu veya sosyal medya görseli isterseniz ekleyebilirim.</p>
+        </div>
+      </aside>
+    </main>
+
+    <footer>
+      © <span id="year"></span> BlackChef Cafe — Menü
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
 </body>
 </html>
-
