@@ -1,17 +1,257 @@
 <!DOCTYPE html>
 <html lang="tr">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Black Chef Cafe | Menü</title>
-    <meta name="description" content="Black Chef Cafe menüsü - Sıcak ve soğuk içecekler, tavuk yemekleri, makarnalar, aparatifler ve nargileler." />
-    <meta name="keywords" content="Black Chef Cafe, kafe, menü, kahve, nargile, yemek" />
-    <meta property="og:title" content="Black Chef Cafe | Menü" />
-    <meta property="og:description" content="Black Chef Cafe menüsü - Enfes lezzetler ve kaliteli hizmet." />
-    <meta property="og:type" content="website" />
-    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
-  </head>
-  <body>
-    <div id="root"></div>
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
+<head>
+<meta charset="UTF-8">
+<title>Black Chef Cafe Menü</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Black Chef Cafe QR Menü">
+
+<style>
+:root {
+    --bg: #1a1a1a;
+    --card: #242424;
+    --text: #e5e5e5;
+    --accent: #f5c542;
+    --border: #3a3a3a;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+}
+
+.container {
+    max-width: 900px;
+    margin: auto;
+    padding: 20px;
+    animation: contentFade 0.8s ease;
+}
+
+@keyframes contentFade {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* SPLASH */
+#splash {
+    position: fixed;
+    inset: 0;
+    background: #1a1a1a;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 9999;
+    animation: fadeOut 0.8s ease forwards;
+    animation-delay: 1.8s;
+}
+
+#splash img {
+    width: 180px;
+    margin-bottom: 10px;
+    animation: fadeIn 1s ease;
+}
+
+#splash .subtitle {
+    color: var(--accent);
+    letter-spacing: 3px;
+    font-size: 14px;
+    opacity: 0.8;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.95); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes fadeOut {
+    to { opacity: 0; visibility: hidden; }
+}
+
+/* HEADER */
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.brand {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo {
+    height: 90px;
+    object-fit: contain;
+}
+
+.brand-sub {
+    font-size: 12px;
+    letter-spacing: 2px;
+    color: var(--accent);
+    opacity: 0.75;
+    margin-top: -6px;
+}
+
+button {
+    background: var(--accent);
+    color: #1a1a1a;
+    border: none;
+    padding: 8px 14px;
+    font-weight: bold;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+/* FILTERS */
+.filters {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin: 20px 0;
+}
+
+/* CATEGORY */
+.category {
+    background: var(--card);
+    padding: 18px;
+    border-radius: 12px;
+    margin-bottom: 30px;
+}
+
+.category-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--accent);
+    border-bottom: 1px solid var(--border);
+    padding-bottom: 6px;
+    margin-bottom: 12px;
+}
+
+.category-title img {
+    width: 26px;
+    height: 26px;
+    filter: brightness(0) saturate(100%) sepia(90%) hue-rotate(10deg);
+}
+
+/* MENU ITEM */
+.menu-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 8px 0;
+    border-bottom: 1px dashed var(--border);
+}
+
+.menu-item:last-child {
+    border-bottom: none;
+}
+
+.price {
+    font-weight: bold;
+    color: var(--accent);
+}
+</style>
+</head>
+
+<body>
+
+<!-- SPLASH -->
+<div id="splash">
+    <img src="assets/logo.png" alt="Black Chef Cafe">
+    <div class="subtitle">Cafe & Restaurant</div>
+</div>
+
+<div class="container">
+
+<header class="header">
+    <div class="brand">
+        <img src="assets/logo.png" class="logo" alt="Black Chef Cafe">
+        <span class="brand-sub">Cafe & Restaurant</span>
+    </div>
+</header>
+
+<div class="filters" id="filters"></div>
+<div id="menu"></div>
+
+</div>
+
+<script>
+const menuData = [
+    {
+        category: "Soğuk İçecekler",
+        icon: "assets/icons/cold-drink.svg",
+        items: [
+            { name: "Kutu Kola", price: 100 },
+            { name: "Ayran", price: 85 }
+        ]
+    },
+    {
+        category: "Sıcak İçecekler",
+        icon: "assets/icons/hot-drink.svg",
+        items: [
+            { name: "Türk Kahvesi", price: 100 },
+            { name: "Çay", price: 25 }
+        ]
+    },
+    {
+        category: "Tavuk Yemekleri",
+        icon: "assets/icons/food.svg",
+        items: [
+            { name: "Köri Soslu Tavuk", price: 300 }
+        ]
+    },
+    {
+        category: "Makarnalar",
+        icon: "assets/icons/pasta.svg",
+        items: [
+            { name: "Spagetti Bolonez", price: 300 }
+        ]
+    }
+];
+
+function renderFilters() {
+    const f = document.getElementById("filters");
+    f.innerHTML = `<button onclick="renderMenu()">Tümü</button>`;
+    menuData.forEach(c => {
+        f.innerHTML += `<button onclick="renderMenu('${c.category}')">${c.category}</button>`;
+    });
+}
+
+function renderMenu(filter = null) {
+    const menu = document.getElementById("menu");
+    menu.innerHTML = "";
+
+    menuData.forEach(c => {
+        if (filter && c.category !== filter) return;
+
+        const div = document.createElement("div");
+        div.className = "category";
+        div.innerHTML = `
+            <h2 class="category-title">
+                <img src="${c.icon}">
+                ${c.category}
+            </h2>
+        `;
+
+        c.items.forEach(i => {
+            div.innerHTML += `
+                <div class="menu-item">
+                    <span>${i.name}</span>
+                    <span class="price">${i.price} ₺</span>
+                </div>
+            `;
+        });
+
+        menu.appendChild(div);
+    });
+}
+
+renderFilters();
+renderMenu();
+</script>
+
+</body>
+</html>
