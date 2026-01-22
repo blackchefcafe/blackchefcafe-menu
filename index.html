@@ -16,7 +16,31 @@
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
+import { useState, useRef, useCallback } from "react";
+import MenuHeader from "@/components/MenuHeader";
+import CategoryNav from "@/components/CategoryNav";
+import MenuCategory from "@/components/MenuCategory";
+import Footer from "@/components/Footer";
+import { menuCategories } from "@/data/menuData";
 
+const Index = () => {
+  const [activeCategory, setActiveCategory] = useState<string | null>(null);
+  const categoryRefs = useRef<{ [key: string]: HTMLDivElement | null }>({});
+
+  const handleCategoryClick = useCallback((categoryId: string) => {
+    setActiveCategory(categoryId);
+    const element = categoryRefs.current[categoryId];
+    if (element) {
+      const navHeight = 200;
+      const elementPosition = element.getBoundingClientRect().top + window.scrollY;
+      window.scrollTo({
+        top: elementPosition - navHeight,
+        behavior: "smooth",
+      });
+    }
+  }, []);
+
+  return (
     <div className="min-h-screen bg-background">
       {/* Header */}
       <MenuHeader />
@@ -45,5 +69,6 @@
 };
 
 export default Index;
+
 
 
