@@ -180,36 +180,122 @@ button {
 
 <script>
 const menuData = [
-    {
-        category: "Soğuk İçecekler",
-        icon: "assets/icons/cold-drink.svg",
-        items: [
-            { name: "Kutu Kola", price: 100 },
-            { name: "Ayran", price: 85 }
-        ]
-    },
-    {
-        category: "Sıcak İçecekler",
-        icon: "assets/icons/hot-drink.svg",
-        items: [
-            { name: "Türk Kahvesi", price: 100 },
-            { name: "Çay", price: 25 }
-        ]
-    },
-    {
-        category: "Tavuk Yemekleri",
-        icon: "assets/icons/food.svg",
-        items: [
-            { name: "Köri Soslu Tavuk", price: 300 }
-        ]
-    },
-    {
-        category: "Makarnalar",
-        icon: "assets/icons/pasta.svg",
-        items: [
-            { name: "Spagetti Bolonez", price: 300 }
-        ]
-    }
+/* ===================== SOĞUK İÇECEKLER ===================== */
+{
+    category: "Soğuk İçecekler",
+    icon: "assets/icons/cold-drink.svg",
+    items: [
+        { name: "Kutu Kola", price: 100 },
+        { name: "Şişe Kola", price: 95 },
+        { name: "Meyve Suyu", price: 100 },
+        { name: "Meyveli Soda", price: 85 },
+        { name: "Fuse Tea", price: 100 },
+        { name: "Su", price: 30 },
+        { name: "Gazoz", price: 100 },
+        { name: "Limonata", price: 100 },
+        { name: "Sprite", price: 100 },
+        { name: "Ayran", price: 85 },
+        { name: "Churchill", price: 140 }
+    ]
+},
+
+/* ===================== MILKSHAKE ===================== */
+{
+    category: "Milkshake",
+    icon: "assets/icons/cold-drink.svg",
+    items: [
+        { name: "Çilek", price: 150 },
+        { name: "Çikolata", price: 150 },
+        { name: "Karadut", price: 150 },
+        { name: "Muz", price: 150 }
+    ]
+},
+
+/* ===================== FROZEN ===================== */
+{
+    category: "Frozen",
+    icon: "assets/icons/cold-drink.svg",
+    items: [
+        { name: "Çilek", price: 150 },
+        { name: "Kivi", price: 150 },
+        { name: "Karpuz", price: 150 },
+        { name: "Muz", price: 150 }
+    ]
+},
+
+/* ===================== SICAK İÇECEKLER ===================== */
+{
+    category: "Sıcak İçecekler",
+    icon: "assets/icons/hot-drink.svg",
+    items: [
+        { name: "Türk Kahvesi", price: 100 },
+        { name: "Sütlü Türk Kahvesi", price: 110 },
+        { name: "Dibek Kahvesi", price: 100 },
+        { name: "Menengiç Kahvesi", price: 130 },
+        { name: "Damla Sakızlı Türk Kahvesi", price: 110 },
+        { name: "Dağ Çilekli Türk Kahvesi", price: 120 },
+        { name: "Filtre Kahve", price: 130 },
+        { name: "Sütlü Filtre Kahve", price: 150 },
+        { name: "Cappuccino", price: 100 },
+        { name: "Sıcak Çikolata", price: 130 },
+        { name: "Salep", price: 130 },
+        { name: "Çay", price: 25 },
+        { name: "Bitki Sıcak Çayı", price: 50 },
+        { name: "Bitki Demleme Çayı", price: 140 },
+        { name: "Nescafe Gold", price: 100 },
+        { name: "Hazır Nescafe", price: 90 },
+        { name: "Sütlü Nescafe", price: 110 },
+        { name: "Süt", price: 90 },
+        { name: "Ballı Süt", price: 130 }
+    ]
+},
+
+/* ===================== TAVUK YEMEKLERİ ===================== */
+{
+    category: "Tavuk Yemekleri",
+    icon: "assets/icons/food.svg",
+    items: [
+        { name: "Köri Soslu Tavuk", price: 300 },
+        { name: "Mexican Soslu Tavuk", price: 300 },
+        { name: "Soya Soslu Tavuk", price: 300 },
+        { name: "Kremalı Mantarlı Tavuk", price: 300 },
+        { name: "Tavuk Kavurma", price: 300 },
+        { name: "Kremitte Tavuk Sote", price: 300 },
+        { name: "Tavuk Çökertme", price: 300 },
+        { name: "Tavuk Fajita", price: 300 },
+        { name: "Barbekü Soslu Tavuk", price: 300 },
+        { name: "Tavuk Bonfile", price: 300 },
+        { name: "Tavuk Şinitzel", price: 300 },
+        { name: "Tavuk Sote", price: 300 }
+    ]
+},
+
+/* ===================== MAKARNALAR ===================== */
+{
+    category: "Makarnalar",
+    icon: "assets/icons/pasta.svg",
+    items: [
+        { name: "Penne Alfredo Fettucini", price: 300 },
+        { name: "Etli Penne Arabiata", price: 300 },
+        { name: "Spagetti Alfredo Fettucini", price: 300 },
+        { name: "Spagetti Bolonez", price: 300 },
+        { name: "Mantı Pesto Soslu", price: 300 }
+    ]
+},
+
+/* ===================== APARATİFLER ===================== */
+{
+    category: "Aparatifler",
+    icon: "assets/icons/food.svg",
+    items: [
+        { name: "Kavurmalı Menemen", price: 300 },
+        { name: "Karışık Menemen", price: 200 },
+        { name: "Kaşarlı Gözleme", price: 200 },
+        { name: "Karışık Tost", price: 200 },
+        { name: "Patates Cips", price: 120 }
+    ]
+}
+
 ];
 
 function renderFilters() {
@@ -252,6 +338,3 @@ function renderMenu(filter = null) {
 renderFilters();
 renderMenu();
 </script>
-
-</body>
-</html>
