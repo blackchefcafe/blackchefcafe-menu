@@ -3,129 +3,103 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Black Chef Cafe - Dijital Menü</title>
+    <title>Black Chef Cafe - Menü</title>
     <style>
         body {
-            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: #1a1a1a;
+            font-family: 'Segoe UI', Tahoma, sans-serif;
+            background-color: #1a1a1a; /* Koyu Gri */
             color: #ffffff;
-            margin: 0;
-            padding: 0;
+            margin: 0; padding: 0;
         }
-
         header {
-            background-color: #000000;
-            border-bottom: 5px solid #ffcc00;
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        header img {
-            width: 100%;
-            max-width: 800px;
-            height: 250px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            border: 2px solid #ffcc00;
-        }
-
-        h1 {
-            color: #ffcc00;
-            margin: 0;
-            font-size: 2.5rem;
-            letter-spacing: 3px;
-        }
-
-        .container {
-            max-width: 700px;
-            margin: 20px auto;
-            padding: 20px;
-        }
-
-        .category-img {
-            width: 100%;
-            height: 180px;
-            object-fit: cover;
-            border-radius: 8px;
-            margin-top: 30px;
-            border: 1px solid #333;
-        }
-
-        h2 {
-            color: #ffcc00;
-            font-size: 1.6rem;
-            border-bottom: 2px solid #ffcc00;
-            display: inline-block;
-            margin: 20px 0 15px 0;
-            padding-bottom: 5px;
-        }
-
-        .menu-item {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 12px;
-            padding-bottom: 5px;
-            border-bottom: 1px solid #333;
-        }
-
-        .item-name {
-            font-size: 1.1rem;
-        }
-
-        .item-price {
-            color: #ffcc00;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        footer {
-            text-align: center;
-            padding: 40px;
             background-color: #000;
-            color: #666;
-            margin-top: 50px;
+            border-bottom: 4px solid #ffcc00; /* Sarı */
+            text-align: center;
+            padding: 2rem;
         }
+        h1 { color: #ffcc00; margin: 0; text-transform: uppercase; }
+        .container { max-width: 800px; margin: auto; padding: 20px; }
+        .section { margin-bottom: 40px; }
+        .category-header {
+            background-color: #333;
+            color: #ffcc00;
+            padding: 10px;
+            border-left: 5px solid #ffcc00;
+            margin-bottom: 15px;
+            font-size: 1.4rem;
+        }
+        .menu-image {
+            width: 100%; height: 250px; object-fit: cover;
+            border-radius: 10px; border: 2px solid #333; margin-bottom: 15px;
+        }
+        .menu-item {
+            display: flex; justify-content: space-between;
+            padding: 8px 0; border-bottom: 1px solid #333;
+        }
+        .price { color: #ffcc00; font-weight: bold; }
+        footer { text-align: center; padding: 20px; color: #666; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
 <header>
-    <img src="http://googleusercontent.com/image_collection/image_retrieval/12299776958885680676_0" alt="Black Chef Cafe">
     <h1>BLACK CHEF CAFE</h1>
 </header>
 
 <div class="container">
 
-    <img src="http://googleusercontent.com/image_collection/image_retrieval/7899220322498500834_0" class="category-img" alt="Soğuk İçecekler">
-    <h2>SOĞUK İÇECEKLER</h2>
-    <div class="menu-item"><span class="item-name">Kutu Kola / Meyve Suyu / Fuse Tea</span><span class="item-price">100 ₺</span></div>
-    <div class="menu-item"><span class="item-name">Şişe Kola</span><span class="item-price">95 ₺</span></div>
-    <div class="menu-item"><span class="item-name">Meyveli Soda / Ayran</span><span class="item-price">85 ₺</span></div>
-    <div class="menu-item"><span class="item-name">Limonata / Sprite / Gazoz</span><span class="item-price">100 ₺</span></div>
-    <div class="menu-item"><span class="item-name">Churchill</span><span class="item-price">140 ₺</span></div>
-    <div class="menu-item"><span class="item-name">Su</span><span class="item-price">30 ₺</span></div>
+    <div class="section">
+        <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?auto=format&fit=crop&w=800&q=80" class="menu-image" alt="Soğuk İçecekler">
+        <div class="category-header">SOĞUK İÇECEKLER</div>
+        <div class="menu-item"><span>Kutu Kola</span> <span class="price">100₺</span></div>
+        <div class="menu-item"><span>Şişe Kola</span> <span class="price">95₺</span></div>
+        <div class="menu-item"><span>Meyve Suyu</span> <span class="price">100₺</span></div>
+        <div class="menu-item"><span>Meyveli Soda</span> <span class="price">85₺</span></div>
+        <div class="menu-item"><span>Fuse Tea</span> <span class="price">100₺</span></div>
+        <div class="menu-item"><span>Su</span> <span class="price">30₺</span></div>
+        <div class="menu-item"><span>Gazoz</span> <span class="price">100₺</span></div>
+        <div class="menu-item"><span>Limonata</span> <span class="price">100₺</span></div>
+        <div class="menu-item"><span>Sprite</span> <span class="price">100₺</span></div>
+        <div class="menu-item"><span>Ayran</span> <span class="price">85₺</span></div>
+        <div class="menu-item"><span>Churchill</span> <span class="price">140₺</span></div>
+    </div>
 
-    <img src="http://googleusercontent.com/image_collection/image_retrieval/1650063704263520261_0" class="category-img" alt="Sıcak İçecekler">
-    <h2>SICAK İÇECEKLER</h2>
-    <div class="menu-item"><span class="item-name">Türk Kahvesi / Dibek / Cappuccino</span><span class="item-price">100 ₺</span></div>
-    <div class="menu-item"><span class="item-name">Sütlü Türk Kahvesi / Damla Sakızlı</span><span class="item-price">110 ₺</span></div>
-    <div class="menu-item"><span class="item-name">Filtre Kahve / Menengiç / Salep</span><span class="item-price">130 ₺</span></div>
-    <div class="menu-item"><span class="item-name">Doğal Bitki Çayı</span><span class="item-price">140 ₺</span></div>
-    <div class="menu-item"><span class="item-name">Çay</span><span class="item-price">25 ₺</span></div>
+    <div class="section">
+        <img src="https://images.unsplash.com/photo-1579954115545-a95591f28bee?auto=format&fit=crop&w=800&q=80" class="menu-image" alt="Milkshake">
+        <div class="category-header">MİLKSHAKE & FROZEN</div>
+        <div class="menu-item"><span>Milkshake (Çilek, Çikolata, Karadut, Muz)</span> <span class="price">150₺</span></div>
+        <div class="menu-item"><span>Frozen (Çilek, Kivi, Karpuz, Muz)</span> <span class="price">150₺</span></div>
+    </div>
 
-    <img src="http://googleusercontent.com/image_collection/image_retrieval/2174177806406289675_0" class="category-img" alt="Yemekler">
-    <h2>YEMEK & MAKARNALAR</h2>
-    <div class="menu-item"><span class="item-name">Tavuk Yemekleri (Tüm Çeşitler)</span><span class="item-price">300 ₺</span></div>
-    <div class="menu-item"><span class="item-name">Makarnalar (Penne, Fettucini, Mantı)</span><span class="item-price">300 ₺</span></div>
-    <div class="menu-item"><span class="item-name">Kavurmalı Menemen</span><span class="item-price">300 ₺</span></div>
-    <div class="menu-item"><span class="item-name">Karışık Tost / Gözleme</span><span class="item-price">200 ₺</span></div>
-    <div class="menu-item"><span class="item-name">Patates Cips</span><span class="item-price">120 ₺</span></div>
+    <div class="section">
+        <img src="https://images.unsplash.com/photo-1541167760496-162955ed8a9f?auto=format&fit=crop&w=800&q=80" class="menu-image" alt="Sıcak İçecekler">
+        <div class="category-header">SICAK İÇECEKLER</div>
+        <div class="menu-item"><span>Türk Kahvesi / Dibek Kahvesi</span> <span class="price">100₺</span></div>
+        <div class="menu-item"><span>Sütlü Türk Kahvesi / Damla Sakızlı</span> <span class="price">110₺</span></div>
+        <div class="menu-item"><span>Dağ Çilekli Türk Kahvesi</span> <span class="price">120₺</span></div>
+        <div class="menu-item"><span>Menengiç / Sıcak Çikolata / Salep</span> <span class="price">130₺</span></div>
+        <div class="menu-item"><span>Filtre Kahve</span> <span class="price">130₺</span></div>
+        <div class="menu-item"><span>Sütlü Filtre Kahve</span> <span class="price">150₺</span></div>
+        <div class="menu-item"><span>Cappuccino / Nescafe Gold</span> <span class="price">100₺</span></div>
+        <div class="menu-item"><span>Çay</span> <span class="price">25₺</span></div>
+        <div class="menu-item"><span>Bitki S. Çayı / Bitki D. Çayı</span> <span class="price">50₺ / 140₺</span></div>
+        <div class="menu-item"><span>Süt / Ballı Süt</span> <span class="price">90₺ / 130₺</span></div>
+    </div>
+
+    <div class="section">
+        <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=800&q=80" class="menu-image" alt="Yemekler">
+        <div class="category-header">YEMEKLER & MAKARNALAR</div>
+        <div class="menu-item"><span>Tüm Tavuk Yemekleri (Köri, Mexican, Soya vb.)</span> <span class="price">300₺</span></div>
+        <div class="menu-item"><span>Tüm Makarnalar (Penne, Spagetti, Mantı)</span> <span class="price">300₺</span></div>
+        <div class="menu-item"><span>Kavurmalı Menemen</span> <span class="price">300₺</span></div>
+        <div class="menu-item"><span>Karışık Menemen / Gözleme / Tost</span> <span class="price">200₺</span></div>
+        <div class="menu-item"><span>Patates Cips</span> <span class="price">120₺</span></div>
+    </div>
 
 </div>
 
 <footer>
-    &copy; 2024 Black Chef Cafe - Tüm Hakları Saklıdır.
+    &copy; 2026 Black Chef Cafe. Tüm fiyatlar PDF verilerine göre güncellenmiştir.
 </footer>
 
 </body>
