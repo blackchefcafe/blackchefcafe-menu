@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Black Chef Cafe - Dijital Menü</title>
     <style>
-        /* GENEL TASARIM */
         body {
             font-family: 'Segoe UI', sans-serif;
             background-color: #2c2c2c;
@@ -14,32 +13,31 @@
             scroll-behavior: smooth;
         }
 
-        /* LOGO VE HEADER */
         header {
             background-color: #000;
             text-align: center;
             padding: 20px;
             border-bottom: 4px solid #ffcc00;
         }
-        .logo-placeholder {
-            width: 120px;
-            height: 120px;
-            background-color: #333;
-            border: 2px dashed #ffcc00;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+
+        /* LOGO TASARIMI */
+        .logo-container {
+            width: 150px;
+            height: 150px;
             margin: 0 auto 10px;
             border-radius: 50%;
-            color: #ffcc00;
-            font-weight: bold;
+            overflow: hidden;
+            border: 3px solid #ffcc00;
         }
-        .logo-placeholder img {
+        .logo-container img {
             width: 100%;
-            border-radius: 50%;
+            height: 100%;
+            object-fit: cover;
         }
 
-        /* HIZLI ERİŞİM MENÜSÜ (NAV) */
+        h1 { color: #ffcc00; margin: 10px 0; text-transform: uppercase; letter-spacing: 2px; }
+
+        /* NAVİGASYON */
         nav {
             position: sticky;
             top: 0;
@@ -49,19 +47,21 @@
             border-bottom: 1px solid #444;
             display: flex;
             justify-content: center;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
         }
         nav a {
             color: #ffcc00;
             text-decoration: none;
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             font-weight: bold;
-            padding: 5px 10px;
+            padding: 6px 10px;
             border: 1px solid #ffcc00;
             border-radius: 5px;
             text-transform: uppercase;
+            transition: 0.3s;
         }
+        nav a:hover { background: #ffcc00; color: #000; }
 
         .container { max-width: 600px; margin: auto; padding: 20px; }
         
@@ -71,8 +71,10 @@
             color: #ffcc00;
             border-left: 5px solid #ffcc00;
             padding-left: 10px;
-            margin: 30px 0 15px;
+            margin: 40px 0 20px;
             text-transform: uppercase;
+            background: #1a1a1a;
+            padding: 10px;
         }
 
         .menu-img {
@@ -87,19 +89,20 @@
         .item {
             display: flex;
             justify-content: space-between;
-            padding: 10px 0;
+            padding: 12px 0;
             border-bottom: 1px dotted #555;
+            font-size: 1rem;
         }
-        .price { color: #ffcc00; font-weight: bold; }
+        .price { color: #ffcc00; font-weight: bold; min-width: 60px; text-align: right; }
 
-        footer { text-align: center; padding: 40px; color: #888; }
+        footer { text-align: center; padding: 50px; color: #666; font-size: 0.9rem; }
     </style>
 </head>
 <body>
 
 <header>
-    <div class="logo-placeholder">
-        <img src="https://via.placeholder.com/120/000000/FFCC00?text=LOGO" alt="Kafe Logo">
+    <div class="logo-container">
+        <img src="https://images.rawpixel.com/image_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDIzLTA4L3Jhd3BpeGVsX29mZmljZV8yOV9waG90b19vZl9hX2JsYWNrX2NoZWZfaGF0X29uX2FfYmxhY2tfYmFja2dyb3VuZF81Nzc4MTJiMS1kZGY2LTQ2NzEtOTcyMC02YTMzMmQ0MGE3YmFfMS5qcGc.jpg" alt="Black Chef Cafe Logo">
     </div>
     <h1>BLACK CHEF CAFE</h1>
 </header>
@@ -109,7 +112,7 @@
     <a href="#milkshake">Milkshake</a>
     <a href="#frozen">Frozen</a>
     <a href="#sicak">Sıcak</a>
-    <a href="#yemek">Yemek</a>
+    <a href="#tavuk">Tavuk</a>
     <a href="#makarna">Makarna</a>
     <a href="#aparatif">Aparatif</a>
 </nav>
@@ -117,72 +120,104 @@
 <div class="container">
 
     <div id="soguk" class="section-anchor">
-        <img src="https://images.pexels.com/photos/2109099/pexels-photo-2109099.jpeg?auto=compress&cs=tinysrgb&w=600" class="menu-img" alt="Soğuk">
+        <img src="https://images.pexels.com/photos/2109099/pexels-photo-2109099.jpeg?auto=compress&cs=tinysrgb&w=600" class="menu-img">
         <h2 class="category-header">SOĞUK İÇECEKLER</h2>
-        <div class="item"><span>Kutu Kola [cite: 3]</span><span class="price">100 ₺ [cite: 3]</span></div>
-        <div class="item"><span>Şişe Kola [cite: 3]</span><span class="price">95 ₺ [cite: 3]</span></div>
-        <div class="item"><span>Meyve Suyu [cite: 3]</span><span class="price">100 ₺ [cite: 3]</span></div>
-        <div class="item"><span>Meyveli Soda [cite: 3]</span><span class="price">85 ₺ [cite: 3]</span></div>
-        <div class="item"><span>Fuse Tea [cite: 3]</span><span class="price">100 ₺ [cite: 3]</span></div>
-        <div class="item"><span>Su [cite: 3]</span><span class="price">30 ₺ [cite: 3]</span></div>
-        <div class="item"><span>Gazoz / Limonata / Sprite [cite: 3]</span><span class="price">100 ₺ [cite: 3]</span></div>
-        <div class="item"><span>Ayran [cite: 3]</span><span class="price">85 ₺ [cite: 3]</span></div>
-        <div class="item"><span>Churchill [cite: 3]</span><span class="price">140 ₺ [cite: 3]</span></div>
+        <div class="item"><span>Kutu Kola</span> <span class="price">100 ₺</span></div>
+        <div class="item"><span>Şişe Kola</span> <span class="price">95 ₺</span></div>
+        <div class="item"><span>Meyve Suyu</span> <span class="price">100 ₺</span></div>
+        <div class="item"><span>Meyveli Soda</span> <span class="price">85 ₺</span></div>
+        <div class="item"><span>Fuse Tea</span> <span class="price">100 ₺</span></div>
+        <div class="item"><span>Su</span> <span class="price">30 ₺</span></div>
+        <div class="item"><span>Gazoz</span> <span class="price">100 ₺</span></div>
+        <div class="item"><span>Limonata</span> <span class="price">100 ₺</span></div>
+        <div class="item"><span>Sprite</span> <span class="price">100 ₺</span></div>
+        <div class="item"><span>Ayran</span> <span class="price">85 ₺</span></div>
+        <div class="item"><span>Churchill</span> <span class="price">140 ₺</span></div>
     </div>
 
     <div id="milkshake" class="section-anchor">
-        <img src="https://images.pexels.com/photos/103566/pexels-photo-103566.jpeg?auto=compress&cs=tinysrgb&w=600" class="menu-img" alt="Milkshake">
+        <img src="https://images.pexels.com/photos/103566/pexels-photo-103566.jpeg?auto=compress&cs=tinysrgb&w=600" class="menu-img">
         <h2 class="category-header">MİLKSHAKE</h2>
-        <div class="item"><span>Çilek / Çikolata [cite: 5]</span><span class="price">150 ₺ [cite: 5]</span></div>
-        <div class="item"><span>Karadut / Muz [cite: 5]</span><span class="price">150 ₺ [cite: 5]</span></div>
+        <div class="item"><span>Çilek</span> <span class="price">150 ₺</span></div>
+        <div class="item"><span>Çikolata</span> <span class="price">150 ₺</span></div>
+        <div class="item"><span>Karadut</span> <span class="price">150 ₺</span></div>
+        <div class="item"><span>Muz</span> <span class="price">150 ₺</span></div>
     </div>
 
     <div id="frozen" class="section-anchor">
-        <img src="https://images.pexels.com/photos/316466/pexels-photo-316466.jpeg?auto=compress&cs=tinysrgb&w=600" class="menu-img" alt="Frozen">
+        <img src="https://images.pexels.com/photos/316466/pexels-photo-316466.jpeg?auto=compress&cs=tinysrgb&w=600" class="menu-img">
         <h2 class="category-header">FROZEN</h2>
-        <div class="item"><span>Çilek / Kivi [cite: 7]</span><span class="price">150 ₺ [cite: 7]</span></div>
-        <div class="item"><span>Karpuz / Muz [cite: 7]</span><span class="price">150 ₺ [cite: 7]</span></div>
+        <div class="item"><span>Çilek</span> <span class="price">150 ₺</span></div>
+        <div class="item"><span>Kivi</span> <span class="price">150 ₺</span></div>
+        <div class="item"><span>Karpuz</span> <span class="price">150 ₺</span></div>
+        <div class="item"><span>Muz</span> <span class="price">150 ₺</span></div>
     </div>
 
     <div id="sicak" class="section-anchor">
-        <img src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=600" class="menu-img" alt="Sıcak">
+        <img src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=600" class="menu-img">
         <h2 class="category-header">SICAK İÇECEKLER</h2>
-        <div class="item"><span>Türk Kahvesi [cite: 10]</span><span class="price">100 ₺ [cite: 10]</span></div>
-        <div class="item"><span>Sütlü Türk Kahvesi [cite: 10]</span><span class="price">110 ₺ [cite: 10]</span></div>
-        <div class="item"><span>Dibek / Nescafe Gold [cite: 10]</span><span class="price">100 ₺ [cite: 10]</span></div>
-        <div class="item"><span>Menengiç / Sıcak Çikolata / Salep [cite: 10]</span><span class="price">130 ₺ [cite: 10]</span></div>
-        <div class="item"><span>Damla Sakızlı Türk Kahvesi [cite: 10]</span><span class="price">110 ₺ [cite: 10]</span></div>
-        <div class="item"><span>Filtre Kahve [cite: 10]</span><span class="price">130 ₺ [cite: 10]</span></div>
-        <div class="item"><span>Sütlü Filtre Kahve [cite: 10]</span><span class="price">150 ₺ [cite: 10]</span></div>
-        <div class="item"><span>Çay [cite: 10]</span><span class="price">25 ₺ [cite: 10]</span></div>
-        <div class="item"><span>Bitki Doğal Çayı [cite: 10]</span><span class="price">140 ₺ [cite: 10]</span></div>
+        <div class="item"><span>Türk Kahvesi</span> <span class="price">100 ₺</span></div>
+        <div class="item"><span>Sütlü Türk Kahvesi</span> <span class="price">110 ₺</span></div>
+        <div class="item"><span>Dibek Kahvesi</span> <span class="price">100 ₺</span></div>
+        <div class="item"><span>Menengiç Kahvesi</span> <span class="price">130 ₺</span></div>
+        <div class="item"><span>Damla Sakızlı Türk Kahvesi</span> <span class="price">110 ₺</span></div>
+        <div class="item"><span>Dağ Çilekli Türk Kahvesi</span> <span class="price">120 ₺</span></div>
+        <div class="item"><span>Filtre Kahve</span> <span class="price">130 ₺</span></div>
+        <div class="item"><span>Sütlü Filtre Kahve</span> <span class="price">150 ₺</span></div>
+        <div class="item"><span>Cappuccino</span> <span class="price">100 ₺</span></div>
+        <div class="item"><span>Sıcak Çikolata</span> <span class="price">130 ₺</span></div>
+        <div class="item"><span>Salep</span> <span class="price">130 ₺</span></div>
+        <div class="item"><span>Çay</span> <span class="price">25 ₺</span></div>
+        <div class="item"><span>Bitki S. Çayı</span> <span class="price">50 ₺</span></div>
+        <div class="item"><span>Bitki D. Çayı</span> <span class="price">140 ₺</span></div>
+        <div class="item"><span>Nescafe Gold</span> <span class="price">100 ₺</span></div>
+        <div class="item"><span>Hazır Nescafe</span> <span class="price">90 ₺</span></div>
+        <div class="item"><span>Sütlü Nescafe</span> <span class="price">110 ₺</span></div>
+        <div class="item"><span>Süt</span> <span class="price">90 ₺</span></div>
+        <div class="item"><span>Ballı Süt</span> <span class="price">130 ₺</span></div>
     </div>
 
-    <div id="yemek" class="section-anchor">
-        <img src="https://images.pexels.com/photos/262959/pexels-photo-262959.jpeg?auto=compress&cs=tinysrgb&w=600" class="menu-img" alt="Yemek">
+    <div id="tavuk" class="section-anchor">
+        <img src="https://images.pexels.com/photos/262959/pexels-photo-262959.jpeg?auto=compress&cs=tinysrgb&w=600" class="menu-img">
         <h2 class="category-header">TAVUK YEMEKLERİ</h2>
-        <div class="item"><span>Köri / Mexican / Soya Soslu [cite: 13]</span><span class="price">300 ₺ [cite: 13]</span></div>
-        <div class="item"><span>Kremalı Mantarlı Tavuk [cite: 13]</span><span class="price">300 ₺ [cite: 13]</span></div>
-        <div class="item"><span>Tavuk Çökertme / Fajita [cite: 13]</span><span class="price">300 ₺ [cite: 13]</span></div>
+        <div class="item"><span>Köri Soslu Tavuk</span> <span class="price">300 ₺</span></div>
+        <div class="item"><span>Mexican Soslu Tavuk</span> <span class="price">300 ₺</span></div>
+        <div class="item"><span>Soya Soslu Tavuk</span> <span class="price">300 ₺</span></div>
+        <div class="item"><span>Kremalı Mantarlı Tavuk</span> <span class="price">300 ₺</span></div>
+        <div class="item"><span>Tavuk Kavurma</span> <span class="price">300 ₺</span></div>
+        <div class="item"><span>Kiremitte Tavuk Sote</span> <span class="price">300 ₺</span></div>
+        <div class="item"><span>Tavuk Çökertme</span> <span class="price">300 ₺</span></div>
+        <div class="item"><span>Tavuk Fajita</span> <span class="price">300 ₺</span></div>
+        <div class="item"><span>Barbekü Soslu Tavuk</span> <span class="price">300 ₺</span></div>
+        <div class="item"><span>Tavuk Bonfile</span> <span class="price">300 ₺</span></div>
+        <div class="item"><span>Tavuk Şinitzel</span> <span class="price">300 ₺</span></div>
+        <div class="item"><span>Tavuk Sote</span> <span class="price">300 ₺</span></div>
     </div>
 
     <div id="makarna" class="section-anchor">
-        <img src="https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg?auto=compress&cs=tinysrgb&w=600" class="menu-img" alt="Makarna">
+        <img src="https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg?auto=compress&cs=tinysrgb&w=600" class="menu-img">
         <h2 class="category-header">MAKARNALAR</h2>
-        <div class="item"><span>Penne Alfredo / Fettucini [cite: 16]</span><span class="price">300 ₺ [cite: 16]</span></div>
-        <div class="item"><span>Spagetti Bolonez / Mantı [cite: 16]</span><span class="price">300 ₺ [cite: 16]</span></div>
+        <div class="item"><span>Penne Alfredo Fettucini</span> <span class="price">300 ₺</span></div>
+        <div class="item"><span>Etli Penne Arabbiat</span> <span class="price">300 ₺</span></div>
+        <div class="item"><span>Spagetti A. Fettucini</span> <span class="price">300 ₺</span></div>
+        <div class="item"><span>Spagetti Bolonez</span> <span class="price">300 ₺</span></div>
+        <div class="item"><span>Mantı Pesto Soslu</span> <span class="price">300 ₺</span></div>
     </div>
 
     <div id="aparatif" class="section-anchor">
         <h2 class="category-header">APARATİFLER</h2>
-        <div class="item"><span>Kavurmalı Menemen [cite: 18]</span><span class="price">300 ₺ [cite: 18]</span></div>
-        <div class="item"><span>Karışık Menemen / Tost / Gözleme [cite: 18]</span><span class="price">200 ₺ [cite: 18]</span></div>
-        <div class="item"><span>Patates Cips [cite: 18]</span><span class="price">120 ₺ [cite: 18]</span></div>
+        <div class="item"><span>Kavurmalı Menemen</span> <span class="price">300 ₺</span></div>
+        <div class="item"><span>Karışık Menemen</span> <span class="price">200 ₺</span></div>
+        <div class="item"><span>Kaşarlı Gözleme</span> <span class="price">200 ₺</span></div>
+        <div class="item"><span>Karışık Tost</span> <span class="price">200 ₺</span></div>
+        <div class="item"><span>Patates Cips</span> <span class="price">120 ₺</span></div>
     </div>
 
 </div>
 
-<footer>&copy; 2026 Black Chef Cafe</footer>
+<footer>
+    &copy; 2026 Black Chef Cafe - Afiyet Olsun
+</footer>
 
 </body>
 </html>
