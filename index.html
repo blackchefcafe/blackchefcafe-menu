@@ -1,1701 +1,845 @@
-Tüm kodları tek dosyada birleştiriyorum:
-Action: file_editor create /app/cafe-menu/menu-tek-dosya.html --file-text "<!DOCTYPE html>
-<html lang=\"tr\">
+<!DOCTYPE html>
+<html lang="tr">
 <head>
-    <meta charset=\"UTF-8\">
-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-    <title>Black Chef Cafe & Restaurant - Dijital Menü</title>
-    <link rel=\"preconnect\" href=\"https://fonts.googleapis.com\">
-    <link rel=\"preconnect\" href=\"https://fonts.gstatic.com\" crossorigin>
-    <link href=\"https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap\" rel=\"stylesheet\">
-    
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Black Chef Cafe & Restaurant - Menü</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --anthracite: #2b2d2f;
-            --anthracite-light: #3a3d40;
-            --anthracite-dark: #1a1c1e;
-            --warm-yellow: #f4c430;
-            --warm-yellow-hover: #ffcf47;
-            --text-primary: #ffffff;
-            --text-secondary: #d1d1d1;
-            --card-bg: #343638;
-            --shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
-            --shadow-hover: 0 8px 30px rgba(0, 0, 0, 0.4);
-        }
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        html {
-            scroll-behavior: smooth;
-        }
-
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, var(--anthracite-dark) 0%, var(--anthracite) 100%);
-            color: var(--text-primary);
-            line-height: 1.6;
-            min-height: 100vh;
+            background: #1a1a1a;
+            color: #fff;
+            overflow-x: hidden;
         }
 
-        /* Header */
-        .header {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            background: var(--anthracite);
-            box-shadow: var(--shadow);
-            z-index: 1000;
-            padding: 1rem 0;
+        .top-bar {
+            background: #000;
+            padding: 10px 0;
+            text-align: center;
+            color: #d4af37;
+            font-size: 0.9em;
+            border-bottom: 1px solid #2a2a2a;
         }
 
-        .header-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
+        .hero {
+            position: relative;
+            height: 600px;
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.8)), 
+                        url('https://images.unsplash.com/photo-1517248135467-4c7edcad34c4?w=1600&h=600&fit=crop') center/cover;
             display: flex;
-            justify-content: space-between;
+            flex-direction: column;
             align-items: center;
+            justify-content: center;
+            text-align: center;
+            border-bottom: 3px solid #d4af37;
         }
 
         .logo-container {
-            flex: 1;
+            margin-bottom: 30px;
+            animation: fadeInDown 1s ease;
         }
 
-        .logo {
-            height: 60px;
-            width: auto;
-            object-fit: contain;
+        .logo-img {
+            width: 280px;
+            height: auto;
+            filter: drop-shadow(0 10px 30px rgba(212, 175, 55, 0.5));
         }
 
-        .header-actions {
-            display: flex;
-            gap: 1rem;
-            align-items: center;
-        }
-
-        .search-toggle,
-        .favorites-toggle {
-            background: transparent;
-            border: 2px solid var(--warm-yellow);
-            color: var(--warm-yellow);
-            width: 45px;
-            height: 45px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .favorites-toggle {
-            position: relative;
-        }
-
-        .favorites-count {
-            position: absolute;
-            top: -5px;
-            right: -5px;
-            background: var(--warm-yellow);
-            color: var(--anthracite);
-            font-size: 0.7rem;
-            font-weight: 600;
-            width: 20px;
-            height: 20px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .search-toggle:hover,
-        .favorites-toggle:hover {
-            background: var(--warm-yellow);
-            color: var(--anthracite);
-            transform: scale(1.05);
-        }
-
-        /* Search Bar */
-        .search-container {
-            position: fixed;
-            top: 90px;
-            left: 0;
-            right: 0;
-            background: var(--anthracite-light);
-            padding: 1rem 1.5rem;
-            z-index: 999;
-            transform: translateY(-100%);
-            opacity: 0;
-            box-shadow: var(--shadow);
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .search-container.active {
-            transform: translateY(0);
-            opacity: 1;
-        }
-
-        .search-bar {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-            background: var(--anthracite);
-            padding: 0.75rem 1.25rem;
-            border-radius: 50px;
-        }
-
-        .search-bar svg {
-            color: var(--warm-yellow);
-            flex-shrink: 0;
-        }
-
-        .search-bar input {
-            flex: 1;
-            background: transparent;
-            border: none;
-            outline: none;
-            color: var(--text-primary);
-            font-size: 1rem;
-            font-family: 'Poppins', sans-serif;
-        }
-
-        .search-bar input::placeholder {
-            color: var(--text-secondary);
-        }
-
-        .search-clear {
-            background: transparent;
-            border: none;
-            color: var(--text-secondary);
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 0.25rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .search-clear:hover {
-            color: var(--warm-yellow);
-        }
-
-        /* Navigation */
-        .nav-container {
-            position: fixed;
-            top: 90px;
-            left: 0;
-            right: 0;
-            background: var(--anthracite-light);
-            z-index: 998;
-            padding: 0.75rem 0;
-            box-shadow: var(--shadow);
-        }
-
-        .search-container.active ~ .nav-container {
-            top: 156px;
-        }
-
-        .nav-scroll {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-            display: flex;
-            gap: 0.75rem;
-            overflow-x: auto;
-            scrollbar-width: none;
-        }
-
-        .nav-scroll::-webkit-scrollbar {
-            display: none;
-        }
-
-        .nav-btn {
-            background: transparent;
-            border: 2px solid var(--text-secondary);
-            color: var(--text-secondary);
-            padding: 0.65rem 1.5rem;
-            border-radius: 50px;
-            cursor: pointer;
-            font-family: 'Poppins', sans-serif;
-            font-weight: 500;
-            font-size: 0.9rem;
-            white-space: nowrap;
-            flex-shrink: 0;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .nav-btn:hover {
-            border-color: var(--warm-yellow);
-            color: var(--warm-yellow);
-            transform: translateY(-2px);
-        }
-
-        .nav-btn.active {
-            background: var(--warm-yellow);
-            border-color: var(--warm-yellow);
-            color: var(--anthracite);
-            font-weight: 600;
-        }
-
-        /* Main Content */
-        .main-content {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 180px 1.5rem 3rem;
-        }
-
-        .menu-category {
-            margin-bottom: 4rem;
-            opacity: 0;
-            transform: translateY(30px);
-            animation: fadeInUp 0.6s ease forwards;
-        }
-
-        @keyframes fadeInUp {
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
             to {
                 opacity: 1;
                 transform: translateY(0);
             }
         }
 
-        .category-title {
+        .hero-content {
+            animation: fadeInUp 1.2s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero-title {
             font-family: 'Playfair Display', serif;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--warm-yellow);
-            margin-bottom: 2rem;
+            font-size: 3.5em;
+            font-weight: 900;
+            color: #d4af37;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            margin-bottom: 15px;
+            text-shadow: 0 0 40px rgba(212, 175, 55, 0.6);
+        }
+
+        .tagline {
+            font-size: 1.5em;
+            color: #f0f0f0;
+            font-weight: 300;
+            letter-spacing: 4px;
+            margin-top: 10px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1em;
+            color: #aaa;
+            margin-top: 20px;
+            font-style: italic;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 80px 20px;
+        }
+
+        .section-header {
             text-align: center;
-            letter-spacing: 1px;
+            margin-bottom: 70px;
+            position: relative;
+        }
+
+        .section-icon {
+            font-size: 4em;
+            margin-bottom: 20px;
+            filter: drop-shadow(0 5px 15px rgba(212, 175, 55, 0.3));
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5em;
+            color: #d4af37;
+            margin-bottom: 20px;
+            position: relative;
+            display: inline-block;
+            font-weight: 700;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, #d4af37, transparent);
+            border-radius: 2px;
+        }
+
+        .section-description {
+            color: #bbb;
+            font-size: 1.2em;
+            margin-top: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+            line-height: 1.6;
         }
 
         .menu-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-            gap: 2rem;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 50px;
+            margin-bottom: 100px;
         }
 
-        .menu-item {
-            background: var(--card-bg);
-            border-radius: 16px;
+        .menu-card {
+            background: linear-gradient(145deg, #242424, #1a1a1a);
+            border-radius: 25px;
             overflow: hidden;
-            box-shadow: var(--shadow);
-            cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .menu-item:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .item-image {
+            border: 2px solid #2a2a2a;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.6);
             position: relative;
-            width: 100%;
-            height: 220px;
-            overflow: hidden;
         }
 
-        .item-image img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .menu-item:hover .item-image img {
-            transform: scale(1.05);
-        }
-
-        .favorite-btn {
+        .menu-card::before {
+            content: '';
             position: absolute;
-            top: 12px;
-            right: 12px;
-            background: rgba(43, 45, 47, 0.9);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 10;
-            color: var(--text-secondary);
-            backdrop-filter: blur(10px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .favorite-btn:hover {
-            background: var(--warm-yellow);
-            color: var(--anthracite);
-            transform: scale(1.1);
-        }
-
-        .favorite-btn.active {
-            background: var(--warm-yellow);
-            color: var(--anthracite);
-        }
-
-        .favorite-btn.active svg {
-            fill: var(--anthracite);
-        }
-
-        .item-info {
-            padding: 1.25rem;
-        }
-
-        .item-name {
-            font-size: 1.1rem;
-            font-weight: 600;
-            color: var(--text-primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .item-price {
-            font-size: 1.25rem;
-            font-weight: 700;
-            color: var(--warm-yellow);
-            font-family: 'Playfair Display', serif;
-        }
-
-        /* Favorites Modal */
-        .favorites-modal {
-            position: fixed;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.8);
-            z-index: 2000;
-            display: none;
-            align-items: center;
-            justify-content: center;
-            padding: 1.5rem;
-            backdrop-filter: blur(5px);
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05), transparent);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+            pointer-events: none;
         }
 
-        .favorites-modal.active {
-            display: flex;
+        .menu-card:hover {
+            transform: translateY(-15px);
+            border-color: #d4af37;
+            box-shadow: 0 25px 70px rgba(212, 175, 55, 0.4);
         }
 
-        .modal-content {
-            background: var(--anthracite);
-            border-radius: 20px;
-            max-width: 600px;
-            width: 100%;
-            max-height: 80vh;
+        .menu-card:hover::before {
+            opacity: 1;
+        }
+
+        .card-image {
+            height: 280px;
+            background-size: cover;
+            background-position: center;
+            position: relative;
             overflow: hidden;
-            display: flex;
-            flex-direction: column;
-            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.5);
         }
 
-        .modal-header {
+        .card-image::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 0%, rgba(0,0,0,0.85) 100%);
+        }
+
+        .card-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(212, 175, 55, 0.15);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .menu-card:hover .card-image::after {
+            opacity: 1;
+        }
+
+        .card-badge {
+            position: absolute;
+            top: 25px;
+            right: 25px;
+            background: linear-gradient(135deg, #d4af37, #f4d03f);
+            color: #000;
+            padding: 10px 25px;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 0.95em;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.5);
+            z-index: 2;
+        }
+
+        .card-content {
+            padding: 40px;
+        }
+
+        .card-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2em;
+            color: #d4af37;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 700;
+            border-bottom: 2px solid rgba(212, 175, 55, 0.3);
+            padding-bottom: 15px;
+        }
+
+        .menu-item {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 1.5rem;
-            border-bottom: 2px solid var(--anthracite-light);
+            padding: 18px 10px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
         }
 
-        .modal-header h2 {
+        .menu-item::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #d4af37;
+            transform: scaleY(0);
+            transition: transform 0.3s ease;
+        }
+
+        .menu-item:hover {
+            padding-left: 20px;
+            background: rgba(212, 175, 55, 0.08);
+        }
+
+        .menu-item:hover::before {
+            transform: scaleY(1);
+        }
+
+        .menu-item:last-child {
+            border-bottom: none;
+        }
+
+        .item-name {
+            font-size: 1.1em;
+            color: #e8e8e8;
+            font-weight: 400;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            letter-spacing: 0.5px;
+        }
+
+        .item-name::before {
+            content: '◆';
+            color: #d4af37;
+            font-size: 0.7em;
+        }
+
+        .item-price {
+            font-weight: 700;
+            color: #d4af37;
+            font-size: 1.3em;
             font-family: 'Playfair Display', serif;
-            font-size: 1.75rem;
-            color: var(--warm-yellow);
+            white-space: nowrap;
         }
 
-        .modal-close {
-            background: transparent;
-            border: none;
-            color: var(--text-secondary);
-            cursor: pointer;
+        .subsection {
+            margin-top: 35px;
+            padding-top: 30px;
+            border-top: 2px solid rgba(212, 175, 55, 0.2);
+        }
+
+        .subsection-title {
+            font-size: 1.5em;
+            color: #f4d03f;
+            margin-bottom: 25px;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-family: 'Playfair Display', serif;
+        }
+
+        .subsection-title::before {
+            content: '★';
+            color: #d4af37;
+            font-size: 1.2em;
+        }
+
+        footer {
+            background: linear-gradient(to top, #000, #0a0a0a);
+            text-align: center;
+            padding: 80px 20px 40px;
+            border-top: 2px solid #2a2a2a;
+            margin-top: 60px;
+        }
+
+        .footer-logo-img {
+            width: 200px;
+            height: auto;
+            margin-bottom: 30px;
+            filter: drop-shadow(0 5px 20px rgba(212, 175, 55, 0.3));
+        }
+
+        .footer-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5em;
+            color: #d4af37;
+            margin-bottom: 15px;
+            font-weight: 700;
+        }
+
+        .footer-text {
+            color: #999;
+            font-size: 1.1em;
+            margin-bottom: 12px;
+            letter-spacing: 1px;
+        }
+
+        .footer-contact {
+            margin: 30px 0;
+            color: #bbb;
+        }
+
+        .footer-social {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 25px;
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border: 2px solid #d4af37;
+            border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
-            padding: 0.5rem;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            color: #d4af37;
+            text-decoration: none;
+            font-size: 1.3em;
+            transition: all 0.3s ease;
+            background: rgba(212, 175, 55, 0.05);
         }
 
-        .modal-close:hover {
-            color: var(--warm-yellow);
+        .social-icon:hover {
+            background: #d4af37;
+            color: #000;
+            transform: scale(1.15) rotate(5deg);
+            box-shadow: 0 5px 20px rgba(212, 175, 55, 0.5);
         }
 
-        .favorites-list {
-            padding: 1.5rem;
-            overflow-y: auto;
-            flex: 1;
-        }
-
-        .favorites-list .menu-item {
-            margin-bottom: 1rem;
-        }
-
-        .empty-message {
+        .ornament {
             text-align: center;
-            color: var(--text-secondary);
-            padding: 3rem 1rem;
-            font-size: 1.1rem;
+            margin: 80px 0;
+            color: #d4af37;
+            font-size: 2.5em;
+            opacity: 0.4;
         }
 
-        /* Hidden Items */
-        .menu-item.hidden {
-            display: none;
-        }
-
-        /* Responsive Design */
         @media (max-width: 768px) {
-            .logo {
-                height: 50px;
+            .hero {
+                height: 450px;
             }
 
-            .header-actions {
-                gap: 0.75rem;
+            .logo-img {
+                width: 200px;
             }
 
-            .search-toggle,
-            .favorites-toggle {
-                width: 40px;
-                height: 40px;
+            .hero-title {
+                font-size: 2em;
+                letter-spacing: 4px;
             }
 
-            .nav-btn {
-                padding: 0.55rem 1.25rem;
-                font-size: 0.85rem;
-            }
-
-            .category-title {
-                font-size: 2rem;
-            }
-
-            .menu-grid {
-                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-                gap: 1.5rem;
-            }
-
-            .item-image {
-                height: 200px;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .header-content {
-                padding: 0 1rem;
-            }
-
-            .logo {
-                height: 45px;
-            }
-
-            .nav-scroll {
-                padding: 0 1rem;
-                gap: 0.5rem;
-            }
-
-            .nav-btn {
-                padding: 0.5rem 1rem;
-                font-size: 0.8rem;
-            }
-
-            .main-content {
-                padding: 170px 1rem 2rem;
-            }
-
-            .category-title {
-                font-size: 1.75rem;
-                margin-bottom: 1.5rem;
+            .tagline {
+                font-size: 1.1em;
             }
 
             .menu-grid {
                 grid-template-columns: 1fr;
-                gap: 1.25rem;
+                gap: 35px;
             }
 
-            .item-name {
-                font-size: 1rem;
+            .section-title {
+                font-size: 2.5em;
             }
 
-            .item-price {
-                font-size: 1.15rem;
+            .card-content {
+                padding: 30px;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <header class=\"header\">
-        <div class=\"header-content\">
-            <div class=\"logo-container\">
-                <img src=\"https://customer-assets.emergentagent.com/job_elegantcafemenu/artifacts/1nib6fco_WhatsApp%20Image%202026-01-21%20at%2015.08.55.jpeg\" alt=\"Black Chef Logo\" class=\"logo\">
-            </div>
-            <div class=\"header-actions\">
-                <button class=\"search-toggle\" id=\"searchToggle\" aria-label=\"Arama\">
-                    <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">
-                        <circle cx=\"11\" cy=\"11\" r=\"8\"></circle>
-                        <path d=\"m21 21-4.35-4.35\"></path>
-                    </svg>
-                </button>
-                <button class=\"favorites-toggle\" id=\"favoritesToggle\" aria-label=\"Favoriler\">
-                    <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">
-                        <path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path>
-                    </svg>
-                    <span class=\"favorites-count\" id=\"favoritesCount\">0</span>
-                </button>
-            </div>
-        </div>
-    </header>
+    <div class="top-bar">
+        ✦ Hoş Geldiniz - Welcome ✦
+    </div>
 
-    <!-- Search Bar -->
-    <div class=\"search-container\" id=\"searchContainer\">
-        <div class=\"search-bar\">
-            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">
-                <circle cx=\"11\" cy=\"11\" r=\"8\"></circle>
-                <path d=\"m21 21-4.35-4.35\"></path>
-            </svg>
-            <input type=\"text\" id=\"searchInput\" placeholder=\"Menüde ara...\" />
-            <button class=\"search-clear\" id=\"searchClear\" aria-label=\"Temizle\">
-                <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">
-                    <line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"></line>
-                    <line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"></line>
-                </svg>
-            </button>
+    <div class="hero">
+        <div class="logo-container">
+            <img src="https://i.ibb.co/G4rkyC1s/Whats-App-mage-2026-01-21-at-15-08-55.jpg" alt="Black Chef Cafe Logo" class="logo-img">
+        </div>
+        <div class="hero-content">
+            <h1 class="hero-title">CAFE & RESTAURANT</h1>
+            <p class="tagline">Premium Taste Experience</p>
+            <p class="hero-subtitle">Lezzetin ve Kalitenin Buluşma Noktası</p>
         </div>
     </div>
 
-    <!-- Navigation -->
-    <nav class=\"nav-container\" id=\"navContainer\">
-        <div class=\"nav-scroll\">
-            <button class=\"nav-btn active\" data-category=\"soguk-icecekler\">Soğuk İçecekler</button>
-            <button class=\"nav-btn\" data-category=\"milkshake\">Milkshake</button>
-            <button class=\"nav-btn\" data-category=\"frozen\">Frozen</button>
-            <button class=\"nav-btn\" data-category=\"sicak-icecekler\">Sıcak İçecekler</button>
-            <button class=\"nav-btn\" data-category=\"tavuk-yemekleri\">Tavuk Yemekleri</button>
-            <button class=\"nav-btn\" data-category=\"makarnalar\">Makarnalar</button>
-            <button class=\"nav-btn\" data-category=\"aperatifler\">Aperatifler</button>
-        </div>
-    </nav>
-
-    <!-- Main Content -->
-    <main class=\"main-content\">
+    <div class="container">
         <!-- Soğuk İçecekler -->
-        <section class=\"menu-category\" id=\"soguk-icecekler\" data-category=\"soguk-icecekler\">
-            <h2 class=\"category-title\">Soğuk İçecekler</h2>
-            <div class=\"menu-grid\">
-                <div class=\"menu-item\" data-name=\"kutu kola\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.pexels.com/photos/4113670/pexels-photo-4113670.jpeg\" alt=\"Kutu Kola\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"kutu-kola\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Kutu Kola</h3>
-                        <p class=\"item-price\">100₺</p>
-                    </div>
-                </div>
+        <div class="section-header">
+            <div class="section-icon">🥤</div>
+            <h2 class="section-title">Soğuk İçecekler</h2>
+            <p class="section-description">Serinleten ve ferahlatan özel içeceklerimizle taze bir başlangıç yapın</p>
+        </div>
 
-                <div class=\"menu-item\" data-name=\"şişe kola\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1763297059500-5810c9142d2c\" alt=\"Şişe Kola\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"sise-kola\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Şişe Kola</h3>
-                        <p class=\"item-price\">95₺</p>
-                    </div>
+        <div class="menu-grid">
+            <div class="menu-card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=800&h=400&fit=crop')">
+                    <div class="card-badge">Popüler</div>
                 </div>
-
-                <div class=\"menu-item\" data-name=\"meyve suyu\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1536780983185-edb44147774c\" alt=\"Meyve Suyu\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"meyve-suyu\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
+                <div class="card-content">
+                    <h3 class="card-title">Klasik İçecekler</h3>
+                    <div class="menu-item">
+                        <span class="item-name">Kutu Kola</span>
+                        <span class="item-price">100 ₺</span>
                     </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Meyve Suyu</h3>
-                        <p class=\"item-price\">100₺</p>
+                    <div class="menu-item">
+                        <span class="item-name">Şişe Kola</span>
+                        <span class="item-price">95 ₺</span>
                     </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"meyveli soda\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1536780983185-edb44147774c\" alt=\"Meyveli Soda\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"meyveli-soda\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
+                    <div class="menu-item">
+                        <span class="item-name">Sprite</span>
+                        <span class="item-price">100 ₺</span>
                     </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Meyveli Soda</h3>
-                        <p class=\"item-price\">85₺</p>
+                    <div class="menu-item">
+                        <span class="item-name">Fuse Tea</span>
+                        <span class="item-price">100 ₺</span>
                     </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"fuse tea\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1763297059500-5810c9142d2c\" alt=\"Fuse Tea\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"fuse-tea\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
+                    <div class="menu-item">
+                        <span class="item-name">Gazoz</span>
+                        <span class="item-price">100 ₺</span>
                     </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Fuse Tea</h3>
-                        <p class=\"item-price\">100₺</p>
+                    <div class="menu-item">
+                        <span class="item-name">Meyve Suyu</span>
+                        <span class="item-price">100 ₺</span>
                     </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"su\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.pexels.com/photos/29409114/pexels-photo-29409114.jpeg\" alt=\"Su\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"su\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
+                    <div class="menu-item">
+                        <span class="item-name">Meyveli Soda</span>
+                        <span class="item-price">85 ₺</span>
                     </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Su</h3>
-                        <p class=\"item-price\">30₺</p>
+                    <div class="menu-item">
+                        <span class="item-name">Limonata</span>
+                        <span class="item-price">100 ₺</span>
                     </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"gazoz\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1536780983185-edb44147774c\" alt=\"Gazoz\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"gazoz\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
+                    <div class="menu-item">
+                        <span class="item-name">Ayran</span>
+                        <span class="item-price">85 ₺</span>
                     </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Gazoz</h3>
-                        <p class=\"item-price\">100₺</p>
+                    <div class="menu-item">
+                        <span class="item-name">Su</span>
+                        <span class="item-price">30 ₺</span>
                     </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"limonata\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1536780983185-edb44147774c\" alt=\"Limonata\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"limonata\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Limonata</h3>
-                        <p class=\"item-price\">100₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"sprite\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1536780983185-edb44147774c\" alt=\"Sprite\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"sprite\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Sprite</h3>
-                        <p class=\"item-price\">100₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"ayran\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.pexels.com/photos/29409114/pexels-photo-29409114.jpeg\" alt=\"Ayran\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"ayran\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Ayran</h3>
-                        <p class=\"item-price\">85₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"churchill\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.pexels.com/photos/29409114/pexels-photo-29409114.jpeg\" alt=\"Churchill\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"churchill\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Churchill</h3>
-                        <p class=\"item-price\">140₺</p>
+                    <div class="menu-item">
+                        <span class="item-name">Churchill</span>
+                        <span class="item-price">140 ₺</span>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Milkshake -->
-        <section class=\"menu-category\" id=\"milkshake\" data-category=\"milkshake\">
-            <h2 class=\"category-title\">Milkshake</h2>
-            <div class=\"menu-grid\">
-                <div class=\"menu-item\" data-name=\"çilek milkshake\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1758627611924-4396db1a64cb\" alt=\"Çilek\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"cilek-milkshake\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Çilek</h3>
-                        <p class=\"item-price\">150₺</p>
-                    </div>
+            <div class="menu-card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1578328819058-b69f3a3b0f6b?w=800&h=400&fit=crop')">
+                    <div class="card-badge">Özel</div>
                 </div>
+                <div class="card-content">
+                    <h3 class="card-title">Milkshake</h3>
+                    <div class="menu-item">
+                        <span class="item-name">Çilek</span>
+                        <span class="item-price">150 ₺</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="item-name">Çikolata</span>
+                        <span class="item-price">150 ₺</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="item-name">Karadut</span>
+                        <span class="item-price">150 ₺</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="item-name">Muz</span>
+                        <span class="item-price">150 ₺</span>
+                    </div>
 
-                <div class=\"menu-item\" data-name=\"çikolata milkshake\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.pexels.com/photos/30102165/pexels-photo-30102165.jpeg\" alt=\"Çikolata\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"cikolata-milkshake\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Çikolata</h3>
-                        <p class=\"item-price\">150₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"karadut milkshake\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1758627611752-cf3881c686da\" alt=\"Karadut\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"karadut-milkshake\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Karadut</h3>
-                        <p class=\"item-price\">150₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"muz milkshake\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1765827620772-3129b91847b2\" alt=\"Muz\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"muz-milkshake\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Muz</h3>
-                        <p class=\"item-price\">150₺</p>
+                    <div class="subsection">
+                        <h4 class="subsection-title">Frozen</h4>
+                        <div class="menu-item">
+                            <span class="item-name">Çilek</span>
+                            <span class="item-price">150 ₺</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Kivi</span>
+                            <span class="item-price">150 ₺</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Karpuz</span>
+                            <span class="item-price">150 ₺</span>
+                        </div>
+                        <div class="menu-item">
+                            <span class="item-name">Muz</span>
+                            <span class="item-price">150 ₺</span>
+                        </div>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Frozen -->
-        <section class=\"menu-category\" id=\"frozen\" data-category=\"frozen\">
-            <h2 class=\"category-title\">Frozen</h2>
-            <div class=\"menu-grid\">
-                <div class=\"menu-item\" data-name=\"çilek frozen\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1657030377423-ab29e5b35f58\" alt=\"Çilek\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"cilek-frozen\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Çilek</h3>
-                        <p class=\"item-price\">150₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"kivi frozen\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.pexels.com/photos/32672499/pexels-photo-32672499.jpeg\" alt=\"Kivi\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"kivi-frozen\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Kivi</h3>
-                        <p class=\"item-price\">150₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"karpuz frozen\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1599738675654-125cf46f3b69\" alt=\"Karpuz\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"karpuz-frozen\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Karpuz</h3>
-                        <p class=\"item-price\">150₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"muz frozen\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.pexels.com/photos/14930475/pexels-photo-14930475.jpeg\" alt=\"Muz\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"muz-frozen\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Muz</h3>
-                        <p class=\"item-price\">150₺</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+        <div class="ornament">⚜ ⚜ ⚜</div>
 
         <!-- Sıcak İçecekler -->
-        <section class=\"menu-category\" id=\"sicak-icecekler\" data-category=\"sicak-icecekler\">
-            <h2 class=\"category-title\">Sıcak İçecekler</h2>
-            <div class=\"menu-grid\">
-                <div class=\"menu-item\" data-name=\"türk kahvesi\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1661685249298-3d2dbe68d309\" alt=\"Türk Kahvesi\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"turk-kahvesi\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Türk Kahvesi</h3>
-                        <p class=\"item-price\">100₺</p>
-                    </div>
-                </div>
+        <div class="section-header">
+            <div class="section-icon">☕</div>
+            <h2 class="section-title">Sıcak İçecekler</h2>
+            <p class="section-description">Özenle hazırlanan ve taze demlenmiş sıcak içeceklerimizle ısının</p>
+        </div>
 
-                <div class=\"menu-item\" data-name=\"sütlü türk kahvesi\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1757079649052-a24c6ab32c64\" alt=\"Sütlü Türk Kahvesi\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"sutlu-turk-kahvesi\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Sütlü Türk Kahvesi</h3>
-                        <p class=\"item-price\">110₺</p>
-                    </div>
+        <div class="menu-grid">
+            <div class="menu-card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1447933601403-0c6688de566e?w=800&h=400&fit=crop')">
+                    <div class="card-badge">Geleneksel</div>
                 </div>
-
-                <div class=\"menu-item\" data-name=\"dibek kahvesi\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1661685249298-3d2dbe68d309\" alt=\"Dibek Kahvesi\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"dibek-kahvesi\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
+                <div class="card-content">
+                    <h3 class="card-title">Kahveler</h3>
+                    <div class="menu-item">
+                        <span class="item-name">Türk Kahvesi</span>
+                        <span class="item-price">100 ₺</span>
                     </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Dibek Kahvesi</h3>
-                        <p class=\"item-price\">100₺</p>
+                    <div class="menu-item">
+                        <span class="item-name">Sütlü Türk Kahvesi</span>
+                        <span class="item-price">110 ₺</span>
                     </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"menengiç kahvesi\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.pexels.com/photos/18480684/pexels-photo-18480684.jpeg\" alt=\"Menengiç Kahvesi\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"menengic-kahvesi\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
+                    <div class="menu-item">
+                        <span class="item-name">Dibek Kahvesi</span>
+                        <span class="item-price">100 ₺</span>
                     </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Menengiç Kahvesi</h3>
-                        <p class=\"item-price\">130₺</p>
+                    <div class="menu-item">
+                        <span class="item-name">Menengiç Kahvesi</span>
+                        <span class="item-price">130 ₺</span>
                     </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"damla sakızlı türk kahvesi\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1661685249298-3d2dbe68d309\" alt=\"Damla Sakızlı Türk K.\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"damla-sakizli\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
+                    <div class="menu-item">
+                        <span class="item-name">Damla Sakızlı Türk K.</span>
+                        <span class="item-price">110 ₺</span>
                     </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Damla Sakızlı Türk K.</h3>
-                        <p class=\"item-price\">110₺</p>
+                    <div class="menu-item">
+                        <span class="item-name">Dağ Çilekli Türk K.</span>
+                        <span class="item-price">120 ₺</span>
                     </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"dağ çilekli türk kahvesi\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1757079649052-a24c6ab32c64\" alt=\"Dağ Çilekli Türk K.\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"dag-cilekli\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
+                    <div class="menu-item">
+                        <span class="item-name">Filtre Kahve</span>
+                        <span class="item-price">130 ₺</span>
                     </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Dağ Çilekli Türk K.</h3>
-                        <p class=\"item-price\">120₺</p>
+                    <div class="menu-item">
+                        <span class="item-name">Sütlü Filtre Kahve</span>
+                        <span class="item-price">150 ₺</span>
                     </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"filtre kahve\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.pexels.com/photos/29650855/pexels-photo-29650855.jpeg\" alt=\"Filtre Kahve\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"filtre-kahve\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
+                    <div class="menu-item">
+                        <span class="item-name">Cappuccino</span>
+                        <span class="item-price">100 ₺</span>
                     </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Filtre Kahve</h3>
-                        <p class=\"item-price\">130₺</p>
+                    <div class="menu-item">
+                        <span class="item-name">Nescafe Gold</span>
+                        <span class="item-price">100 ₺</span>
                     </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"sütlü filtre kahve\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.pexels.com/photos/29650855/pexels-photo-29650855.jpeg\" alt=\"Sütlü Filtre Kahve\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"sutlu-filtre\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
+                    <div class="menu-item">
+                        <span class="item-name">Hazır Nescafe</span>
+                        <span class="item-price">90 ₺</span>
                     </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Sütlü Filtre Kahve</h3>
-                        <p class=\"item-price\">150₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"cappuccino\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1640555051787-7d2a30e43863\" alt=\"Cappuccino\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"cappuccino\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Cappuccino</h3>
-                        <p class=\"item-price\">100₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"sıcak çikolata\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.pexels.com/photos/18480684/pexels-photo-18480684.jpeg\" alt=\"Sıcak Çikolata\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"sicak-cikolata\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Sıcak Çikolata</h3>
-                        <p class=\"item-price\">130₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"salep\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.pexels.com/photos/18480684/pexels-photo-18480684.jpeg\" alt=\"Salep\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"salep\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Salep</h3>
-                        <p class=\"item-price\">130₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"çay\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1640555051787-7d2a30e43863\" alt=\"Çay\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"cay\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Çay</h3>
-                        <p class=\"item-price\">25₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"bitki çayı süzen\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1640555051787-7d2a30e43863\" alt=\"Bitki S. Çayı\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"bitki-suzen\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Bitki S. Çayı</h3>
-                        <p class=\"item-price\">50₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"bitki çayı demlik\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1640555051787-7d2a30e43863\" alt=\"Bitki D. Çayı\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"bitki-demlik\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Bitki D. Çayı</h3>
-                        <p class=\"item-price\">140₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"nescafe gold\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.pexels.com/photos/29650855/pexels-photo-29650855.jpeg\" alt=\"Nescafe Gold\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"nescafe-gold\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Nescafe Gold</h3>
-                        <p class=\"item-price\">100₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"hazır nescafe\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.pexels.com/photos/29650855/pexels-photo-29650855.jpeg\" alt=\"Hazır Nescafe\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"hazir-nescafe\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Hazır Nescafe</h3>
-                        <p class=\"item-price\">90₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"sütlü nescafe\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.pexels.com/photos/29650855/pexels-photo-29650855.jpeg\" alt=\"Sütlü Nescafe\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"sutlu-nescafe\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Sütlü Nescafe</h3>
-                        <p class=\"item-price\">110₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"süt\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.pexels.com/photos/29650855/pexels-photo-29650855.jpeg\" alt=\"Süt\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"sut\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Süt</h3>
-                        <p class=\"item-price\">90₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"ballı süt\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.pexels.com/photos/18480684/pexels-photo-18480684.jpeg\" alt=\"Ballı Süt\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"balli-sut\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Ballı Süt</h3>
-                        <p class=\"item-price\">130₺</p>
+                    <div class="menu-item">
+                        <span class="item-name">Sütlü Nescafe</span>
+                        <span class="item-price">110 ₺</span>
                     </div>
                 </div>
             </div>
-        </section>
+
+            <div class="menu-card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1542990253-0d0f5be5f0ed?w=800&h=400&fit=crop')">
+                    <div class="card-badge">Sıcacık</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Diğer Sıcak İçecekler</h3>
+                    <div class="menu-item">
+                        <span class="item-name">Sıcak Çikolata</span>
+                        <span class="item-price">130 ₺</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="item-name">Salep</span>
+                        <span class="item-price">130 ₺</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="item-name">Çay</span>
+                        <span class="item-price">25 ₺</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="item-name">Bitki S. Çayı</span>
+                        <span class="item-price">50 ₺</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="item-name">Bitki D. Çayı</span>
+                        <span class="item-price">140 ₺</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="item-name">Süt</span>
+                        <span class="item-price">90 ₺</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="item-name">Ballı Süt</span>
+                        <span class="item-price">130 ₺</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="ornament">⚜ ⚜ ⚜</div>
 
         <!-- Tavuk Yemekleri -->
-        <section class=\"menu-category\" id=\"tavuk-yemekleri\" data-category=\"tavuk-yemekleri\">
-            <h2 class=\"category-title\">Tavuk Yemekleri</h2>
-            <div class=\"menu-grid\">
-                <div class=\"menu-item\" data-name=\"köri soslu tavuk\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.pexels.com/photos/29173114/pexels-photo-29173114.jpeg\" alt=\"Köri Soslu Tavuk\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"kori-soslu\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Köri Soslu Tavuk</h3>
-                        <p class=\"item-price\">300₺</p>
-                    </div>
-                </div>
+        <div class="section-header">
+            <div class="section-icon">🍖</div>
+            <h2 class="section-title">Tavuk Yemekleri</h2>
+            <p class="section-description">Özel soslarımızla hazırlanan enfes tavuk tarifleri</p>
+        </div>
 
-                <div class=\"menu-item\" data-name=\"mexican soslu tavuk\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1693296304190-d578b9e5c03b\" alt=\"Mexican Soslu Tavuk\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"mexican-soslu\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Mexican Soslu Tavuk</h3>
-                        <p class=\"item-price\">300₺</p>
-                    </div>
+        <div class="menu-grid">
+            <div class="menu-card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1532550907401-a500c9a57435?w=800&h=400&fit=crop')">
+                    <div class="card-badge">Chef Önerisi</div>
                 </div>
-
-                <div class=\"menu-item\" data-name=\"soya soslu tavuk\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1734529300662-ef43f7436d76\" alt=\"Soya Soslu Tavuk\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"soya-soslu\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
+                <div class="card-content">
+                    <h3 class="card-title">Özel Tarifler</h3>
+                    <div class="menu-item">
+                        <span class="item-name">Köri Soslu Tavuk</span>
+                        <span class="item-price">300 ₺</span>
                     </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Soya Soslu Tavuk</h3>
-                        <p class=\"item-price\">300₺</p>
+                    <div class="menu-item">
+                        <span class="item-name">Mexican Soslu Tavuk</span>
+                        <span class="item-price">300 ₺</span>
                     </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"kremalı mantarlı tavuk\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1651326752381-c5bcaacb2ba0\" alt=\"Kremalı Mantarlı Tavuk\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"kremali-mantarli\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
+                    <div class="menu-item">
+                        <span class="item-name">Soya Soslu Tavuk</span>
+                        <span class="item-price">300 ₺</span>
                     </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Kremalı Mantarlı Tavuk</h3>
-                        <p class=\"item-price\">300₺</p>
+                    <div class="menu-item">
+                        <span class="item-name">Kremalı Mantarlı Tavuk</span>
+                        <span class="item-price">300 ₺</span>
                     </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"tavuk kavurma\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.pexels.com/photos/33456881/pexels-photo-33456881.jpeg\" alt=\"Tavuk Kavurma\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"tavuk-kavurma\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
+                    <div class="menu-item">
+                        <span class="item-name">Tavuk Kavurma</span>
+                        <span class="item-price">300 ₺</span>
                     </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Tavuk Kavurma</h3>
-                        <p class=\"item-price\">300₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"kremitte tavuk sote\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1651326752381-c5bcaacb2ba0\" alt=\"Kremitte Tavuk Sote\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"kremitte-tavuk\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Kremitte Tavuk Sote</h3>
-                        <p class=\"item-price\">300₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"tavuk çökertme\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1666599207792-d25938831199\" alt=\"Tavuk Çökertme\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"tavuk-cokertme\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Tavuk Çökertme</h3>
-                        <p class=\"item-price\">300₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"tavuk fajita\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1693296304190-d578b9e5c03b\" alt=\"Tavuk Fajita\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"tavuk-fajita\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Tavuk Fajita</h3>
-                        <p class=\"item-price\">300₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"barbekü soslu tavuk\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.pexels.com/photos/33456881/pexels-photo-33456881.jpeg\" alt=\"Barbekü Soslu Tavuk\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"barbeku-soslu\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Barbekü Soslu Tavuk</h3>
-                        <p class=\"item-price\">300₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"tavuk bonfile\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.pexels.com/photos/29173114/pexels-photo-29173114.jpeg\" alt=\"Tavuk Bonfile\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"tavuk-bonfile\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Tavuk Bonfile</h3>
-                        <p class=\"item-price\">300₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"tavuk şinitzel\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1666599207792-d25938831199\" alt=\"Tavuk Şinitzel\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"tavuk-sinitzel\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Tavuk Şinitzel</h3>
-                        <p class=\"item-price\">300₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"tavuk sote\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.pexels.com/photos/29173114/pexels-photo-29173114.jpeg\" alt=\"Tavuk Sote\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"tavuk-sote\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Tavuk Sote</h3>
-                        <p class=\"item-price\">300₺</p>
+                    <div class="menu-item">
+                        <span class="item-name">Kremitte Tavuk Sote</span>
+                        <span class="item-price">300 ₺</span>
                     </div>
                 </div>
             </div>
-        </section>
 
-        <!-- Makarnalar -->
-        <section class=\"menu-category\" id=\"makarnalar\" data-category=\"makarnalar\">
-            <h2 class=\"category-title\">Makarnalar</h2>
-            <div class=\"menu-grid\">
-                <div class=\"menu-item\" data-name=\"penne alfredo fettucini\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1579631542720-3a87824fff86\" alt=\"Penne Alfredo Fettucini\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"penne-alfredo\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Penne Alfredo Fettucini</h3>
-                        <p class=\"item-price\">300₺</p>
-                    </div>
+            <div class="menu-card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?w=800&h=400&fit=crop')">
+                    <div class="card-badge">Lezzetli</div>
                 </div>
-
-                <div class=\"menu-item\" data-name=\"etli penne araabiat\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1734356959885-54fe2e99c1cd\" alt=\"Etli Penne Araabiat\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"etli-penne\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
+                <div class="card-content">
+                    <h3 class="card-title">Klasik Tarifler</h3>
+                    <div class="menu-item">
+                        <span class="item-name">Tavuk Çökertme</span>
+                        <span class="item-price">300 ₺</span>
                     </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Etli Penne Araabiat</h3>
-                        <p class=\"item-price\">300₺</p>
+                    <div class="menu-item">
+                        <span class="item-name">Tavuk Fajita</span>
+                        <span class="item-price">300 ₺</span>
                     </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"spagetti alfredo fettucini\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1579631542720-3a87824fff86\" alt=\"Spagetti A. Fettucini\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"spagetti-alfredo\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
+                    <div class="menu-item">
+                        <span class="item-name">Barbekü Soslu Tavuk</span>
+                        <span class="item-price">300 ₺</span>
                     </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Spagetti A. Fettucini</h3>
-                        <p class=\"item-price\">300₺</p>
+                    <div class="menu-item">
+                        <span class="item-name">Tavuk Bonfile</span>
+                        <span class="item-price">300 ₺</span>
                     </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"spagetti bolonez\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1761545832779-bc0b4290fc5e\" alt=\"Spagetti Bolonez\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"spagetti-bolonez\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
+                    <div class="menu-item">
+                        <span class="item-name">Tavuk Şinitzel</span>
+                        <span class="item-price">300 ₺</span>
                     </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Spagetti Bolonez</h3>
-                        <p class=\"item-price\">300₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"mantı pesto soslu\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.pexels.com/photos/15597774/pexels-photo-15597774.jpeg\" alt=\"Mantı Pesto Soslu\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"manti-pesto\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Mantı Pesto Soslu</h3>
-                        <p class=\"item-price\">300₺</p>
+                    <div class="menu-item">
+                        <span class="item-name">Tavuk Sote</span>
+                        <span class="item-price">300 ₺</span>
                     </div>
                 </div>
             </div>
-        </section>
+        </div>
 
-        <!-- Aperatifler -->
-        <section class=\"menu-category\" id=\"aperatifler\" data-category=\"aperatifler\">
-            <h2 class=\"category-title\">Aperatifler</h2>
-            <div class=\"menu-grid\">
-                <div class=\"menu-item\" data-name=\"kavurmalı menemen\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1614800443187-cc573044fa19\" alt=\"Kavurmalı Menemen\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"kavurmali-menemen\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Kavurmalı Menemen</h3>
-                        <p class=\"item-price\">300₺</p>
-                    </div>
+        <div class="ornament">⚜ ⚜ ⚜</div>
+
+        <!-- Makarnalar ve Aperatifler -->
+        <div class="section-header">
+            <div class="section-icon">🍝</div>
+            <h2 class="section-title">Makarnalar & Aperatifler</h2>
+            <p class="section-description">İtalyan mutfağından klasikler ve taze aperatifler</p>
+        </div>
+
+        <div class="menu-grid">
+            <div class="menu-card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1612874742237-6526221588e3?w=800&h=400&fit=crop')">
+                    <div class="card-badge">İtalyan</div>
                 </div>
-
-                <div class=\"menu-item\" data-name=\"karışık menemen\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1678833557126-6f1c36eb42a0\" alt=\"Karışık Menemen\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"karisik-menemen\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
+                <div class="card-content">
+                    <h3 class="card-title">Makarnalar</h3>
+                    <div class="menu-item">
+                        <span class="item-name">Penne Alfredo Fettucini</span>
+                        <span class="item-price">300 ₺</span>
                     </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Karışık Menemen</h3>
-                        <p class=\"item-price\">200₺</p>
+                    <div class="menu-item">
+                        <span class="item-name">Etli Penne Araabiat</span>
+                        <span class="item-price">300 ₺</span>
                     </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"kaşarlı gözleme\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1730137049752-13abd5286dc3\" alt=\"Kaşarlı Gözleme\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"kasarli-gozleme\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
+                    <div class="menu-item">
+                        <span class="item-name">Spagetti A. Fettucini</span>
+                        <span class="item-price">300 ₺</span>
                     </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Kaşarlı Gözleme</h3>
-                        <p class=\"item-price\">200₺</p>
+                    <div class="menu-item">
+                        <span class="item-name">Spagetti Bolonez</span>
+                        <span class="item-price">300 ₺</span>
                     </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"karışık tost\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.unsplash.com/photo-1694497726710-006a3e5c9673\" alt=\"Karışık Tost\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"karisik-tost\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Karışık Tost</h3>
-                        <p class=\"item-price\">200₺</p>
-                    </div>
-                </div>
-
-                <div class=\"menu-item\" data-name=\"patates cips\">
-                    <div class=\"item-image\">
-                        <img src=\"https://images.pexels.com/photos/16790663/pexels-photo-16790663.jpeg\" alt=\"Patates Cips\" loading=\"lazy\">
-                        <button class=\"favorite-btn\" data-id=\"patates-cips\">
-                            <svg width=\"20\" height=\"20\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\"><path d=\"M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z\"></path></svg>
-                        </button>
-                    </div>
-                    <div class=\"item-info\">
-                        <h3 class=\"item-name\">Patates Cips</h3>
-                        <p class=\"item-price\">120₺</p>
+                    <div class="menu-item">
+                        <span class="item-name">Mantı Pesto Soslu</span>
+                        <span class="item-price">300 ₺</span>
                     </div>
                 </div>
             </div>
-        </section>
-    </main>
 
-    <!-- Favorites Modal -->
-    <div class=\"favorites-modal\" id=\"favoritesModal\">
-        <div class=\"modal-content\">
-            <div class=\"modal-header\">
-                <h2>Favorilerim</h2>
-                <button class=\"modal-close\" id=\"modalClose\" aria-label=\"Kapat\">
-                    <svg width=\"24\" height=\"24\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">
-                        <line x1=\"18\" y1=\"6\" x2=\"6\" y2=\"18\"></line>
-                        <line x1=\"6\" y1=\"6\" x2=\"18\" y2=\"18\"></line>
-                    </svg>
-                </button>
-            </div>
-            <div class=\"favorites-list\" id=\"favoritesList\">
-                <p class=\"empty-message\">Henüz favori eklemediniz.</p>
+            <div class="menu-card">
+                <div class="card-image" style="background-image: url('https://images.unsplash.com/photo-1525351484163-7529414344d8?w=800&h=400&fit=crop')">
+                    <div class="card-badge">Taze</div>
+                </div>
+                <div class="card-content">
+                    <h3 class="card-title">Aperatifler</h3>
+                    <div class="menu-item">
+                        <span class="item-name">Kavurmalı Menemen</span>
+                        <span class="item-price">300 ₺</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="item-name">Karışık Menemen</span>
+                        <span class="item-price">200 ₺</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="item-name">Kaşarlı Gözleme</span>
+                        <span class="item-price">200 ₺</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="item-name">Karışık Tost</span>
+                        <span class="item-price">200 ₺</span>
+                    </div>
+                    <div class="menu-item">
+                        <span class="item-name">Patates Cips</span>
+                        <span class="item-price">120 ₺</span>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
-    <script>
-        // Favorites management
-        let favorites = JSON.parse(localStorage.getItem('cafeFavorites')) || [];
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            initializeApp();
-            updateFavoritesUI();
-        });
-
-        function initializeApp() {
-            setupNavigation();
-            setupSearch();
-            setupFavorites();
-            setupIntersectionObserver();
-        }
-
-        // Navigation
-        function setupNavigation() {
-            const navButtons = document.querySelectorAll('.nav-btn');
-            const sections = document.querySelectorAll('.menu-category');
-
-            navButtons.forEach(btn => {
-                btn.addEventListener('click', () => {
-                    const category = btn.getAttribute('data-category');
-                    const section = document.getElementById(category);
-                    
-                    if (section) {
-                        const offset = 170;
-                        const sectionPosition = section.getBoundingClientRect().top + window.pageYOffset - offset;
-                        
-                        window.scrollTo({
-                            top: sectionPosition,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-
-            // Active section highlighting on scroll
-            window.addEventListener('scroll', () => {
-                let current = '';
-                const offset = 200;
-
-                sections.forEach(section => {
-                    const sectionTop = section.offsetTop;
-                    const sectionHeight = section.clientHeight;
-                    
-                    if (window.pageYOffset >= (sectionTop - offset)) {
-                        current = section.getAttribute('data-category');
-                    }
-                });
-
-                navButtons.forEach(btn => {
-                    btn.classList.remove('active');
-                    if (btn.getAttribute('data-category') === current) {
-                        btn.classList.add('active');
-                    }
-                });
-            });
-        }
-
-        // Search functionality
-        function setupSearch() {
-            const searchToggle = document.getElementById('searchToggle');
-            const searchContainer = document.getElementById('searchContainer');
-            const searchInput = document.getElementById('searchInput');
-            const searchClear = document.getElementById('searchClear');
-            const menuItems = document.querySelectorAll('.menu-item');
-
-            searchToggle.addEventListener('click', () => {
-                searchContainer.classList.toggle('active');
-                if (searchContainer.classList.contains('active')) {
-                    setTimeout(() => searchInput.focus(), 300);
-                } else {
-                    searchInput.value = '';
-                    filterItems('');
-                }
-            });
-
-            searchInput.addEventListener('input', (e) => {
-                const searchTerm = e.target.value.toLowerCase();
-                filterItems(searchTerm);
-            });
-
-            searchClear.addEventListener('click', () => {
-                searchInput.value = '';
-                filterItems('');
-                searchInput.focus();
-            });
-
-            function filterItems(searchTerm) {
-                menuItems.forEach(item => {
-                    const itemName = item.getAttribute('data-name').toLowerCase();
-                    
-                    if (itemName.includes(searchTerm)) {
-                        item.classList.remove('hidden');
-                        item.style.display = '';
-                    } else {
-                        item.classList.add('hidden');
-                        item.style.display = 'none';
-                    }
-                });
-
-                // Hide empty categories
-                const categories = document.querySelectorAll('.menu-category');
-                categories.forEach(category => {
-                    const visibleItems = category.querySelectorAll('.menu-item:not(.hidden)');
-                    if (visibleItems.length === 0 && searchTerm !== '') {
-                        category.style.display = 'none';
-                    } else {
-                        category.style.display = 'block';
-                    }
-                });
-            }
-        }
-
-        // Favorites functionality
-        function setupFavorites() {
-            const favoriteBtns = document.querySelectorAll('.favorite-btn');
-            const favoritesToggle = document.getElementById('favoritesToggle');
-            const favoritesModal = document.getElementById('favoritesModal');
-            const modalClose = document.getElementById('modalClose');
-
-            // Load saved favorites
-            favoriteBtns.forEach(btn => {
-                const itemId = btn.getAttribute('data-id');
-                if (favorites.includes(itemId)) {
-                    btn.classList.add('active');
-                }
-
-                btn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    toggleFavorite(itemId, btn);
-                });
-            });
-
-            // Show/hide favorites modal
-            favoritesToggle.addEventListener('click', () => {
-                showFavoritesModal();
-            });
-
-            modalClose.addEventListener('click', () => {
-                favoritesModal.classList.remove('active');
-            });
-
-            favoritesModal.addEventListener('click', (e) => {
-                if (e.target === favoritesModal) {
-                    favoritesModal.classList.remove('active');
-                }
-            });
-        }
-
-        function toggleFavorite(itemId, btn) {
-            const index = favorites.indexOf(itemId);
-            
-            if (index > -1) {
-                favorites.splice(index, 1);
-                btn.classList.remove('active');
-            } else {
-                favorites.push(itemId);
-                btn.classList.add('active');
-            }
-            
-            localStorage.setItem('cafeFavorites', JSON.stringify(favorites));
-            updateFavoritesUI();
-        }
-
-        function updateFavoritesUI() {
-            const favoritesCount = document.getElementById('favoritesCount');
-            favoritesCount.textContent = favorites.length;
-            
-            if (favorites.length === 0) {
-                favoritesCount.style.display = 'none';
-            } else {
-                favoritesCount.style.display = 'flex';
-            }
-        }
-
-        function showFavoritesModal() {
-            const favoritesModal = document.getElementById('favoritesModal');
-            const favoritesList = document.getElementById('favoritesList');
-            
-            favoritesList.innerHTML = '';
-            
-            if (favorites.length === 0) {
-                favoritesList.innerHTML = '<p class=\"empty-message\">Henüz favori eklemediniz.</p>';
-            } else {
-                favorites.forEach(itemId => {
-                    const originalItem = document.querySelector(`[data-id=\"${itemId}\"]`).closest('.menu-item');
-                    if (originalItem) {
-                        const clonedItem = originalItem.cloneNode(true);
-                        
-                        // Update favorite button behavior in modal
-                        const favoriteBtn = clonedItem.querySelector('.favorite-btn');
-                        favoriteBtn.addEventListener('click', (e) => {
-                            e.stopPropagation();
-                            toggleFavorite(itemId, favoriteBtn);
-                            
-                            // Update original button
-                            const originalBtn = document.querySelector(`[data-id=\"${itemId}\"]`);
-                            originalBtn.classList.toggle('active');
-                            
-                            // Remove from modal if unfavorited
-                            if (!favorites.includes(itemId)) {
-                                clonedItem.remove();
-                                
-                                if (favorites.length === 0) {
-                                    favoritesList.innerHTML = '<p class=\"empty-message\">Henüz favori eklemediniz.</p>';
-                                }
-                            }
-                        });
-                        
-                        favoritesList.appendChild(clonedItem);
-                    }
-                });
-            }
-            
-            favoritesModal.classList.add('active');
-        }
-
-        // Intersection Observer for fade-in animations
-        function setupIntersectionObserver() {
-            const observerOptions = {
-                threshold: 0.1,
-                rootMargin: '0px 0px -100px 0px'
-            };
-
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.style.opacity = '1';
-                        entry.target.style.transform = 'translateY(0)';
-                    }
-                });
-            }, observerOptions);
-
-            const categories = document.querySelectorAll('.menu-category');
-            categories.forEach(category => {
-                observer.observe(category);
-            });
-        }
-
-        // Close search on escape key
-        document.addEventListener('keydown', (e) => {
-            const searchContainer = document.getElementById('searchContainer');
-            const favoritesModal = document.getElementById('favoritesModal');
-            
-            if (e.key === 'Escape') {
-                if (searchContainer.classList.contains('active')) {
-                    searchContainer.classList.remove('active');
-                    document.getElementById('searchInput').value = '';
-                    
-                    // Show all items
-                    document.querySelectorAll('.menu-item').forEach(item => {
-                        item.classList.remove('hidden');
-                        item.style.display = '';
-                    });
-                    
-                    document.querySelectorAll('.menu-category').forEach(cat => {
-                        cat.style.display = 'block';
-                    });
-                }
-                
-                if (favoritesModal.classList.contains('active')) {
-                    favoritesModal.classList.remove('active');
-                }
-            }
-        });
-    </script>
+    <footer>
+        <img src="https://i.ibb.co/G4rkyC1s/Whats-App-mage-2026-01-21-at-15-08-55.jpg" alt="Black Chef Logo" class="footer-logo-img">
+        <div class="footer-title">BLACKCHEFCAFE</div>
+        <p class="footer-text">Cafe & Restaurant</p>
+        <p class="footer-text">Her lokmada mükemmellik</p>
+        <div class="footer-contact">
+            <p>📍 Adres Bilgisi</p>
+            <p>📞 Telefon: +90 XXX XXX XX XX</p>
+            <p>⏰ Açılış: 09:00 - 23:00</p>
+        </div>
+        <p class="footer-text" style="margin-top: 30px;">Afiyet Olsun!</p>
+        <div class="footer-social">
+            <a href="#" class="social-icon">📷</a>
+            <a href="#" class="social-icon">📘</a>
+            <a href="#" class="social-icon">🐦</a>
+        </div>
+        <p class="footer-text" style="margin-top: 40px; font-size: 0.9em; color: #666;">© 2026 Black Chef Cafe & Restaurant. Tüm hakları saklıdır.</p>
+    </footer>
 </body>
 </html>
-"
-Observation: Create successful: /app/cafe-menu/menu-tek-dosya.html
