@@ -415,34 +415,196 @@
         }
 
         @media (max-width: 768px) {
+            .top-bar {
+                font-size: 0.8em;
+                padding: 8px 0;
+            }
+
             .hero {
-                height: 450px;
+                height: 400px;
+                padding: 20px;
             }
 
             .logo-img {
-                width: 200px;
+                width: 180px;
             }
 
             .hero-title {
-                font-size: 2em;
-                letter-spacing: 4px;
+                font-size: 1.8em;
+                letter-spacing: 3px;
             }
 
             .tagline {
-                font-size: 1.1em;
+                font-size: 1em;
+                letter-spacing: 2px;
+            }
+
+            .hero-subtitle {
+                font-size: 0.9em;
+                margin-top: 15px;
+            }
+
+            .container {
+                padding: 40px 15px;
+            }
+
+            .section-header {
+                margin-bottom: 40px;
+            }
+
+            .section-icon {
+                font-size: 2.5em;
+            }
+
+            .section-title {
+                font-size: 2em;
+                letter-spacing: 2px;
+            }
+
+            .section-description {
+                font-size: 1em;
+                padding: 0 10px;
             }
 
             .menu-grid {
                 grid-template-columns: 1fr;
-                gap: 35px;
+                gap: 30px;
+                margin-bottom: 60px;
             }
 
-            .section-title {
-                font-size: 2.5em;
+            .menu-card {
+                border-radius: 15px;
+            }
+
+            .card-image {
+                height: 200px;
+            }
+
+            .card-badge {
+                top: 15px;
+                right: 15px;
+                padding: 6px 15px;
+                font-size: 0.85em;
             }
 
             .card-content {
-                padding: 30px;
+                padding: 25px 20px;
+            }
+
+            .card-title {
+                font-size: 1.5em;
+                letter-spacing: 2px;
+                margin-bottom: 20px;
+            }
+
+            .menu-item {
+                padding: 14px 5px;
+                flex-wrap: wrap;
+                gap: 5px;
+            }
+
+            .item-name {
+                font-size: 1em;
+                flex: 1;
+                min-width: 150px;
+            }
+
+            .item-price {
+                font-size: 1.1em;
+            }
+
+            .subsection {
+                margin-top: 25px;
+                padding-top: 20px;
+            }
+
+            .subsection-title {
+                font-size: 1.3em;
+                margin-bottom: 15px;
+            }
+
+            .ornament {
+                font-size: 2em;
+                margin: 50px 0;
+            }
+
+            .footer-logo-img {
+                width: 150px;
+            }
+
+            .footer-title {
+                font-size: 1.8em;
+            }
+
+            .footer-text {
+                font-size: 1em;
+            }
+
+            .footer-contact {
+                font-size: 0.95em;
+            }
+
+            .footer-social {
+                gap: 15px;
+            }
+
+            .social-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2em;
+            }
+
+            footer {
+                padding: 50px 15px 30px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero {
+                height: 350px;
+            }
+
+            .logo-img {
+                width: 150px;
+            }
+
+            .hero-title {
+                font-size: 1.5em;
+                letter-spacing: 2px;
+            }
+
+            .tagline {
+                font-size: 0.9em;
+                letter-spacing: 1px;
+            }
+
+            .section-title {
+                font-size: 1.6em;
+            }
+
+            .section-icon {
+                font-size: 2em;
+            }
+
+            .card-content {
+                padding: 20px 15px;
+            }
+
+            .card-title {
+                font-size: 1.3em;
+            }
+
+            .item-name {
+                font-size: 0.95em;
+            }
+
+            .item-price {
+                font-size: 1em;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
             }
         }
     </style>
@@ -454,7 +616,20 @@
 
     <div class="hero">
         <div class="logo-container">
-            <img src="https://i.ibb.co/G4rkyC1s/Whats-App-mage-2026-01-21-at-15-08-55.jpg" alt="Black Chef Cafe Logo" class="logo-img">
+            <svg class="logo-img" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+                <!-- Chef Hat -->
+                <path d="M150 100 C120 100 100 120 100 140 C100 120 80 100 60 100 C40 100 30 120 30 140 C30 160 40 180 60 180 L240 180 C260 180 270 160 270 140 C270 120 260 100 240 100 C220 100 200 120 200 140 C200 120 180 100 150 100 Z" fill="#000"/>
+                <rect x="50" y="180" width="200" height="60" rx="5" fill="#000"/>
+                <!-- Coffee Cup -->
+                <ellipse cx="150" cy="200" rx="35" ry="30" fill="none" stroke="#d4af37" stroke-width="3"/>
+                <path d="M115 185 Q150 195 185 185" fill="none" stroke="#d4af37" stroke-width="2"/>
+                <path d="M120 200 Q150 210 180 200" fill="none" stroke="#d4af37" stroke-width="2"/>
+                <path d="M125 215 Q150 220 175 215" fill="none" stroke="#d4af37" stroke-width="2"/>
+                <!-- Steam -->
+                <path d="M140 165 Q135 155 140 145" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round"/>
+                <path d="M150 160 Q145 150 150 140" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round"/>
+                <path d="M160 165 Q165 155 160 145" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round"/>
+            </svg>
         </div>
         <div class="hero-content">
             <h1 class="hero-title">CAFE & RESTAURANT</h1>
@@ -824,7 +999,20 @@
     </div>
 
     <footer>
-        <img src="https://i.ibb.co/G4rkyC1s/Whats-App-mage-2026-01-21-at-15-08-55.jpg" alt="Black Chef Logo" class="footer-logo-img">
+        <svg class="footer-logo-img" viewBox="0 0 300 300" xmlns="http://www.w3.org/2000/svg">
+            <!-- Chef Hat -->
+            <path d="M150 100 C120 100 100 120 100 140 C100 120 80 100 60 100 C40 100 30 120 30 140 C30 160 40 180 60 180 L240 180 C260 180 270 160 270 140 C270 120 260 100 240 100 C220 100 200 120 200 140 C200 120 180 100 150 100 Z" fill="#000"/>
+            <rect x="50" y="180" width="200" height="60" rx="5" fill="#000"/>
+            <!-- Coffee Cup -->
+            <ellipse cx="150" cy="200" rx="35" ry="30" fill="none" stroke="#d4af37" stroke-width="3"/>
+            <path d="M115 185 Q150 195 185 185" fill="none" stroke="#d4af37" stroke-width="2"/>
+            <path d="M120 200 Q150 210 180 200" fill="none" stroke="#d4af37" stroke-width="2"/>
+            <path d="M125 215 Q150 220 175 215" fill="none" stroke="#d4af37" stroke-width="2"/>
+            <!-- Steam -->
+            <path d="M140 165 Q135 155 140 145" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round"/>
+            <path d="M150 160 Q145 150 150 140" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round"/>
+            <path d="M160 165 Q165 155 160 145" fill="none" stroke="#d4af37" stroke-width="2" stroke-linecap="round"/>
+        </svg>
         <div class="footer-title">BLACKCHEFCAFE</div>
         <p class="footer-text">Cafe & Restaurant</p>
         <p class="footer-text">Her lokmada mükemmellik</p>
