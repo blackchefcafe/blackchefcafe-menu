@@ -3,218 +3,1029 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Black Chef Cafe - Dijital Menü</title>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #2c2c2c;
-            color: #ffffff;
-            margin: 0; padding: 0;
-            scroll-behavior: smooth;
-        }
-
-        header {
-            background-color: #000;
-            text-align: center;
-            padding: 20px;
-            border-bottom: 4px solid #ffcc00;
-        }
-
-        .logo-container {
-            width: 180px;
-            margin: 0 auto 10px;
-        }
-        .logo-container img {
-            width: 100%;
-            height: auto;
-            border-radius: 10px;
-        }
-
-        h1 { color: #ffcc00; margin: 5px 0; text-transform: uppercase; font-size: 1.8rem; letter-spacing: 1px; }
-
-        nav {
-            position: sticky;
-            top: 0;
-            background-color: #1a1a1a;
-            padding: 10px 0;
-            z-index: 1000;
-            border-bottom: 1px solid #444;
-            display: flex;
-            justify-content: center;
-            gap: 8px;
-            flex-wrap: wrap;
-        }
-        nav a {
-            color: #ffcc00;
-            text-decoration: none;
-            font-size: 0.75rem;
-            font-weight: bold;
-            padding: 6px 10px;
-            border: 1px solid #ffcc00;
-            border-radius: 5px;
-            text-transform: uppercase;
-        }
-
-        .container { max-width: 600px; margin: auto; padding: 20px; }
-        
-        .section-anchor { padding-top: 80px; margin-top: -60px; }
-        
-        .category-header {
-            color: #ffcc00;
-            border-left: 5px solid #ffcc00;
-            padding-left: 10px;
-            margin: 40px 0 20px;
-            text-transform: uppercase;
-            background: #1a1a1a;
-            padding: 10px;
-        }
-
-        .menu-img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            border-radius: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #444;
-        }
-
-        .item {
-            display: flex;
-            justify-content: space-between;
-            padding: 12px 0;
-            border-bottom: 1px dotted #555;
-        }
-        .price { color: #ffcc00; font-weight: bold; min-width: 70px; text-align: right; }
-
-        footer { text-align: center; padding: 50px; color: #888; font-size: 0.8rem; border-top: 1px solid #333; }
-    </style>
+    <title>Black Chef Cafe & Restaurant - Dijital Menü</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <div class="logo-container">
+                <img src="https://customer-assets.emergentagent.com/job_elegantcafemenu/artifacts/1nib6fco_WhatsApp%20Image%202026-01-21%20at%2015.08.55.jpeg" alt="Black Chef Logo" class="logo">
+            </div>
+            <div class="header-actions">
+                <button class="search-toggle" id="searchToggle" aria-label="Arama">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="11" cy="11" r="8"></circle>
+                        <path d="m21 21-4.35-4.35"></path>
+                    </svg>
+                </button>
+                <button class="favorites-toggle" id="favoritesToggle" aria-label="Favoriler">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                    <span class="favorites-count" id="favoritesCount">0</span>
+                </button>
+            </div>
+        </div>
+    </header>
 
-<header>
-    <div class="logo-container">
-        <img src="https://i.ibb.co/Hf0xB2Y0/Whats-App-mage-2026-01-21-at-15-08-55.jpg" alt="Whats-App-mage-2026-01-21-at-15-08-55" border="0"</a>
-    </div>
-    <h1>BLACK CHEF CAFE</h1>
-</header>
-
-<nav>
-    <a href="#soguk">Soğuk İçecekler</a>
-    <a href="#milkshake">Milkshake</a>
-    <a href="#frozen">Frozen</a>
-    <a href="#sicak">Sıcak İçecekler</a>
-    <a href="#tavuk">Tavuk Yemekleri</a>
-    <a href="#makarna">Makarna</a>
-    <a href="#aparatif">Aparatif</a>
-</nav>
-
-<div class="container">
-
-    <div id="soguk" class="section-anchor">
-        <img src="https://images.pexels.com/photos/2109099/pexels-photo-2109099.jpeg?auto=compress&cs=tinysrgb&w=600" class="menu-img">
-        <h2 class="category-header">SOĞUK İÇECEKLER</h2>
-        <div class="item"><span>Kutu Kola</span> <span class="price">100 ₺</span></div>
-        <div class="item"><span>Şişe Kola</span> <span class="price">95 ₺</span></div>
-        <div class="item"><span>Meyve Suyu</span> <span class="price">100 ₺</span></div>
-        <div class="item"><span>Meyveli Soda</span> <span class="price">85 ₺</span></div>
-        <div class="item"><span>Fuse Tea</span> <span class="price">100 ₺</span></div>
-        <div class="item"><span>Su</span> <span class="price">30 ₺</span></div>
-        <div class="item"><span>Gazoz</span> <span class="price">100 ₺</span></div>
-        <div class="item"><span>Limonata</span> <span class="price">100 ₺</span></div>
-        <div class="item"><span>Sprite</span> <span class="price">100 ₺</span></div>
-        <div class="item"><span>Ayran</span> <span class="price">85 ₺</span></div>
-        <div class="item"><span>Churchill</span> <span class="price">140 ₺</span></div>
-    </div>
-
-    <div id="milkshake" class="section-anchor">
-        <img src="data:image/jpeg;base64,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" class="menu-img">
-        <h2 class="category-header">MİLKSHAKE</h2>
-        <div class="item"><span>Çilek</span> <span class="price">150 ₺</span></div>
-        <div class="item"><span>Çikolata</span> <span class="price">150 ₺</span></div>
-        <div class="item"><span>Karadut</span> <span class="price">150 ₺</span></div>
-        <div class="item"><span>Muz</span> <span class="price">150 ₺</span></div>
+    <!-- Search Bar -->
+    <div class="search-container" id="searchContainer">
+        <div class="search-bar">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="11" cy="11" r="8"></circle>
+                <path d="m21 21-4.35-4.35"></path>
+            </svg>
+            <input type="text" id="searchInput" placeholder="Menüde ara..." />
+            <button class="search-clear" id="searchClear" aria-label="Temizle">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
     </div>
 
-    <div id="frozen" class="section-anchor">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTK_KYFSR7p8gbUWZb73AV6Fmv5v8Hds_C6dQ&s" class="menu-img">
-        <h2 class="category-header">FROZEN</h2>
-        <div class="item"><span>Çilek</span> <span class="price">150 ₺</span></div>
-        <div class="item"><span>Kivi</span> <span class="price">150 ₺</span></div>
-        <div class="item"><span>Karpuz</span> <span class="price">150 ₺</span></div>
-        <div class="item"><span>Muz</span> <span class="price">150 ₺</span></div>
+    <!-- Navigation -->
+    <nav class="nav-container" id="navContainer">
+        <div class="nav-scroll">
+            <button class="nav-btn active" data-category="soguk-icecekler">Soğuk İçecekler</button>
+            <button class="nav-btn" data-category="milkshake">Milkshake</button>
+            <button class="nav-btn" data-category="frozen">Frozen</button>
+            <button class="nav-btn" data-category="sicak-icecekler">Sıcak İçecekler</button>
+            <button class="nav-btn" data-category="tavuk-yemekleri">Tavuk Yemekleri</button>
+            <button class="nav-btn" data-category="makarnalar">Makarnalar</button>
+            <button class="nav-btn" data-category="aperatifler">Aperatifler</button>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <!-- Soğuk İçecekler -->
+        <section class="menu-category" id="soguk-icecekler" data-category="soguk-icecekler">
+            <h2 class="category-title">Soğuk İçecekler</h2>
+            <div class="menu-grid">
+                <div class="menu-item" data-name="kutu kola" data-testid="menu-item-kutu-kola">
+                    <div class="item-image">
+                        <img src="https://images.pexels.com/photos/4113670/pexels-photo-4113670.jpeg" alt="Kutu Kola" loading="lazy">
+                        <button class="favorite-btn" data-id="kutu-kola" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Kutu Kola</h3>
+                        <p class="item-price">100₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="şişe kola" data-testid="menu-item-sise-kola">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1763297059500-5810c9142d2c" alt="Şişe Kola" loading="lazy">
+                        <button class="favorite-btn" data-id="sise-kola" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Şişe Kola</h3>
+                        <p class="item-price">95₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="meyve suyu" data-testid="menu-item-meyve-suyu">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1536780983185-edb44147774c" alt="Meyve Suyu" loading="lazy">
+                        <button class="favorite-btn" data-id="meyve-suyu" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Meyve Suyu</h3>
+                        <p class="item-price">100₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="meyveli soda" data-testid="menu-item-meyveli-soda">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1536780983185-edb44147774c" alt="Meyveli Soda" loading="lazy">
+                        <button class="favorite-btn" data-id="meyveli-soda" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Meyveli Soda</h3>
+                        <p class="item-price">85₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="fuse tea" data-testid="menu-item-fuse-tea">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1763297059500-5810c9142d2c" alt="Fuse Tea" loading="lazy">
+                        <button class="favorite-btn" data-id="fuse-tea" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Fuse Tea</h3>
+                        <p class="item-price">100₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="su" data-testid="menu-item-su">
+                    <div class="item-image">
+                        <img src="https://images.pexels.com/photos/29409114/pexels-photo-29409114.jpeg" alt="Su" loading="lazy">
+                        <button class="favorite-btn" data-id="su" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Su</h3>
+                        <p class="item-price">30₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="gazoz" data-testid="menu-item-gazoz">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1536780983185-edb44147774c" alt="Gazoz" loading="lazy">
+                        <button class="favorite-btn" data-id="gazoz" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Gazoz</h3>
+                        <p class="item-price">100₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="limonata" data-testid="menu-item-limonata">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1536780983185-edb44147774c" alt="Limonata" loading="lazy">
+                        <button class="favorite-btn" data-id="limonata" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Limonata</h3>
+                        <p class="item-price">100₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="sprite" data-testid="menu-item-sprite">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1536780983185-edb44147774c" alt="Sprite" loading="lazy">
+                        <button class="favorite-btn" data-id="sprite" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Sprite</h3>
+                        <p class="item-price">100₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="ayran" data-testid="menu-item-ayran">
+                    <div class="item-image">
+                        <img src="https://images.pexels.com/photos/29409114/pexels-photo-29409114.jpeg" alt="Ayran" loading="lazy">
+                        <button class="favorite-btn" data-id="ayran" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Ayran</h3>
+                        <p class="item-price">85₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="churchill" data-testid="menu-item-churchill">
+                    <div class="item-image">
+                        <img src="https://images.pexels.com/photos/29409114/pexels-photo-29409114.jpeg" alt="Churchill" loading="lazy">
+                        <button class="favorite-btn" data-id="churchill" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Churchill</h3>
+                        <p class="item-price">140₺</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Milkshake -->
+        <section class="menu-category" id="milkshake" data-category="milkshake">
+            <h2 class="category-title">Milkshake</h2>
+            <div class="menu-grid">
+                <div class="menu-item" data-name="çilek milkshake" data-testid="menu-item-cilek-milkshake">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1758627611924-4396db1a64cb" alt="Çilek Milkshake" loading="lazy">
+                        <button class="favorite-btn" data-id="cilek-milkshake" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Çilek</h3>
+                        <p class="item-price">150₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="çikolata milkshake" data-testid="menu-item-cikolata-milkshake">
+                    <div class="item-image">
+                        <img src="https://images.pexels.com/photos/30102165/pexels-photo-30102165.jpeg" alt="Çikolata Milkshake" loading="lazy">
+                        <button class="favorite-btn" data-id="cikolata-milkshake" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Çikolata</h3>
+                        <p class="item-price">150₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="karadut milkshake" data-testid="menu-item-karadut-milkshake">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1758627611752-cf3881c686da" alt="Karadut Milkshake" loading="lazy">
+                        <button class="favorite-btn" data-id="karadut-milkshake" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Karadut</h3>
+                        <p class="item-price">150₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="muz milkshake" data-testid="menu-item-muz-milkshake">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1765827620772-3129b91847b2" alt="Muz Milkshake" loading="lazy">
+                        <button class="favorite-btn" data-id="muz-milkshake" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Muz</h3>
+                        <p class="item-price">150₺</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Frozen -->
+        <section class="menu-category" id="frozen" data-category="frozen">
+            <h2 class="category-title">Frozen</h2>
+            <div class="menu-grid">
+                <div class="menu-item" data-name="çilek frozen" data-testid="menu-item-cilek-frozen">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1657030377423-ab29e5b35f58" alt="Çilek Frozen" loading="lazy">
+                        <button class="favorite-btn" data-id="cilek-frozen" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Çilek</h3>
+                        <p class="item-price">150₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="kivi frozen" data-testid="menu-item-kivi-frozen">
+                    <div class="item-image">
+                        <img src="https://images.pexels.com/photos/32672499/pexels-photo-32672499.jpeg" alt="Kivi Frozen" loading="lazy">
+                        <button class="favorite-btn" data-id="kivi-frozen" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Kivi</h3>
+                        <p class="item-price">150₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="karpuz frozen" data-testid="menu-item-karpuz-frozen">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1599738675654-125cf46f3b69" alt="Karpuz Frozen" loading="lazy">
+                        <button class="favorite-btn" data-id="karpuz-frozen" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Karpuz</h3>
+                        <p class="item-price">150₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="muz frozen" data-testid="menu-item-muz-frozen">
+                    <div class="item-image">
+                        <img src="https://images.pexels.com/photos/14930475/pexels-photo-14930475.jpeg" alt="Muz Frozen" loading="lazy">
+                        <button class="favorite-btn" data-id="muz-frozen" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Muz</h3>
+                        <p class="item-price">150₺</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sıcak İçecekler -->
+        <section class="menu-category" id="sicak-icecekler" data-category="sicak-icecekler">
+            <h2 class="category-title">Sıcak İçecekler</h2>
+            <div class="menu-grid">
+                <div class="menu-item" data-name="türk kahvesi" data-testid="menu-item-turk-kahvesi">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1661685249298-3d2dbe68d309" alt="Türk Kahvesi" loading="lazy">
+                        <button class="favorite-btn" data-id="turk-kahvesi" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Türk Kahvesi</h3>
+                        <p class="item-price">100₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="sütlü türk kahvesi" data-testid="menu-item-sutlu-turk-kahvesi">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1757079649052-a24c6ab32c64" alt="Sütlü Türk Kahvesi" loading="lazy">
+                        <button class="favorite-btn" data-id="sutlu-turk-kahvesi" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Sütlü Türk Kahvesi</h3>
+                        <p class="item-price">110₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="dibek kahvesi" data-testid="menu-item-dibek-kahvesi">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1661685249298-3d2dbe68d309" alt="Dibek Kahvesi" loading="lazy">
+                        <button class="favorite-btn" data-id="dibek-kahvesi" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Dibek Kahvesi</h3>
+                        <p class="item-price">100₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="menengiç kahvesi" data-testid="menu-item-menengic-kahvesi">
+                    <div class="item-image">
+                        <img src="https://images.pexels.com/photos/18480684/pexels-photo-18480684.jpeg" alt="Menengiç Kahvesi" loading="lazy">
+                        <button class="favorite-btn" data-id="menengic-kahvesi" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Menengiç Kahvesi</h3>
+                        <p class="item-price">130₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="damla sakızlı türk kahvesi" data-testid="menu-item-damla-sakizli">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1661685249298-3d2dbe68d309" alt="Damla Sakızlı Türk Kahvesi" loading="lazy">
+                        <button class="favorite-btn" data-id="damla-sakizli" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Damla Sakızlı Türk K.</h3>
+                        <p class="item-price">110₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="dağ çilekli türk kahvesi" data-testid="menu-item-dag-cilekli">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1757079649052-a24c6ab32c64" alt="Dağ Çilekli Türk Kahvesi" loading="lazy">
+                        <button class="favorite-btn" data-id="dag-cilekli" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Dağ Çilekli Türk K.</h3>
+                        <p class="item-price">120₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="filtre kahve" data-testid="menu-item-filtre-kahve">
+                    <div class="item-image">
+                        <img src="https://images.pexels.com/photos/29650855/pexels-photo-29650855.jpeg" alt="Filtre Kahve" loading="lazy">
+                        <button class="favorite-btn" data-id="filtre-kahve" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Filtre Kahve</h3>
+                        <p class="item-price">130₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="sütlü filtre kahve" data-testid="menu-item-sutlu-filtre">
+                    <div class="item-image">
+                        <img src="https://images.pexels.com/photos/29650855/pexels-photo-29650855.jpeg" alt="Sütlü Filtre Kahve" loading="lazy">
+                        <button class="favorite-btn" data-id="sutlu-filtre" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Sütlü Filtre Kahve</h3>
+                        <p class="item-price">150₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="cappuccino" data-testid="menu-item-cappuccino">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1640555051787-7d2a30e43863" alt="Cappuccino" loading="lazy">
+                        <button class="favorite-btn" data-id="cappuccino" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Cappuccino</h3>
+                        <p class="item-price">100₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="sıcak çikolata" data-testid="menu-item-sicak-cikolata">
+                    <div class="item-image">
+                        <img src="https://images.pexels.com/photos/18480684/pexels-photo-18480684.jpeg" alt="Sıcak Çikolata" loading="lazy">
+                        <button class="favorite-btn" data-id="sicak-cikolata" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Sıcak Çikolata</h3>
+                        <p class="item-price">130₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="salep" data-testid="menu-item-salep">
+                    <div class="item-image">
+                        <img src="https://images.pexels.com/photos/18480684/pexels-photo-18480684.jpeg" alt="Salep" loading="lazy">
+                        <button class="favorite-btn" data-id="salep" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Salep</h3>
+                        <p class="item-price">130₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="çay" data-testid="menu-item-cay">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1640555051787-7d2a30e43863" alt="Çay" loading="lazy">
+                        <button class="favorite-btn" data-id="cay" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Çay</h3>
+                        <p class="item-price">25₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="bitki çayı süzen" data-testid="menu-item-bitki-suzen">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1640555051787-7d2a30e43863" alt="Bitki Çayı Süzen" loading="lazy">
+                        <button class="favorite-btn" data-id="bitki-suzen" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Bitki S. Çayı</h3>
+                        <p class="item-price">50₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="bitki çayı demlik" data-testid="menu-item-bitki-demlik">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1640555051787-7d2a30e43863" alt="Bitki Çayı Demlik" loading="lazy">
+                        <button class="favorite-btn" data-id="bitki-demlik" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Bitki D. Çayı</h3>
+                        <p class="item-price">140₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="nescafe gold" data-testid="menu-item-nescafe-gold">
+                    <div class="item-image">
+                        <img src="https://images.pexels.com/photos/29650855/pexels-photo-29650855.jpeg" alt="Nescafe Gold" loading="lazy">
+                        <button class="favorite-btn" data-id="nescafe-gold" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Nescafe Gold</h3>
+                        <p class="item-price">100₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="hazır nescafe" data-testid="menu-item-hazir-nescafe">
+                    <div class="item-image">
+                        <img src="https://images.pexels.com/photos/29650855/pexels-photo-29650855.jpeg" alt="Hazır Nescafe" loading="lazy">
+                        <button class="favorite-btn" data-id="hazir-nescafe" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Hazır Nescafe</h3>
+                        <p class="item-price">90₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="sütlü nescafe" data-testid="menu-item-sutlu-nescafe">
+                    <div class="item-image">
+                        <img src="https://images.pexels.com/photos/29650855/pexels-photo-29650855.jpeg" alt="Sütlü Nescafe" loading="lazy">
+                        <button class="favorite-btn" data-id="sutlu-nescafe" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Sütlü Nescafe</h3>
+                        <p class="item-price">110₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="süt" data-testid="menu-item-sut">
+                    <div class="item-image">
+                        <img src="https://images.pexels.com/photos/29650855/pexels-photo-29650855.jpeg" alt="Süt" loading="lazy">
+                        <button class="favorite-btn" data-id="sut" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Süt</h3>
+                        <p class="item-price">90₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="ballı süt" data-testid="menu-item-balli-sut">
+                    <div class="item-image">
+                        <img src="https://images.pexels.com/photos/18480684/pexels-photo-18480684.jpeg" alt="Ballı Süt" loading="lazy">
+                        <button class="favorite-btn" data-id="balli-sut" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Ballı Süt</h3>
+                        <p class="item-price">130₺</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Tavuk Yemekleri -->
+        <section class="menu-category" id="tavuk-yemekleri" data-category="tavuk-yemekleri">
+            <h2 class="category-title">Tavuk Yemekleri</h2>
+            <div class="menu-grid">
+                <div class="menu-item" data-name="köri soslu tavuk" data-testid="menu-item-kori-soslu">
+                    <div class="item-image">
+                        <img src="https://images.pexels.com/photos/29173114/pexels-photo-29173114.jpeg" alt="Köri Soslu Tavuk" loading="lazy">
+                        <button class="favorite-btn" data-id="kori-soslu" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Köri Soslu Tavuk</h3>
+                        <p class="item-price">300₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="mexican soslu tavuk" data-testid="menu-item-mexican-soslu">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1693296304190-d578b9e5c03b" alt="Mexican Soslu Tavuk" loading="lazy">
+                        <button class="favorite-btn" data-id="mexican-soslu" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Mexican Soslu Tavuk</h3>
+                        <p class="item-price">300₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="soya soslu tavuk" data-testid="menu-item-soya-soslu">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1734529300662-ef43f7436d76" alt="Soya Soslu Tavuk" loading="lazy">
+                        <button class="favorite-btn" data-id="soya-soslu" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Soya Soslu Tavuk</h3>
+                        <p class="item-price">300₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="kremalı mantarlı tavuk" data-testid="menu-item-kremali-mantarli">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1651326752381-c5bcaacb2ba0" alt="Kremalı Mantarlı Tavuk" loading="lazy">
+                        <button class="favorite-btn" data-id="kremali-mantarli" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Kremalı Mantarlı Tavuk</h3>
+                        <p class="item-price">300₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="tavuk kavurma" data-testid="menu-item-tavuk-kavurma">
+                    <div class="item-image">
+                        <img src="https://images.pexels.com/photos/33456881/pexels-photo-33456881.jpeg" alt="Tavuk Kavurma" loading="lazy">
+                        <button class="favorite-btn" data-id="tavuk-kavurma" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Tavuk Kavurma</h3>
+                        <p class="item-price">300₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="kremitte tavuk sote" data-testid="menu-item-kremitte-tavuk">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1651326752381-c5bcaacb2ba0" alt="Kremitte Tavuk Sote" loading="lazy">
+                        <button class="favorite-btn" data-id="kremitte-tavuk" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Kremitte Tavuk Sote</h3>
+                        <p class="item-price">300₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="tavuk çökertme" data-testid="menu-item-tavuk-cokertme">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1666599207792-d25938831199" alt="Tavuk Çökertme" loading="lazy">
+                        <button class="favorite-btn" data-id="tavuk-cokertme" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Tavuk Çökertme</h3>
+                        <p class="item-price">300₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="tavuk fajita" data-testid="menu-item-tavuk-fajita">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1693296304190-d578b9e5c03b" alt="Tavuk Fajita" loading="lazy">
+                        <button class="favorite-btn" data-id="tavuk-fajita" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Tavuk Fajita</h3>
+                        <p class="item-price">300₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="barbekü soslu tavuk" data-testid="menu-item-barbeku-soslu">
+                    <div class="item-image">
+                        <img src="https://images.pexels.com/photos/33456881/pexels-photo-33456881.jpeg" alt="Barbekü Soslu Tavuk" loading="lazy">
+                        <button class="favorite-btn" data-id="barbeku-soslu" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Barbekü Soslu Tavuk</h3>
+                        <p class="item-price">300₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="tavuk bonfile" data-testid="menu-item-tavuk-bonfile">
+                    <div class="item-image">
+                        <img src="https://images.pexels.com/photos/29173114/pexels-photo-29173114.jpeg" alt="Tavuk Bonfile" loading="lazy">
+                        <button class="favorite-btn" data-id="tavuk-bonfile" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Tavuk Bonfile</h3>
+                        <p class="item-price">300₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="tavuk şinitzel" data-testid="menu-item-tavuk-sinitzel">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1666599207792-d25938831199" alt="Tavuk Şinitzel" loading="lazy">
+                        <button class="favorite-btn" data-id="tavuk-sinitzel" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Tavuk Şinitzel</h3>
+                        <p class="item-price">300₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="tavuk sote" data-testid="menu-item-tavuk-sote">
+                    <div class="item-image">
+                        <img src="https://images.pexels.com/photos/29173114/pexels-photo-29173114.jpeg" alt="Tavuk Sote" loading="lazy">
+                        <button class="favorite-btn" data-id="tavuk-sote" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Tavuk Sote</h3>
+                        <p class="item-price">300₺</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Makarnalar -->
+        <section class="menu-category" id="makarnalar" data-category="makarnalar">
+            <h2 class="category-title">Makarnalar</h2>
+            <div class="menu-grid">
+                <div class="menu-item" data-name="penne alfredo fettucini" data-testid="menu-item-penne-alfredo">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1579631542720-3a87824fff86" alt="Penne Alfredo Fettucini" loading="lazy">
+                        <button class="favorite-btn" data-id="penne-alfredo" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Penne Alfredo Fettucini</h3>
+                        <p class="item-price">300₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="etli penne araabiat" data-testid="menu-item-etli-penne">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1734356959885-54fe2e99c1cd" alt="Etli Penne Araabiat" loading="lazy">
+                        <button class="favorite-btn" data-id="etli-penne" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Etli Penne Araabiat</h3>
+                        <p class="item-price">300₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="spagetti alfredo fettucini" data-testid="menu-item-spagetti-alfredo">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1579631542720-3a87824fff86" alt="Spagetti Alfredo Fettucini" loading="lazy">
+                        <button class="favorite-btn" data-id="spagetti-alfredo" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Spagetti A. Fettucini</h3>
+                        <p class="item-price">300₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="spagetti bolonez" data-testid="menu-item-spagetti-bolonez">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1761545832779-bc0b4290fc5e" alt="Spagetti Bolonez" loading="lazy">
+                        <button class="favorite-btn" data-id="spagetti-bolonez" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Spagetti Bolonez</h3>
+                        <p class="item-price">300₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="mantı pesto soslu" data-testid="menu-item-manti-pesto">
+                    <div class="item-image">
+                        <img src="https://images.pexels.com/photos/15597774/pexels-photo-15597774.jpeg" alt="Mantı Pesto Soslu" loading="lazy">
+                        <button class="favorite-btn" data-id="manti-pesto" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Mantı Pesto Soslu</h3>
+                        <p class="item-price">300₺</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Aperatifler -->
+        <section class="menu-category" id="aperatifler" data-category="aperatifler">
+            <h2 class="category-title">Aperatifler</h2>
+            <div class="menu-grid">
+                <div class="menu-item" data-name="kavurmalı menemen" data-testid="menu-item-kavurmali-menemen">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1614800443187-cc573044fa19" alt="Kavurmalı Menemen" loading="lazy">
+                        <button class="favorite-btn" data-id="kavurmali-menemen" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Kavurmalı Menemen</h3>
+                        <p class="item-price">300₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="karışık menemen" data-testid="menu-item-karisik-menemen">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1678833557126-6f1c36eb42a0" alt="Karışık Menemen" loading="lazy">
+                        <button class="favorite-btn" data-id="karisik-menemen" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Karışık Menemen</h3>
+                        <p class="item-price">200₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="kaşarlı gözleme" data-testid="menu-item-kasarli-gozleme">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1730137049752-13abd5286dc3" alt="Kaşarlı Gözleme" loading="lazy">
+                        <button class="favorite-btn" data-id="kasarli-gozleme" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Kaşarlı Gözleme</h3>
+                        <p class="item-price">200₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="karışık tost" data-testid="menu-item-karisik-tost">
+                    <div class="item-image">
+                        <img src="https://images.unsplash.com/photo-1694497726710-006a3e5c9673" alt="Karışık Tost" loading="lazy">
+                        <button class="favorite-btn" data-id="karisik-tost" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Karışık Tost</h3>
+                        <p class="item-price">200₺</p>
+                    </div>
+                </div>
+
+                <div class="menu-item" data-name="patates cips" data-testid="menu-item-patates-cips">
+                    <div class="item-image">
+                        <img src="https://images.pexels.com/photos/16790663/pexels-photo-16790663.jpeg" alt="Patates Cips" loading="lazy">
+                        <button class="favorite-btn" data-id="patates-cips" aria-label="Favorilere ekle">
+                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="item-info">
+                        <h3 class="item-name">Patates Cips</h3>
+                        <p class="item-price">120₺</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Favorites Modal -->
+    <div class="favorites-modal" id="favoritesModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Favorilerim</h2>
+                <button class="modal-close" id="modalClose" aria-label="Kapat">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="6" x2="6" y2="18"></line>
+                        <line x1="6" y1="6" x2="18" y2="18"></line>
+                    </svg>
+                </button>
+            </div>
+            <div class="favorites-list" id="favoritesList">
+                <p class="empty-message">Henüz favori eklemediniz.</p>
+            </div>
+        </div>
     </div>
 
-    <div id="sicak" class="section-anchor">
-        <img src="https://images.pexels.com/photos/302899/pexels-photo-302899.jpeg?auto=compress&cs=tinysrgb&w=600" class="menu-img">
-        <h2 class="category-header">SICAK İÇECEKLER</h2>
-        <div class="item"><span>Türk Kahvesi</span> <span class="price">100 ₺</span></div>
-        <div class="item"><span>Sütlü Türk Kahvesi</span> <span class="price">110 ₺</span></div>
-        <div class="item"><span>Dibek Kahvesi</span> <span class="price">100 ₺</span></div>
-        <div class="item"><span>Menengiç Kahvesi</span> <span class="price">130 ₺</span></div>
-        <div class="item"><span>Damla Sakızlı Türk Kahvesi</span> <span class="price">110 ₺</span></div>
-        <div class="item"><span>Dağ Çilekli Türk Kahvesi</span> <span class="price">120 ₺</span></div>
-        <div class="item"><span>Filtre Kahve</span> <span class="price">130 ₺</span></div>
-        <div class="item"><span>Sütlü Filtre Kahve</span> <span class="price">150 ₺</span></div>
-        <div class="item"><span>Cappuccino</span> <span class="price">100 ₺</span></div>
-        <div class="item"><span>Sıcak Çikolata</span> <span class="price">130 ₺</span></div>
-        <div class="item"><span>Salep</span> <span class="price">130 ₺</span></div>
-        <div class="item"><span>Çay</span> <span class="price">25 ₺</span></div>
-        <div class="item"><span>Bitki S. Çayı</span> <span class="price">50 ₺</span></div>
-        <div class="item"><span>Bitki D. Çayı</span> <span class="price">140 ₺</span></div>
-        <div class="item"><span>Nescafe Gold</span> <span class="price">100 ₺</span></div>
-        <div class="item"><span>Hazır Nescafe</span> <span class="price">90 ₺</span></div>
-        <div class="item"><span>Sütlü Nescafe</span> <span class="price">110 ₺</span></div>
-        <div class="item"><span>Süt</span> <span class="price">90 ₺</span></div>
-        <div class="item"><span>Ballı Süt</span> <span class="price">130 ₺</span></div>
-    </div>
-
-    <div id="tavuk" class="section-anchor">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQDcrVo7AwIWfO6Kg7MKCqyQaEZ1q4WKzCGDQ&s" class="menu-img">
-        <h2 class="category-header">TAVUK YEMEKLERİ</h2>
-        <div class="item"><span>Köri Soslu Tavuk</span> <span class="price">300 ₺</span></div>
-        <div class="item"><span>Mexican Soslu Tavuk</span> <span class="price">300 ₺</span></div>
-        <div class="item"><span>Soya Soslu Tavuk</span> <span class="price">300 ₺</span></div>
-        <div class="item"><span>Kremalı Mantarlı Tavuk</span> <span class="price">300 ₺</span></div>
-        <div class="item"><span>Tavuk Kavurma</span> <span class="price">300 ₺</span></div>
-        <div class="item"><span>Kremitte Tavuk Sote</span> <span class="price">300 ₺</span></div>
-        <div class="item"><span>Tavuk Çökertme</span> <span class="price">300 ₺</span></div>
-        <div class="item"><span>Tavuk Fajita</span> <span class="price">300 ₺</span></div>
-        <div class="item"><span>Barbekü Soslu Tavuk</span> <span class="price">300 ₺</span></div>
-        <div class="item"><span>Tavuk Bonfile</span> <span class="price">300 ₺</span></div>
-        <div class="item"><span>Tavuk Şinitzel</span> <span class="price">300 ₺</span></div>
-        <div class="item"><span>Tavuk Sote</span> <span class="price">300 ₺</span></div>
-    </div>
-
-    <div id="makarna" class="section-anchor">
-        <img src="https://images.pexels.com/photos/1437267/pexels-photo-1437267.jpeg?auto=compress&cs=tinysrgb&w=600" class="menu-img">
-        <h2 class="category-header">MAKARNALAR</h2>
-        <div class="item"><span>Penne Alfredo Fettucini</span> <span class="price">300 ₺</span></div>
-        <div class="item"><span>Etli Penne Arabbiat</span> <span class="price">300 ₺</span></div>
-        <div class="item"><span>Spagetti A. Fettucini</span> <span class="price">300 ₺</span></div>
-        <div class="item"><span>Spagetti Bolonez</span> <span class="price">300 ₺</span></div>
-        <div class="item"><span>Mantı Pesto Soslu</span> <span class="price">300 ₺</span></div>
-    </div>
-
-    <div id="aparatif" class="section-anchor">
-        <h2 class="category-header">APARATİFLER</h2>
-        <div class="item"><span>Kavurmalı Menemen</span> <span class="price">300 ₺</span></div>
-        <div class="item"><span>Karısk Menemen</span> <span class="price">200 ₺</span></div>
-        <div class="item"><span>Kaşarlı Gözleme</span> <span class="price">200 ₺</span></div>
-        <div class="item"><span>Karışık Tost</span> <span class="price">200 ₺</span></div>
-        <div class="item"><span>Patates Cips</span> <span class="price">120 ₺</span></div>
-    </div>
-
-</div>
-
-<footer>
-    &copy; 2026 Black Chef Cafe - Afiyet Olsun
-</footer>
-
+    <script src="script.js"></script>
 </body>
 </html>
-
-
-
-
-
-
