@@ -1,745 +1,202 @@
-! DOCTYPE html > 
-< html lang = " tr " > 
-< başlık >
-  < meta charset = " UTF-8 " > 
-  < meta name = " viewport " content = " width=device-width, initial-scale=1.0 " >  
-  <title> Black Chef Cafe | Menü </title>
-< meta name = " açıklama " content = " Black Chef Cafe menüsü - Sıcak ve soğuk içecekler, tavuk yemekleri, makarnalar, aparatifler. " >  < meta name = " açıklama " content = " Black Chef Cafe menüsü - Sıcak ve soğuk içecekler, tavuk yemekleri, makarnalar, aparatifler. " >  
-  < meta name = " anahtar kelimeler " content = " Black Chef Cafe, kafe, menü, kahve, nargile, yemek " >  
-  < meta property = " og:title " content = " Black Chef Cafe | Menü " >  
-  < meta property = " og:description " content = " Black Chef Cafe menüsü - Enfes lezzetler ve kaliteli hizmet. " >  
-  < meta property = " og:type " content = " web sitesi " >  
-  < link rel = " preconnect " href = " https://fonts.googleapis.com " >  
-  < link rel = " preconnect " href = " https://fonts.gstatic.com " crossorigin >   
-  < link href = " https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap " rel = " stylesheet " >  
-  <style>​​
-    *, *::önce, *::sonra {
-kutu - boyutlandırma : kenarlık - kutu ;      kutu - boyutlandırma : kenar - kutu ; 
-kenar boşluğu : 0 ;      kenar boşluğu : 0 ; 
-dolgu : 0 ;      dolgu : 0 ; 
-}    }
-    :kök {
-- - arka plan : # 141414 ;      -- arka plan : # 141414 ; 
-- - ön plan : # FFF9E6 ;      - - ön plan : # FFF9E6 ; 
-- - kart : # 1F1F1F ;      - - kart : # 1F1F1F ; 
-- - kart - ön plan : # FFF9E6 ;      - - kart - ön plan : # FFF9E6 ; 
-- - birincil : # FFD700 ;      - - birincil : # FFD700 ; 
-- - birincil - ön plan : # 141414 ;      - - birincil - ön plan : # 141414 ; 
-- - ikincil : # 2E2E2E ;      - - ikincil : # 2E2E2E ; 
-- - sessize alınmış : # 262626 ;      -- sessize alınmış : # 262626 ; 
-- - sessiz - ön plan : # 999999 ;      -- sessiz - ön plan : # 999999 ; 
-- - kenarlık : # 333333 ;      -- kenarlık : # 333333 ;​ 
-- - altın : # FFD700 ;      - - altın : # FFD700 ; 
-- - altın - ışık : # FFE44D ;      - - altın - ışık : # FFE44D ; 
-- - altın - koyu : # CCB000 ;      - - altın - koyu : # CCB000 ; 
-}    }
-    html {
-kaydırma davranışı : sorunsuz ;​      kaydırma davranışı : sorunsuz ;​ 
-}    }
-    vücut {
-font - family : ' Inter ' , sans - serif ;      font - family : ' Inter ' , sans - serif ;  
-arka plan rengi : değişken ( -- arka plan ) ;      arka plan rengi : değişken ( -- arka plan ) ; 
-renk : değişken ( - - ön plan ) ;      renk : değişken ( -- ön plan ) ; 
-çizgi - yükseklik : 1 . 6 ;      çizgi - yükseklik : 1 . 6 ; 
-min - yükseklik : 100vh ;      min - yükseklik : 100vh ; 
-}    }
-    h1, h2, h3, h4, h5, h6 {
-yazı tipi ailesi : ' Playfair Display ' , serif ;      yazı tipi ailesi : ' Playfair Display ' , serif ;  
-}    }
-    /* Kaydırma Çubuğu */
-    ::-webkit-kaydırma çubuğu {
-genişlik : 8px ;      genişlik : 8px ; 
-}    }
-    ::-webkit-kaydırma-çubuğu-izleme {
-arka plan : var ( - - kart ) ;      arka plan : var ( -- kart ) ; 
-}    }
-    ::-webkit-kaydırma çubuğu-başparmak {
-arka plan : rgba ( 255 , 215 , 0 , 0 . 3 ) ;      arka plan : rgba ( 255 , 215 , 0 , 0 . 3 ) ;    
-kenarlık - yarıçap : 4px ;      kenar yarıçapı : 4px ;​ 
-}    }
-    ::-webkit-scrollbar-thumb:hover {
-arka plan : rgba ( 255 , 215 , 0 , 0 . 5 ) ;      arka plan : rgba ( 255 , 215 , 0 , 0 . 5 ) ;    
-}    }
-    /* Başlık */
-    .başlık {
-konum : göreceli ;      konum : göreceli ; 
-dolgu : 2rem 1rem ;      dolgu : 2rem 1rem ;  
-metin - hizala : ortala ;      metin - hizala : ortala ; 
-taşma : gizli ;      taşma : gizli ; 
-arka plan : doğrusal - gradyan ( alt kısma doğru , # 101010 , değişken ( - - arka plan ) ) ;      arka plan : doğrusal - gradyan ( alt kısma doğru , # 101010 , değişken ( - - arka plan ) ) ;    
-}    }
-    .başlık::öncesi {
-içerik : ' ' ;      içerik : ' ' ; 
-konum : mutlak ;      konum : mutlak ; 
-üst : 0 ;      üst : 0 ; 
-sol : % 50 ;      sol : % 50 ; 
-dönüştürme : çeviriX ( - 50 % ) ;      dönüştürme : translateX ( - 50 % ) ; 
-genişlik : 24rem ;      genişlik : 24rem ; 
-yükseklik : 24rem ;      yükseklik : 24rem ; 
-arka plan : radyal - gradyan ( daire , rgba ( 255 , 215 , 0 , 0 . 05 ) 0 % , şeffaf 70 % ) ;      arka plan : radyal - gradyan ( daire , rgba ( 255 , 215 , 0 , 0 . 05 ) 0 % , şeffaf 70 % ) ;        
-kenar - yarıçap : % 50 ;      kenar yarıçapı : % 50 ;​ 
-filtre : bulanıklık ( 40px ) ;      filtre : bulanıklık ( 40px ) ; 
-}    }
-    .başlık-içeriği {
-konum : göreceli ;      konum : göreceli ; 
-z - indeks : 10 ;      z - indeks : 10 ; 
-maksimum genişlik : 56rem ;​      maksimum genişlik : 56rem ;​ 
-margin : 0 auto ;      kenar boşluğu : 0 otomatik ;  
-animasyon : fadeUp 0.6s ease - out forwards ;​​      animasyon : fadeUp 0.6s ease - out forwards ;​​    
-}    }
-    .logo-konteyneri {
-konum : göreceli ;      konum : göreceli ; 
-görüntüleme : satır içi blok ;      görüntüleme : satır içi blok ; 
-margin - bottom : 1rem ;      margin - bottom : 1rem ; 
-}    }
-    .logo-parıltısı {
-konum : mutlak ;      konum : mutlak ; 
-iç içe geçmiş : 0 ;      iç kısım : 0 ; 
-arka plan : rgba ( 255 , 215 , 0 , 0 . 2 ) ;      arka plan : rgba ( 255 , 215 , 0 , 0 . 2 ) ;    
-kenar - yarıçap : 1rem ;      border - radius : 1rem ; 
-filtre : bulanıklık ( 20px ) ;      filtre : bulanıklık ( 20px ) ; 
-}    }
-    .logo {
-konum : göreceli ;      konum : göreceli ; 
-genişlik : 12rem ;      genişlik : 12rem ; 
-yükseklik : 12rem ;      yükseklik : 12rem ; 
-nesne - uygun : içerir ;      nesne - uygun : içerir ; 
-kenar - yarıçap : 1rem ;      border - radius : 1rem ; 
-}    }
-    @media (min-width: 768px) {
-. logo {      . logo { 
-genişlik : 16rem ;        genişlik : 16rem ; 
-yükseklik : 16rem ;        yükseklik : 16rem ; 
-}      }
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Black Chef Cafe | Menü</title>
+
+  <meta name="description" content="Black Chef Cafe menüsü - Sıcak ve soğuk içecekler, tavuk yemekleri, makarnalar, aparatifler.">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #141414;
+      --card: #1f1f1f;
+      --text: #f5f5f5;
+      --muted: #9ca3af;
+      --gold: #ffd700;
+      --border: #2a2a2a;
     }
-    .etiket satırı {
-renk : değişken ( - - soluk - ön plan ) ;      renk : değişken ( -- soluk - ön plan ) ; 
-yazı tipi boyutu : 1rem ;      yazı tipi boyutu : 1rem ; 
-yazı tipi - kalınlığı : 300 ;      yazı tipi - kalınlık : 300 ; 
-harf aralığı : 0.2em ;​​​      Harf aralığı : 0.2em ;​​​ 
-metin - dönüştürme : büyük harf ;      metin - dönüştürme : büyük harf ; 
-}    }
-    .dekoratif-çizgi {
-display : flex ;      ekran : flex ; 
-öğeleri hizala : ortala ;​      Öğeleri hizala : ortala ;​ 
-içerik hizala : ortala ;​      içerik hizala : ortala ;​ 
-boşluk : 1rem ;      boşluk : 1rem ; 
-margin - top : 1rem ;      margin - top : 1rem ; 
-}    }
-    .dekoratif-çizgi span:ilk-çocuk,
-    .dekoratif-çizgi span:son-çocuk {
-yükseklik : 1px ;      yükseklik : 1px ; 
-genişlik : 3rem ;      genişlik : 3rem ; 
-arka plan : doğrusal - gradyan ( 90 derece , şeffaf , rgba ( 255 , 215 , 0 , 0 . 5 ) ) ;      arka plan : doğrusal - gradyan ( 90 derece , şeffaf , rgba ( 255 , 215 , 0 , 0 . 5 ) ) ;      
-}    }
-    .dekoratif-çizgi span:son-çocuk {
-arka plan : doğrusal - gradyan ( 90 derece , rgba ( 255 , 215 , 0 , 0 . 5 ) , şeffaf ) ;      arka plan : doğrusal - gradyan ( 90 derece , rgba ( 255 , 215 , 0 , 0 . 5 ) , şeffaf ) ;      
-}    }
-    .dekoratif-çizgi span:nth-child(2) {
-genişlik : 6px ;      genişlik : 6 piksel ; 
-yükseklik : 6px ;      yükseklik : 6px ; 
-kenar - yarıçap : % 50 ;      kenar yarıçapı : % 50 ;​ 
-arka plan : var ( - - birincil ) ;      arka plan : var ( -- birincil ) ; 
-}    }
-    /* Gezinme */
-    .nav {
-konum : yapışkan ;      konum : yapışkan ; 
-üst : 0 ;      üst : 0 ; 
-z - indeks : 50 ;      z - indeks : 50 ; 
-arka plan : rgba ( 20 , 20 , 20 , 0 . 95 ) ;      arka plan : rgba ( 20 , 20 , 20 , 0 . 95 ) ;    
-arka plan - filtre : bulanıklık ( 12px ) ;      arka plan - filtre : bulanıklık ( 12px ) ; 
-border - bottom : 1px solid rgba ( 51 , 51 , 51 , 0.5 ) ;​​      border - bottom : 1px solid rgba ( 51 , 51 , 51 , 0.5 ) ;​​      
-dolgu : 1 . 5rem 1rem ;      dolgu : 1,5 rem 1 rem ;  
-}    }
-    .nav-konteyneri {
-maksimum genişlik : 80rem ;​      maksimum genişlik : 80rem ;​ 
-margin : 0 auto ;      kenar boşluğu : 0 otomatik ;  
-}    }
-    .nav-grid {
-görüntüleme : ızgara ;      görüntüleme : ızgara ; 
-ızgara - şablon - sütunlar : tekrarla ( 4 , 1fr ) ;      ızgara - şablon - sütunlar : tekrarla ( 4 , 1fr ) ;  
-boşluk : 0 . 75rem ;      boşluk : 0,75rem ;​​ 
-}    }
-    @media (min-width: 768px) {
-.nav - grid {​      .nav - grid {​ 
-ızgara - şablon - sütunlar : tekrarla ( 7 , 1fr ) ;        ızgara - şablon - sütunlar : tekrarla ( 7 , 1fr ) ;  
-boşluk : 1rem ;        boşluk : 1rem ; 
-}      }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
-    .nav-button {
-display : flex ;      ekran : flex ; 
-flex - yön : sütun ;      esnek - yön : sütun ; 
-öğeleri hizala : ortala ;​      Öğeleri hizala : ortala ;​ 
-boşluk : 0 . 5rem ;      boşluk : 0,5 rem ;​ 
-dolgu : 0,5rem ;​​      dolgu : 0,5rem ;​​ 
-kenar - yarıçap : 0 . 75rem ;      border - radius : 0.75rem ;​​ 
-arka plan : şeffaf ;      arka plan : şeffaf ; 
-kenarlık : yok ;      kenarlık : yok ; 
-imleç : işaretçi ;      imleç : işaretçi ; 
-geçiş : tümü 0,3 saniyelik kolaylık ;​      geçiş : tümü 0,3 saniye kolaylık ;​   
-}    }
-    .nav-button:hover {
-kutu - gölge : 0 0 0 2px rgba ( 255 , 215 , 0 , 0 . 5 ) ;      kutu - gölge : 0 0 0 2px rgba ( 255 , 215 , 0 , 0 . 5 ) ;        
-}    }
-    .nav-button.active {
-kutu - gölge : 0 0 0 2px var ( -- birincil ) , 0 0 20px rgba ( 255 , 215 , 0 , 0 . 3 ) ;​      kutu - gölge : 0 0 0 2px var ( -- birincil ) , 0 0 20px rgba ( 255 , 215 , 0 , 0 . 3 ) ;​            
-}    }
-    .nav-image-container {
-konum : göreceli ;      konum : göreceli ; 
-genişlik : % 100 ;      genişlik : % 100 ; 
-en boy oranı : 1 ;      En boy oranı : 1 ; 
-kenar - yarıçap : 0 . 5rem ;      border - radius : 0.5rem ;​​ 
-taşma : gizli       taşma : gizli ; 
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
     }
-    .nav-image {
-genişlik : % 100       genişlik : % 100 ; 
-      yükseklik : % 100 ; 
-      nesne - uygun : kapak ; 
-      geçiş : dönüşüm 0,5 saniye kolaylık ;​   
+
+    header {
+      text-align: center;
+      padding: 2.5rem 1rem;
+      border-bottom: 1px solid var(--border);
     }
-    .nav-button:hover .nav-image {
-      dönüştürme : ölçek ( 1 . 1 ) ; 
+
+    header h1 {
+      font-size: 2.2rem;
+      color: var(--gold);
+      letter-spacing: 2px;
     }
-    .nav-overlay {
-konum : mutlak       konum : mutlak ; 
-iç içe geçmiş : 0       iç kısım : 0 ; 
-      arka plan : doğrusal - gradyan ( yukarıya , rgba ( 0 , 0 , 0 , 0 . 6 ) , rgba ( 0 , 0 , 0 , 0 . 2 ) , şeffaf ) ;           
-geçiş : tümü 0,3 saniyelik kolaylık ;      geçiş : tümü 0,3 saniye kolaylık ;​   
+
+    header p {
+      color: var(--muted);
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
     }
-    .nav-button:hover .nav-overlay {
-      arka plan : doğrusal - gradyan ( yukarıya , rgba ( 255 , 215 , 0 , 0 . 3 ) , şeffaf ) ;       
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 2rem 1rem;
     }
-    .nav-button.active .nav-overlay {
-arka plan : rgba ( 255 , 215 , 0 , 0 . 2 )       arka plan : rgba ( 255 , 215 , 0 , 0 . 2 ) ;    
+
+    .category {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      margin-bottom: 2rem;
+      overflow: hidden;
     }
-    .nav-ikon {
-konum : mutlak       konum : mutlak ; 
-      alt kısım : 0,25rem ;​ 
-      sağ : 0 . 25rem ; 
-      yazı tipi boyutu : 1.125rem ;​​ 
-      opaklık : 0,8 ;​​ 
+
+    .category h2 {
+      background: rgba(255, 215, 0, 0.1);
+      color: var(--gold);
+      padding: 1rem 1.25rem;
+      font-size: 1.3rem;
+      letter-spacing: 1px;
     }
-    @media (min-width: 768px) {
-      .nav - icon {​ 
-        yazı tipi boyutu : 1,25rem ;​​ 
-      }
+
+    .item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0.75rem 1.25rem;
+      border-top: 1px dashed var(--border);
+      font-size: 0.95rem;
     }
-    .nav-başlığı {
-      yazı tipi boyutu : 0,75rem ;​​ 
-      yazı tipi - kalınlık : 500 ; 
-metin - hizala : ortala       metin - hizala : ortala ; 
-      çizgi - yükseklik : 1 . 2 ; 
-      renk : rgba ( 255 , 249 , 230 , 0 . 8 ) ;    
-      geçiş : renk 0.3s kolaylık ;​​   
-      görüntüleme : - webkit - kutu ; 
-      - webkit - line - clamp : 2 ; 
-      - webkit - box - orient : vertical ; 
-taşma : gizli       taşma : gizli ; 
+
+    .item span.price {
+      color: var(--gold);
+      font-weight: 600;
+      white-space: nowrap;
     }
-    .nav-button:hover .nav-title,
-    .nav-button.active .nav-title {
-      renk : değişken ( -- birincil ) ;​ 
+
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted);
+      font-size: 0.8rem;
     }
-    /* Ana İçerik */
-    .ana {
-      maksimum genişlik : 72rem ;​ 
-margin : 0 auto       kenar boşluğu : 0 otomatik ;  
-dolgu : 2rem 1rem       dolgu : 2rem 1rem ;  
-    }
-    .menü-ızgarası {
-görüntüleme : ızgara       görüntüleme : ızgara ; 
-      ızgara - şablon - sütunlar : 1fr ; 
-      boşluk : 1 . 5rem ; 
-    }
-    @media (min-width: 1024px) {
-      . menü - ızgara { 
-        ızgara - şablon - sütunlar : tekrarla ( 2 , 1fr ) ;  
-      }
-    }
-    /* Kategori Kartı */
-    .kategori-kartı {
-arka plan : var ( - - kart )       arka plan : var ( -- kart ) ; 
-kenar - yarıçap : 0 . 75rem       border - radius : 0.75rem ;​​ 
-      border : 1px solid rgba ( 51 , 51 , 51 , 0 . 5 ) ;      
-taşma : gizli       taşma : gizli ; 
-      geçiş : kenar - renk 0.3s kolaylık ;​​   
-animasyon : fadeUp 0.6s ease - out forwards ;​      animasyon : fadeUp 0.6s ease - out forwards ;​​    
-    }
-    .kategori-kartı:üzerine-gezinti {
-      border - color : rgba ( 255 , 215 , 0 , 0.3 ) ;​​    
-    }
-    .kategori-başlığı {
-konum : göreceli       konum : göreceli ; 
-      yükseklik : 10rem ; 
-taşma : gizli       taşma : gizli ; 
-    }
-    .kategori-başlık-resmi {
-genişlik : % 100       genişlik : % 100 ; 
-      yükseklik : % 100 ; 
-      nesne - uygun : kapak ; 
-    }
-    .kategori-başlığı-katmanı {
-konum : mutlak       konum : mutlak ; 
-iç içe geçmiş : 0       iç kısım : 0 ; 
-      arka plan : doğrusal - gradyan ( yukarıya , değişken ( - - kart ) 0 % , rgba ( 31 , 31 , 31 , 0 . 6 ) 50 % , şeffaf 100 % ) ;           
-    }
-    .kategori-başlığı-içeriği {
-konum : mutlak       konum : mutlak ; 
-      alt : 0 ; 
-      sol : 0 ; 
-      sağ : 0 ; 
-      dolgu : 1rem 1 . 5rem ;  
-display : flex       ekran : flex ; 
-öğeleri hizala : ortala ;      Öğeleri hizala : ortala ;​ 
-boşluk : 0 . 75rem       boşluk : 0,75rem ;​​ 
-    }
-    .kategori-simgesi {
-      yazı tipi boyutu : 1.875rem ;​​ 
-    }
-    .kategori-başlığı {
-      yazı tipi boyutu : 1,5rem ;​​ 
-      yazı tipi - kalınlık : 700 ; 
-      arka plan : doğrusal - gradyan ( 90 derece , var ( - - altın - koyu ) , var ( - - altın - açık ) , var ( - - altın - koyu ) ) ;    
-      - webkit - background - clip : text ; 
-      - webkit - metin - dolgu - renk : şeffaf ; 
-      arka plan - kırpma : metin ; 
-    }
-    @media (min-width: 768px) {
-      . kategori - başlık { 
-        yazı tipi boyutu : 1.875rem ;​​ 
-      }
-    }
-    /* Menü Öğeleri */
-    .menü-öğeleri {
-      dolgu : 1rem 1 . 5rem ;  
-    }
-    .menü-öğesi {
-display : flex       ekran : flex ; 
-öğeleri hizala : ortala ;      Öğeleri hizala : ortala ;​ 
-      içerik arasında boşluk bırakarak hizala ;​​ 
-      dolgu : 0,625rem 0,75rem ;​​​​  
-kenar - yarıçap : 0 . 5rem       border - radius : 0.5rem ;​​ 
-      geçiş : arka plan rengi 0,2 saniye yumuşatma ;​   
-    }
-    .menü-öğesi:üzerine-gelin {
-      arka plan : rgba ( 46 , 46 , 46 , 0 . 5 ) ;    
-    }
-    .menü-öğesi-adı {
-      yazı tipi boyutu : 0,875rem ;​​ 
-renk : değişken ( - - ön plan )       renk : değişken ( -- ön plan ) ; 
-      geçiş : renk 0.2s kolaylık ;​​   
-    }
-    @media (min-width: 768px) {
-      . menü - öğe - adı { 
-yazı tipi boyutu : 1rem         yazı tipi boyutu : 1rem ; 
-      }
-    }
-    .menü-öğesi:üzerine-gel .menü-öğesi-adı {
-      renk : değişken ( -- birincil ) ;​ 
-    }
-    .menü-ürün-fiyatı {
-      yazı tipi boyutu : 0,875rem ;​​ 
-      yazı tipi - kalınlık : 600 ; 
-      renk : değişken ( -- birincil ) ;​ 
-      beyaz boşluk : şimdi satır sonu ; 
-    }
-    @media (min-width: 768px) {
-      . menü - ürün - fiyat { 
-yazı tipi boyutu : 1rem         yazı tipi boyutu : 1rem ; 
-      }
-    }
-    .menü-öğe-noktaları {
-      görüntüleme : yok ; 
-      flex : 1 ; 
-      border - bottom : 1px dotted rgba ( 51 , 51 , 51 , 0.5 ) ;​​      
-      min - width : 30px ; 
-      kenar boşluğu : 0 0 . 5rem ;  
-    }
-    @media (min-width: 768px) {
-      . menü - öğe - noktalar { 
-        görüntüle : blok ; 
-      }
-    }
-    /* Altbilgi */
-    .altbilgi {
-      margin - top : 4rem ; 
-      dolgu : 3rem 1rem ;  
-      border - top : 1px solid rgba ( 51 , 51 , 51 , 0.3 ) ;​​      
-      arka plan : doğrusal - gradyan ( alt kısma doğru , değişken ( - - arka plan ) , # 101010 ) ;    
-    }
-    .altbilgi-konteyneri {
-      maksimum genişlik : 72rem ;​ 
-margin : 0 auto       kenar boşluğu : 0 otomatik ;  
-    }
-    .altbilgi-logosu {
-metin - hizala : ortala       metin - hizala : ortala ; 
-      margin - bottom : 2rem ; 
-    }
-    .footer-logo img {
-      genişlik : 6rem ; 
-      yükseklik : 6rem ; 
-nesne - uygun : içerir       nesne - uygun : içerir ; 
-margin - bottom : 1rem       margin - bottom : 1rem ; 
-    }
-    .altbilgi-ızgarası {
-görüntüleme : ızgara       görüntüleme : ızgara ; 
-      ızgara - şablon - sütunlar : 1fr ; 
-      boşluk : 2rem ; 
-metin - hizala : ortala       metin - hizala : ortala ; 
-      margin - bottom : 2rem ; 
-    }
-    @media (min-width: 768px) {
-      . altbilgi - ızgara { 
-        ızgara - şablon - sütunlar : tekrarla ( 3 , 1fr ) ;  
-      }
-    }
-    .altbilgi-öğesi {
-display : flex       ekran : flex ; 
-flex - yön : sütun       esnek - yön : sütun ; 
-öğeleri hizala : ortala ;      Öğeleri hizala : ortala ;​ 
-boşluk : 0 . 5rem       boşluk : 0,5 rem ;​ 
-    }
-    .altbilgi-simgesi {
-      Genişlik : 1,5 rem ;​ 
-      yükseklik : 1,5 rem ;​ 
-      renk : değişken ( -- birincil ) ;​ 
-    }
-    .altbilgi-etiketi {
-renk : değişken ( - - ön plan )       renk : değişken ( -- ön plan ) ; 
-      yazı tipi - kalınlık : 500 ; 
-    }
-    .altbilgi-metni {
-renk : değişken ( - - soluk - ön plan )       renk : değişken ( -- soluk - ön plan ) ; 
-      yazı tipi boyutu : 0,875rem ;​​ 
-çizgi - yükseklik : 1 . 6       çizgi - yükseklik : 1 . 6 ; 
-    }
-    .altbilgi-bağlantısı {
-renk : değişken ( - - soluk - ön plan )       renk : değişken ( -- soluk - ön plan ) ; 
-      yazı tipi boyutu : 0,875rem ;​​ 
-      metin - dekorasyon : yok ; 
-      geçiş : renk 0.2s kolaylık ;​​   
-    }
-    .footer-link:hover {
-      renk : değişken ( -- birincil ) ;​ 
-    }
-    .sosyal-düğme {
-      görüntüleme : satır içi - esnek ; 
-öğeleri hizala : ortala ;      Öğeleri hizala : ortala ;​ 
-boşluk : 0 . 5rem       boşluk : 0,5 rem ;​ 
-      dolgu : 0,5rem 1rem ;​​  
-      border - radius : 9999px ; 
-      arka plan : rgba ( 255 , 215 , 0 , 0 . 1 ) ;    
-      border : 1px solid rgba ( 255 , 215 , 0 , 0 . 3 ) ;      
-      renk : değişken ( -- birincil ) ;​ 
-      metin - dekorasyon : yok ; 
-      yazı tipi boyutu : 0,875rem ;​​ 
-      yazı tipi - kalınlık : 500 ; 
-      geçiş : arka plan rengi 0,2 saniye yumuşatma ;​   
-    }
-    .sosyal-düğme:üzerine-gezinti {
-arka plan : rgba ( 255 , 215 , 0 , 0 . 2 )       arka plan : rgba ( 255 , 215 , 0 , 0 . 2 ) ;    
-    }
-    .sosyal-düğme svg {
-      Genişlik : 1,25 rem ;​ 
-      yükseklik : 1,25 rem ;​ 
-    }
-    .altbilgi-telif hakkı {
-metin - hizala : ortala       metin - hizala : ortala ; 
-renk : değişken ( - - soluk - ön plan )       renk : değişken ( -- soluk - ön plan ) ; 
-      yazı tipi boyutu : 0,75rem ;​​ 
-      margin - top : 1.5rem ;​​ 
-    }
-    /* Animasyonlar */
-    @keyframes fadeUp {
-      itibaren { 
-        opaklık : 0 ; 
-        transform : translateY ( 20px ) ; 
-      }
-      ile {
-        opaklık : 1 ; 
-        dönüştürme : translateY ( 0 ) ; 
-      }
-    }
-  </style>​​
-</head>​​
-<body>​​
-  < div id = " app " > </div>​​ 
-  <script>​​
-    // Menü Verileri
-    sabit menüKategorileri = [
-      {
-        id : " suguk-icirken " , 
-        başlık : " Soğuk İçecekler " , 
-        simge : " 🧊 " , 
-        öğeler : [ 
-          { isim : " Kutu Kola " , fiyat : 100 } ,     
-          { isim : " Şişe Kola " , fiyat : 95 } ,     
-          { isim : " Meyve Suyu " , fiyat : 100 } ,     
-          { isim : " Meyveli Soda " , fiyat : 85 } ,     
-          { isim : " Fuse Çayı " , fiyat : 100 } ,     
-          { isim : " Su " , fiyat : 30 } ,     
-          { isim : " Gazoz " , fiyat : 100 } ,     
-          { isim : " Limonata " , fiyat : 100 } ,     
-          { isim : " Sprite " , fiyat : 100 } ,     
-          { isim : " Ayran " , fiyat : 85 } ,     
-          { isim : " Churchill " , fiyat : 140 }     
-        ]
-      } ,
-      {
-        id : " milkshake " , 
-        Başlık : " Milkshake "​ 
-        simge : " 🥤 " , 
-        öğeler : [ 
-          { isim : " Çilekli " , fiyat : 150 } ,     
-          { isim : " Çikolatalı " , fiyat : 150 } ,     
-          { isim : " Karadutlu " , fiyat : 150 } ,     
-          { isim : " Muzlu " , fiyat : 150 }     
-        ]
-      } ,
-      {
-        id : " donmuş " , 
-        başlık : " Frozen " , 
-        simge : " 🍹 " , 
-        öğeler : [ 
-          { isim : " Çilekli " , fiyat : 150 } ,     
-          { isim : " Kivili " , fiyat : 150 } ,     
-          { isim : " Karpuzlu " , fiyat : 150 } ,     
-          { isim : " Muzlu " , fiyat : 150 }     
-        ]
-      } ,
-      {
-        id : " sicak-ic verirken " , 
-        başlık : " Sıcak İçecekler " , 
-        simge : " ☕ " , 
-        öğeler : [ 
-          { isim : " Türk Kahvesi " , fiyat : 100 } ,     
-          { isim : " Sütlü Türk Kahvesi " , fiyat : 110 } ,     
-          { isim : " Dibek Kahvesi " , fiyat : 100 } ,     
-          { isim : " Menengiç Kahvesi " , fiyat : 130 } ,     
-          { isim : " Damla Sakızlı Türk K. " , fiyat : 110 } ,     
-          { isim : " Dağ Çilekli Türk K. " , fiyat : 120 } ,     
-          { isim : " Filtre Kahve " , fiyat : 130 } ,     
-          { isim : " Sütlü Filtre Kahve " , fiyat : 150 } ,     
-          { isim : " Cappuccino " , fiyat : 100 } ,     
-          { isim : " Sıcak Çikolata " , fiyat : 130 } ,     
-          { isim : " Salep " , fiyat : 130 } ,     
-          { isim : " Çay " , fiyat : 25 } ,     
-          { isim : " Bitki Çayı " , fiyat : 50 } ,     
-          { isim : " Bitki Demleme Çayı " , fiyat : 140 } ,     
-          { isim : " Nescafe Gold " , fiyat : 100 } ,     
-          { isim : " Hazır Nescafe " , fiyat : 90 } ,     
-          { isim : " Sütlü Nescafe " , fiyat : 110 } ,     
-          { isim : " Süt " , fiyat : 90 } ,     
-          { isim : " Ballı Süt " , fiyat : 130 }     
-        ]
-      } ,
-      {
-        id : " tavuk-yemekleri " , 
-        başlık : " Tavuk Yemekleri " , 
-        simge : " 🍗 " , 
-        öğeler : [ 
-          { isim : " Köri Soslu Tavuk " , fiyat : 300 } ,     
-          { isim : " Meksika Soslu Tavuk " , fiyat : 300 } ,     
-          { isim : " Soya Soslu Tavuk " , fiyat : 300 } ,     
-          { isim : " Kremalı Mantarlı Tavuk " , fiyat : 300 } ,     
-          { isim : " Tavuk Kavurma " , fiyat : 300 } ,     
-          { isim : " Kremitte Tavuk Sote " , fiyat : 300 } ,     
-          { isim : " Tavuk Çökertme " , fiyat : 300 } ,     
-          { isim : " Tavuk Fajita " , fiyat : 300 } ,     
-          { isim : " Barbekü Soslu Tavuk " , fiyat : 300 } ,     
-          { isim : " Tavuk Bonfile " , fiyat : 300 } ,     
-          { isim : " Tavuk Şinitzel " , fiyat : 300 } ,     
-          { isim : " Tavuk Sote " , fiyat : 300 }     
-        ]
-      } ,
-      {
-        id : " makarnalar " , 
-        başlık : " Makarnalar " , 
-        simge : " 🍝 " , 
-        öğeler : [ 
-          { isim : " Penne Alfredo Fettuccine " , fiyat : 300 } ,     
-          { isim : " Etli Penne Arabiat " , fiyat : 300 } ,     
-          { name : " Spagetti A. Fettuccine " , price : 300 } ,     
-          { isim : " Spagetti Bolonez " , fiyat : 300 } ,     
-          { isim : " Mantı Pesto Soslu " , fiyat : 300 }     
-        ]
-      } ,
-      {
-        id : " aparatifler " , 
-        başlık : " Aparatifler " , 
-        simge : " 🍳 " , 
-        öğeler : [ 
-          { isim : " Kavurmalı Menemen " , fiyat : 300 } ,     
-          { isim : " Karışık Menemen " , fiyat : 200 } ,     
-          { isim : " Kaşarlı Gözleme " , fiyat : 200 } ,     
-          { name : " Karışık Tost " , fiyat : 200 } ,     
-          { isim : " Patates Cips " , fiyat : 120 }     
-        ]
-      }
-    ] ;
-    // Yer tutucu resimler (veri URI'leri olarak degrade arka planlar)
-    sabit kategori renkleri = {
-      " soguk-icecekler " : " lineer-gradient(135deg, #1a365d %0, #2d5a87 %100) " , 
-      " milkshake " : " linear-gradient(135deg, #ec4899 0%, #f472b6 100%) " , 
-      " donmuş " : " doğrusal-eğim(135 derece, #06b6d4 0%, #67e8f9 100%) " , 
-      " sicak-icecekler " : " lineer-gradient(135deg, #92400e 0%, #d97706 100%) " , 
-      " tavuk-yemekleri " : " lineer-gradient(135deg, #dc2626 0%, #f87171 100%) " , 
-      " makarnalar " : " lineer-gradient(135deg, #eab308 0%, #fde047 100%) " , 
-      " aparatifler " : " linear-gradient(135deg, #16a34a 0%, #4ade80 100%) " 
-    } ;
-    let activeCategory = null;
-    fonksiyon scrollToCategory(categoryId) {
-      aktifKategori = kategoriKimliği ;  
-      renderNav ( ) ;
-      const element = document.getElementById ( categoryId ) ;​​   
-      eğer ( element ) {  
-        sabit navHeight = 150 ;   
-        const elementPosition = element.getBoundingClientRect ( ) . top + window.scrollY ;​​​​     
-        pencere . kaydırma ( {
-          üst : elementPosition - navHeight ,   
-          davranış : " pürüzsüz " 
-        } );
-      }
-    }
-    fonksiyon renderNav() {
-      dönüş ` 
-        < nav class="nav" >
-          < div class="nav-container" >
-            < div class="nav-grid" >
-              ${ menuCategories . map ( category = > `  
-                <button>​
-                  class="nav-button ${ activeCategory = = = category . id ? ' active ' : ' ' } "      
-                  onclick="scrollToCategory(' ${ category . id } ')"
-                >
-                  < div class="nav-image-container" >
-                    < div style=" width : 100 % ; height: 100%; background: $ { categoryColors [ category.id ] } ; " > </div>
-                    <div class="nav-overlay"></div>
-                    <span class="nav-icon"> ${ category . icon } </span>
-                  </div>
-                  <span class="nav-title"> ${ category . title } </span>
-                </button>
-              ` ) . birleştir ( ' ' ) }
-            </div>
-          </div>
-        </nav>
-      ` ;
-    }
-    fonksiyon renderMenuGrid ( ) {  
-      dönüş ` 
-        <main class="main">
-          <div class="menu-grid">
-            ${ menuCategories . map ( ( category , index ) = > `   
-              <section id=" ${ category . id } " class="category-card" style="animation-delay: ${ index * 100 } ms">  
-                <div class="category-header">
-                  <div style="width: 100%; height: 100%; background: ${ categoryColors [ category . id ] } ;"></div>
-                  <div class="category-header-overlay"></div>
-                  <div class="category-header-content">
-                    <span class="category-icon"> ${ category . icon } </span>
-                    <h2 class="category-title"> ${ category . title } </h2>
-                  </div>
-                </div>
-                <div class="menu-items">
-                  $ { category.items.map ( item = > `​​​  
-                    <div class="menu-item">
-                      <span class="menu-item-name"> ${ item . name } </span>
-                      <span class="menu-item-dots"></span>
-                      <span class="menu-item-price"> ${ item . price } ₺</span>
-                    </div>
-                  ` ) . birleştir ( ' ' ) }
-                </div>
-              </section>
-            ` ) . birleştir ( ' ' ) }
-          </div>
-        </main>
-      ` ;
-    }
-    fonksiyon renderHeader ( ) {  
-      dönüş ` 
-        <header class="header">
-          <div class="header-content">
-            <div class="logo-container">
-              <div class="logo-glow"></div>
-              <div style="width: 12rem; height: 12rem; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); border-radius: 1rem; display: flex; align-items: center; justify-content: center;">
-                <span style="font-size: 3rem; font-family: 'Playfair Display', serif; background: linear-gradient(90deg, var(--gold-dark), var(--gold-light), var(--gold-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">BC</span>
-              </div>
-            </div>
-            <p class="tagline">Menü</p>
-            <div class="decorative-line">
-              <span></span>
-              <span></span>
-              <span></span>
-            </div>
-          </div>
-        </header>
-      ` ;
-    }
-    fonksiyon renderFooter ( ) {  
-      dönüş ` 
-        <footer class="footer">
-          <div class="footer-container">
-            <div class="footer-logo">
-              <div style="width: 6rem; height: 6rem; margin: 0 auto 1rem; background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%); border-radius: 0.5rem; display: flex; align-items: center; justify-content: center;">
-                <span style="font-size: 1.5rem; font-family: 'Playfair Display', serif; background: linear-gradient(90deg, var(--gold-dark), var(--gold-light), var(--gold-dark)); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">BC</span>
-              </div>
-            </div>
-            
-            <div class="footer-grid">
-              <div class="footer-item">
-                <svg class="footer-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path>
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path>
-                </svg>
-                <span class="footer-label">Adres</span>
-                <span class="footer-text">Gazi Mahallesi Bulvar Caddesi<br>Akbaş Apartman No.28 Kapı No.2</span>
-              </div>
-              
-              <div class="footer-item">
-                <svg class="footer-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path>
-                </svg>
-                <span class="footer-label">Telefon</span>
-                <a href="tel:+905468778978" class="footer-link">+90 546 877 89 78</a>
-              </div>
-              
-              <div class="footer-item">
-                <svg class="footer-icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-                </svg>
-                <span class="footer-label">Çalışma Saatleri</span>
-                <span class="footer-text">Her gün 09:00 - 24:00</span>
-              </div>
-            </div>
-            
-            <div style="display: flex; justify-content: center; margin-bottom: 2rem;">
-              <a href="https://instagram.com/blackchefcafe" target="_blank" rel="noopener noreferrer" class="social-button">
-                <svg fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
-                </svg>
-                @blackchefcafe
-              </a>
-            </div>
-            
-            <div class="decorative-line">
-              <span style="width: 6rem;"></span>
-              <span></span>
-              <span style="width: 6rem;"></span>
-            </div>
-            
-            <p class="footer-copyright">© 2025 Black Chef Cafe. Tüm hakları saklıdır.</p>
-          </div>
-        </footer>
-      ` ;
-    }
-    fonksiyon render ( ) {  
-      belge . getElementById ( ' uygulama ' )​ içHTML = `  
-        ${ renderHeader ( ) }
-        ${ renderNav ( ) }
-        ${ renderMenuGrid ( ) }
-        ${ renderFooter ( ) }
-      ` ;
-    }
-    // İlk render
-    oluştur ( ) ;
-  </script>​​
-</body>​​
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>BLACK CHEF</h1>
+  <p>Cafe & Restaurant Menü</p>
+</header>
+
+<main id="menu"></main>
+
+<footer>
+  © 2025 Black Chef Cafe • Tüm hakları saklıdır
+</footer>
+
+<script>
+const menuData = [
+  {
+    title: "☕ Sıcak İçecekler",
+    items: [
+      ["Türk Kahvesi", 100],
+      ["Sütlü Türk Kahvesi", 110],
+      ["Dibek Kahvesi", 100],
+      ["Menengiç Kahvesi", 130],
+      ["Cappuccino", 100],
+      ["Sıcak Çikolata", 130],
+      ["Salep", 130],
+      ["Çay", 25]
+    ]
+  },
+  {
+    title: "🧊 Soğuk İçecekler",
+    items: [
+      ["Kutu Kola", 100],
+      ["Şişe Kola", 95],
+      ["Meyve Suyu", 100],
+      ["Fuse Tea", 100],
+      ["Limonata", 100],
+      ["Ayran", 30],
+      ["Churchill", 140]
+    ]
+  },
+  {
+    title: "🥤 Milkshake",
+    items: [
+      ["Çilek", 150],
+      ["Çikolata", 150],
+      ["Karadut", 150],
+      ["Muz", 150]
+    ]
+  },
+  {
+    title: "🍗 Tavuk Yemekleri",
+    items: [
+      ["Köri Soslu Tavuk", 300],
+      ["Mexican Soslu Tavuk", 300],
+      ["Kremalı Mantarlı Tavuk", 300],
+      ["Tavuk Fajita", 300],
+      ["Tavuk Schnitzel", 300]
+    ]
+  },
+  {
+    title: "🍝 Makarnalar",
+    items: [
+      ["Penne Alfredo", 300],
+      ["Spagetti Bolonez", 300],
+      ["Mantı Pesto Soslu", 300]
+    ]
+  },
+  {
+    title: "🍟 Aparatifler",
+    items: [
+      ["Karışık Menemen", 200],
+      ["Kaşarlı Gözleme", 200],
+      ["Karışık Tost", 200],
+      ["Patates Cips", 120]
+    ]
+  }
+];
+
+const menuEl = document.getElementById("menu");
+
+menuData.forEach(category => {
+  const section = document.createElement("section");
+  section.className = "category";
+
+  const title = document.createElement("h2");
+  title.textContent = category.title;
+
+  section.appendChild(title);
+
+  category.items.forEach(item => {
+    const row = document.createElement("div");
+    row.className = "item";
+
+    row.innerHTML = `<span>${item[0]}</span><span class="price">${item[1]} ₺</span>`;
+    section.appendChild(row);
+  });
+
+  menuEl.appendChild(section);
+});
+</script>
+
+</body>
 </html>
