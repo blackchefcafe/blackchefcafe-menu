@@ -16,201 +16,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --background: #141414;
-      --foreground: #FFF9E6;
-      --card: #1F1F1F;
-      --card-foreground: #FFF9E6;
-      --primary: #FFD700;
-      --primary-foreground: #141414;
-      --secondary: #2E2E2E;
-      --muted: #262626;
-      --muted-foreground: #999999;
-      --border: #333333;
-      --gold: #FFD700;
-      --gold-light: #FFE44D;
-      --gold-dark: #CCB000;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--background);
-      color: var(--foreground);
-      line-height: 1.6;
-      min-height: 100vh;
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Playfair Display', serif;
-    }
-
-    /* Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: var(--card);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: rgba(255,215,0,0.3);
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: rgba(255,215,0,0.5);
-    }
-
-    /* HEADER */
-    .header {
-      position: relative;
-      padding: 2rem 1rem;
-      text-align: center;
-      overflow: hidden;
-      background: linear-gradient(to bottom, #101010, var(--background));
-    }
-
-    .header::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 24rem;
-      height: 24rem;
-      background: radial-gradient(circle, rgba(255,215,0,0.05) 0%, transparent 70%);
-      border-radius: 50%;
-      filter: blur(40px);
-    }
-
-    .header-content {
-      position: relative;
-      z-index: 10;
-      max-width: 56rem;
-      margin: 0 auto;
-      animation: fadeUp 0.6s ease-out forwards;
-    }
-
-    .logo-container {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 1rem;
-    }
-
-    .logo-glow {
-      position: absolute;
-      inset: 0;
-      background: rgba(255,215,0,0.2);
-      border-radius: 1rem;
-      filter: blur(20px);
-    }
-
-    .tagline {
-      color: var(--muted-foreground);
-      font-size: 1rem;
-      font-weight: 300;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-    }
-
-    .decorative-line {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .decorative-line span:first-child,
-    .decorative-line span:last-child {
-      height: 1px;
-      width: 3rem;
-      background: linear-gradient(90deg, transparent, rgba(255,215,0,0.5));
-    }
-
-    .decorative-line span:last-child {
-      background: linear-gradient(90deg, rgba(255,215,0,0.5), transparent);
-    }
-
-    .decorative-line span:nth-child(2) {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--primary);
-    }
-
-    /* NAV */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(20,20,20,0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(51,51,51,0.5);
-      padding: 1.5rem 1rem;
-    }
-
-    .nav-container {
-      max-width: 80rem;
-      margin: 0 auto;
-    }
-
-    .nav-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.75rem;
-    }
-
-    @media (min-width: 768px) {
-      .nav-grid {
-        grid-template-columns: repeat(7, 1fr);
-        gap: 1rem;
-      }
-    }
-
-    .nav-button {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem;
-      border-radius: 0.75rem;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .nav-button:hover {
-      box-shadow: 0 0 0 2px rgba(255,215,0,0.5);
-    }
-
-    .nav-button.active {
-      box-shadow: 0 0 0 2px var(--primary), 0 0 20px rgba(255,215,0,0.3);
-    }
-
-    /* MAIN / GRID / CARD / FOOTER CSS BURADA DEVAM EDECEK */
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -219,10 +25,7 @@
     <div class="header-content">
       <div class="logo-container">
         <div class="logo-glow"></div>
-        <!-- LOGO GÖRSELİ VARSA BURAYA IMG KOYABİLİRSİN -->
-        <h1 style="color: var(--primary); font-size: 2.5rem; letter-spacing: 0.2em;">
-          BLACK CHEF
-        </h1>
+        <h1 class="logo-text">BLACK CHEF</h1>
       </div>
 
       <p class="tagline">Cafe & Restaurant</p>
@@ -237,150 +40,22 @@
   <nav class="nav">
     <div class="nav-container">
       <div class="nav-grid" id="categoryNav">
-        <!-- JS BURAYI DOLDURACAK -->
+        <!-- Dynamically populated by app.js -->
       </div>
     </div>
   </nav>
 
   <!-- MAIN APP -->
-  <main id="app" style="max-width: 80rem; margin: 0 auto; padding: 2rem 1rem;">
-    <!-- KATEGORİLER VE MENÜ KARTLARI JS İLE RENDER EDİLECEK -->
+  <main id="app" class="main-content">
+    <!-- Categories and menu cards dynamically rendered by app.js -->
   </main>
 
   <!-- FOOTER -->
-  <footer style="
-    text-align: center;
-    padding: 2rem 1rem;
-    border-top: 1px solid var(--border);
-    color: var(--muted-foreground);
-    font-size: 0.85rem;
-  ">
-    © 2025 Black Chef Cafe • Tüm hakları saklıdır
+  <footer class="footer">
+    <p>© 2025 Black Chef Cafe • Tüm hakları saklıdır</p>
   </footer>
-<script>
-  const menuData = [
-    {
-      id: "hot-drinks",
-      title: "Sıcak İçecekler",
-      items: [
-        ["Türk Kahvesi", "100 ₺"],
-        ["Sütlü Türk Kahvesi", "110 ₺"],
-        ["Dibek Kahvesi", "100 ₺"],
-        ["Menengiç Kahvesi", "130 ₺"],
-        ["Cappuccino", "100 ₺"],
-        ["Sıcak Çikolata", "130 ₺"],
-        ["Salep", "130 ₺"],
-        ["Çay", "25 ₺"]
-      ]
-    },
-    {
-      id: "cold-drinks",
-      title: "Soğuk İçecekler",
-      items: [
-        ["Kutu Kola", "100 ₺"],
-        ["Şişe Kola", "95 ₺"],
-        ["Meyve Suyu", "100 ₺"],
-        ["Fuse Tea", "100 ₺"],
-        ["Limonata", "100 ₺"],
-        ["Ayran", "30 ₺"],
-        ["Churchill", "140 ₺"]
-      ]
-    },
-    {
-      id: "milkshake",
-      title: "Milkshake",
-      items: [
-        ["Çilek", "150 ₺"],
-        ["Çikolata", "150 ₺"],
-        ["Karadut", "150 ₺"],
-        ["Muz", "150 ₺"]
-      ]
-    },
-    {
-      id: "chicken",
-      title: "Tavuk Yemekleri",
-      items: [
-        ["Köri Soslu Tavuk", "300 ₺"],
-        ["Mexican Soslu Tavuk", "300 ₺"],
-        ["Kremalı Mantarlı Tavuk", "300 ₺"],
-        ["Tavuk Fajita", "300 ₺"],
-        ["Tavuk Schnitzel", "300 ₺"]
-      ]
-    },
-    {
-      id: "pasta",
-      title: "Makarnalar",
-      items: [
-        ["Penne Alfredo", "300 ₺"],
-        ["Spagetti Bolonez", "300 ₺"],
-        ["Mantı Pesto Soslu", "300 ₺"]
-      ]
-    },
-    {
-      id: "snacks",
-      title: "Aparatifler",
-      items: [
-        ["Karışık Menemen", "200 ₺"],
-        ["Kaşarlı Gözleme", "200 ₺"],
-        ["Karışık Tost", "200 ₺"],
-        ["Patates Cips", "120 ₺"]
-      ]
-    }
-  ];
 
-  const app = document.getElementById("app");
-  const nav = document.getElementById("categoryNav");
-
-  menuData.forEach(category => {
-    /* NAV BUTTON */
-    const btn = document.createElement("button");
-    btn.className = "nav-button";
-    btn.innerHTML = `<span style="font-size:0.8rem;color:var(--muted-foreground)">${category.title}</span>`;
-    btn.onclick = () => {
-      document.getElementById(category.id).scrollIntoView({ behavior: "smooth" });
-    };
-    nav.appendChild(btn);
-
-    /* CATEGORY SECTION */
-    const section = document.createElement("section");
-    section.id = category.id;
-    section.style.marginBottom = "3rem";
-
-    section.innerHTML = `
-      <div style="
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 1rem;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      ">
-        <div style="
-          padding: 1.25rem;
-          background: linear-gradient(to right, rgba(255,215,0,0.15), transparent);
-          font-family: 'Playfair Display', serif;
-          font-size: 1.4rem;
-          color: var(--primary);
-        ">
-          ${category.title}
-        </div>
-
-        ${category.items.map(item => `
-          <div style="
-            display:flex;
-            justify-content:space-between;
-            padding:0.9rem 1.25rem;
-            border-top:1px dashed var(--border);
-          ">
-            <span>${item[0]}</span>
-            <span style="color:var(--primary);font-weight:600">${item[1]}</span>
-          </div>
-        `).join("")}
-      </div>
-    `;
-
-    app.appendChild(section);
-  });
-</script>
+  <script src="app.js"></script>
 
 </body>
 </html>
