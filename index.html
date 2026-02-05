@@ -11,6 +11,11 @@
   <meta property="og:title" content="Black Chef Cafe | Menü">
   <meta property="og:description" content="Black Chef Cafe menüsü - Enfes lezzetler ve kaliteli hizmet.">
   <meta property="og:type" content="website">
+  <meta property="og:title" content="Black Chef Cafe | Menü">
+  <meta property="og:description" content="Black Chef Cafe menüsü - Enfes lezzetler ve kaliteli hizmet.">
+  <meta property="og:type" content="website">
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23141414'/%3E%3Ccircle cx='32' cy='32' r='14' fill='%23FFD700'/%3E%3C/svg%3E">
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -49,6 +54,17 @@
       color: var(--foreground);
       line-height: 1.6;
       min-height: 100vh;
+    }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--background);
+      color: var(--foreground);
+      line-height: 1.6;
+      min-height: 100vh;
+      letter-spacing: 0.01em;
+      background-image:
+        radial-gradient(circle at top, rgba(255, 215, 0, 0.08), transparent 55%),
+        radial-gradient(circle at 20% 40%, rgba(255, 215, 0, 0.04), transparent 45%);
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -147,6 +163,117 @@
       border-radius: 50%;
       background: var(--primary);
     }
+    .header {
+      position: relative;
+      padding: 4rem 1.5rem 3rem;
+      text-align: center;
+      overflow: hidden;
+      background: linear-gradient(180deg, rgba(10, 10, 10, 0.95), rgba(20, 20, 20, 0.9));
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .header::before {
+      content: "";
+      position: absolute;
+      top: -6rem;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 28rem;
+      height: 28rem;
+      background: radial-gradient(circle, rgba(255,215,0,0.12) 0%, transparent 70%);
+      border-radius: 50%;
+      filter: blur(30px);
+    }
+
+    .header::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(120deg, rgba(255, 215, 0, 0.05), transparent 40%, rgba(255, 255, 255, 0.04));
+      opacity: 0.6;
+      pointer-events: none;
+    }
+
+    .header-content {
+      position: relative;
+      z-index: 10;
+      max-width: 56rem;
+      margin: 0 auto;
+      animation: fadeUp 0.6s ease-out forwards;
+    }
+
+    .logo-container {
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      padding: 0.5rem 1rem;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 215, 0, 0.3);
+      background: rgba(255, 255, 255, 0.02);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+    }
+
+    .logo-dot {
+      width: 0.6rem;
+      height: 0.6rem;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
+    }
+
+    .tagline {
+      color: var(--muted-foreground);
+      font-size: 0.85rem;
+      font-weight: 500;
+      letter-spacing: 0.32em;
+      text-transform: uppercase;
+    }
+
+    .header-title {
+      color: var(--primary);
+      font-size: clamp(2.2rem, 5vw, 3.4rem);
+      letter-spacing: 0.18em;
+      font-weight: 700;
+    }
+
+    .header-subtitle {
+      margin-top: 1.2rem;
+      color: rgba(255, 255, 255, 0.78);
+      font-size: 1.05rem;
+      max-width: 40rem;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .decorative-line {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .decorative-line span:first-child,
+    .decorative-line span:last-child {
+      height: 1px;
+      width: 3.5rem;
+      background: linear-gradient(90deg, transparent, rgba(255,215,0,0.6));
+    }
+
+    .decorative-line span:last-child {
+      background: linear-gradient(90deg, rgba(255,215,0,0.6), transparent);
+    }
+
+    .decorative-line span:nth-child(2) {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--primary);
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
+    }
 
     /* NAV */
     .nav {
@@ -202,6 +329,159 @@
 
     @keyframes fadeUp {
       from {
+    .nav {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      background: rgba(17, 17, 17, 0.92);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid rgba(51,51,51,0.5);
+      padding: 1rem 1rem 1.25rem;
+    }
+
+    .nav-container {
+      max-width: 80rem;
+      margin: 0 auto;
+    }
+
+    .nav-grid {
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .nav-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.55rem 1rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .nav-button:hover {
+      border-color: rgba(255,215,0,0.6);
+      box-shadow: 0 6px 18px rgba(255,215,0,0.2);
+      transform: translateY(-1px);
+    }
+
+    .nav-button.active {
+      border-color: var(--primary);
+      background: rgba(255, 215, 0, 0.12);
+      box-shadow: 0 0 0 1px var(--primary), 0 10px 24px rgba(255,215,0,0.25);
+    }
+
+    .main {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 2.75rem 1.5rem 4.5rem;
+      display: grid;
+      gap: 2.5rem;
+    }
+
+    .section {
+      scroll-margin-top: 8rem;
+    }
+
+    .menu-card {
+      background: rgba(31, 31, 31, 0.9);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 1.75rem;
+      overflow: hidden;
+      box-shadow: 0 25px 50px rgba(0,0,0,0.35);
+      position: relative;
+    }
+
+    .menu-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.7), transparent);
+    }
+
+    .menu-header {
+      padding: 1.75rem 2rem 1.25rem;
+      background: linear-gradient(110deg, rgba(255,215,0,0.2), rgba(255,215,0,0));
+      font-family: 'Playfair Display', serif;
+      font-size: 1.6rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .menu-header span {
+      font-size: 0.75rem;
+      color: var(--muted-foreground);
+      font-family: 'Inter', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+    }
+
+    .menu-items {
+      padding: 0.75rem 0;
+    }
+
+    .menu-item {
+      display: flex;
+      justify-content: space-between;
+      gap: 1.5rem;
+      align-items: center;
+      padding: 1rem 2rem;
+      border-top: 1px dashed rgba(255, 255, 255, 0.08);
+    }
+
+    .menu-item:first-child {
+      border-top: none;
+    }
+
+    .item-name {
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .item-name::before {
+      content: "";
+      width: 0.5rem;
+      height: 0.5rem;
+      border-radius: 50%;
+      background: rgba(255, 215, 0, 0.5);
+      box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
+    }
+
+    .item-price {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.4rem 0.85rem;
+      border-radius: 999px;
+      background: rgba(255, 215, 0, 0.14);
+      border: 1px solid rgba(255, 215, 0, 0.35);
+      white-space: nowrap;
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2.5rem 1rem 3rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+      color: var(--muted-foreground);
+      font-size: 0.85rem;
+      background: linear-gradient(to top, rgba(255,215,0,0.06), transparent);
+    }
+
+    @keyframes fadeUp {
+      from {
         opacity: 0;
         transform: translateY(20px);
       }
@@ -226,6 +506,23 @@
       </div>
 
       <p class="tagline">Cafe & Restaurant</p>
+
+      <div class="decorative-line">
+        <span></span><span></span><span></span>
+      </div>
+  <!-- HEADER -->
+  <header class="header" id="top">
+    <div class="header-content">
+      <div class="logo-container">
+        <span class="logo-dot"></span>
+        <h1 class="header-title">
+          BLACK CHEF
+        </h1>
+        <span class="logo-dot"></span>
+      </div>
+
+      <p class="tagline">Cafe & Restaurant</p>
+      <p class="header-subtitle">El yapımı lezzetler, taze kahveler ve özenle hazırlanan menülerle kusursuz bir deneyim.</p>
 
       <div class="decorative-line">
         <span></span><span></span><span></span>
@@ -257,6 +554,17 @@
   ">
     © 2025 Black Chef Cafe • Tüm hakları saklıdır
   </footer>
+  </nav>
+
+  <!-- MAIN APP -->
+  <main id="app" class="main">
+    <!-- KATEGORİLER VE MENÜ KARTLARI JS İLE RENDER EDİLECEK -->
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    © 2025 Black Chef Cafe • Tüm hakları saklıdır
+  </footer>
 <script>
   const menuData = [
     {
@@ -282,33 +590,7 @@
         ["Meyve Suyu", "100 ₺"],
         ["Fuse Tea", "100 ₺"],
         ["Limonata", "100 ₺"],
-        ["Ayran", "30 ₺"],
-        ["Churchill", "140 ₺"]
-      ]
-    },
-    {
-      id: "milkshake",
-      title: "Milkshake",
-      items: [
-        ["Çilek", "150 ₺"],
-        ["Çikolata", "150 ₺"],
-        ["Karadut", "150 ₺"],
-        ["Muz", "150 ₺"]
-      ]
-    },
-    {
-      id: "chicken",
-      title: "Tavuk Yemekleri",
-      items: [
-        ["Köri Soslu Tavuk", "300 ₺"],
-        ["Mexican Soslu Tavuk", "300 ₺"],
-        ["Kremalı Mantarlı Tavuk", "300 ₺"],
-        ["Tavuk Fajita", "300 ₺"],
-        ["Tavuk Schnitzel", "300 ₺"]
-      ]
-    },
-    {
-      id: "pasta",
+@@ -312,75 +448,81 @@
       title: "Makarnalar",
       items: [
         ["Penne Alfredo", "300 ₺"],
@@ -380,6 +662,59 @@
 
     app.appendChild(section);
   });
+</script>
+    btn.className = "nav-button";
+    btn.innerHTML = `<span style="font-size:0.8rem;color:var(--muted-foreground)">${category.title}</span>`;
+    btn.onclick = () => {
+      document.getElementById(category.id).scrollIntoView({ behavior: "smooth" });
+    };
+    nav.appendChild(btn);
+
+    /* CATEGORY SECTION */
+    const section = document.createElement("section");
+    section.id = category.id;
+    section.className = "section";
+
+    section.innerHTML = `
+      <div class="menu-card">
+        <div class="menu-header">
+          ${category.title}
+          <span>İmza Lezzetler</span>
+        </div>
+        <div class="menu-items">
+          ${category.items.map(item => `
+            <div class="menu-item">
+              <span class="item-name">${item[0]}</span>
+              <span class="item-price">${item[1]}</span>
+            </div>
+          `).join("")}
+        </div>
+      </div>
+    `;
+
+    app.appendChild(section);
+  });
+
+  const sections = Array.from(document.querySelectorAll(".section"));
+  const buttons = Array.from(document.querySelectorAll(".nav-button"));
+
+  const setActive = () => {
+    const current = sections.find(section => {
+      const rect = section.getBoundingClientRect();
+      return rect.top <= 200 && rect.bottom >= 200;
+    });
+
+    if (!current) return;
+
+    buttons.forEach(btn => btn.classList.remove("active"));
+    const index = sections.indexOf(current);
+    if (buttons[index]) {
+      buttons[index].classList.add("active");
+    }
+  };
+
+  window.addEventListener("scroll", setActive);
+  window.addEventListener("load", setActive);
 </script>
 
 </body>
