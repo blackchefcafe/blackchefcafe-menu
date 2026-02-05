@@ -1,720 +1,159 @@
 <!DOCTYPE html>
-<html lang="tr">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>Black Chef Cafe | Menü</title>
-  <meta name="description" content="Black Chef Cafe menüsü - Sıcak ve soğuk içecekler, tavuk yemekleri, makarnalar, aparatifler.">
-  <meta name="keywords" content="Black Chef Cafe, kafe, menü, kahve, yemek">
-
-  <meta property="og:title" content="Black Chef Cafe | Menü">
-  <meta property="og:description" content="Black Chef Cafe menüsü - Enfes lezzetler ve kaliteli hizmet.">
-  <meta property="og:type" content="website">
-  <meta property="og:title" content="Black Chef Cafe | Menü">
-  <meta property="og:description" content="Black Chef Cafe menüsü - Enfes lezzetler ve kaliteli hizmet.">
-  <meta property="og:type" content="website">
-
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%23141414'/%3E%3Ccircle cx='32' cy='32' r='14' fill='%23FFD700'/%3E%3C/svg%3E">
-
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
-
-  <style>
-    *, *::before, *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    :root {
-      --background: #141414;
-      --foreground: #FFF9E6;
-      --card: #1F1F1F;
-      --card-foreground: #FFF9E6;
-      --primary: #FFD700;
-      --primary-foreground: #141414;
-      --secondary: #2E2E2E;
-      --muted: #262626;
-      --muted-foreground: #999999;
-      --border: #333333;
-      --gold: #FFD700;
-      --gold-light: #FFE44D;
-      --gold-dark: #CCB000;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--background);
-      color: var(--foreground);
-      line-height: 1.6;
-      min-height: 100vh;
-    }
-    body {
-      font-family: 'Inter', sans-serif;
-      background-color: var(--background);
-      color: var(--foreground);
-      line-height: 1.6;
-      min-height: 100vh;
-      letter-spacing: 0.01em;
-      background-image:
-        radial-gradient(circle at top, rgba(255, 215, 0, 0.08), transparent 55%),
-        radial-gradient(circle at 20% 40%, rgba(255, 215, 0, 0.04), transparent 45%);
-    }
-
-    h1, h2, h3, h4, h5, h6 {
-      font-family: 'Playfair Display', serif;
-    }
-
-    /* Scrollbar */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-track {
-      background: var(--card);
-    }
-    ::-webkit-scrollbar-thumb {
-      background: rgba(255,215,0,0.3);
-      border-radius: 4px;
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: rgba(255,215,0,0.5);
-    }
-
-    /* HEADER */
-    .header {
-      position: relative;
-      padding: 2rem 1rem;
-      text-align: center;
-      overflow: hidden;
-      background: linear-gradient(to bottom, #101010, var(--background));
-    }
-
-    .header::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 24rem;
-      height: 24rem;
-      background: radial-gradient(circle, rgba(255,215,0,0.05) 0%, transparent 70%);
-      border-radius: 50%;
-      filter: blur(40px);
-    }
-
-    .header-content {
-      position: relative;
-      z-index: 10;
-      max-width: 56rem;
-      margin: 0 auto;
-      animation: fadeUp 0.6s ease-out forwards;
-    }
-
-    .logo-container {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 1rem;
-    }
-
-    .logo-glow {
-      position: absolute;
-      inset: 0;
-      background: rgba(255,215,0,0.2);
-      border-radius: 1rem;
-      filter: blur(20px);
-    }
-
-    .tagline {
-      color: var(--muted-foreground);
-      font-size: 1rem;
-      font-weight: 300;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-    }
-
-    .decorative-line {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1rem;
-    }
-
-    .decorative-line span:first-child,
-    .decorative-line span:last-child {
-      height: 1px;
-      width: 3rem;
-      background: linear-gradient(90deg, transparent, rgba(255,215,0,0.5));
-    }
-
-    .decorative-line span:last-child {
-      background: linear-gradient(90deg, rgba(255,215,0,0.5), transparent);
-    }
-
-    .decorative-line span:nth-child(2) {
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--primary);
-    }
-    .header {
-      position: relative;
-      padding: 4rem 1.5rem 3rem;
-      text-align: center;
-      overflow: hidden;
-      background: linear-gradient(180deg, rgba(10, 10, 10, 0.95), rgba(20, 20, 20, 0.9));
-      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
-    }
-
-    .header::before {
-      content: "";
-      position: absolute;
-      top: -6rem;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 28rem;
-      height: 28rem;
-      background: radial-gradient(circle, rgba(255,215,0,0.12) 0%, transparent 70%);
-      border-radius: 50%;
-      filter: blur(30px);
-    }
-
-    .header::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(120deg, rgba(255, 215, 0, 0.05), transparent 40%, rgba(255, 255, 255, 0.04));
-      opacity: 0.6;
-      pointer-events: none;
-    }
-
-    .header-content {
-      position: relative;
-      z-index: 10;
-      max-width: 56rem;
-      margin: 0 auto;
-      animation: fadeUp 0.6s ease-out forwards;
-    }
-
-    .logo-container {
-      position: relative;
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 0.75rem;
-      margin-bottom: 1rem;
-      padding: 0.5rem 1rem;
-      border-radius: 999px;
-      border: 1px solid rgba(255, 215, 0, 0.3);
-      background: rgba(255, 255, 255, 0.02);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
-    }
-
-    .logo-dot {
-      width: 0.6rem;
-      height: 0.6rem;
-      border-radius: 50%;
-      background: var(--primary);
-      box-shadow: 0 0 12px rgba(255, 215, 0, 0.6);
-    }
-
-    .tagline {
-      color: var(--muted-foreground);
-      font-size: 0.85rem;
-      font-weight: 500;
-      letter-spacing: 0.32em;
-      text-transform: uppercase;
-    }
-
-    .header-title {
-      color: var(--primary);
-      font-size: clamp(2.2rem, 5vw, 3.4rem);
-      letter-spacing: 0.18em;
-      font-weight: 700;
-    }
-
-    .header-subtitle {
-      margin-top: 1.2rem;
-      color: rgba(255, 255, 255, 0.78);
-      font-size: 1.05rem;
-      max-width: 40rem;
-      margin-left: auto;
-      margin-right: auto;
-    }
-
-    .decorative-line {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .decorative-line span:first-child,
-    .decorative-line span:last-child {
-      height: 1px;
-      width: 3.5rem;
-      background: linear-gradient(90deg, transparent, rgba(255,215,0,0.6));
-    }
-
-    .decorative-line span:last-child {
-      background: linear-gradient(90deg, rgba(255,215,0,0.6), transparent);
-    }
-
-    .decorative-line span:nth-child(2) {
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--primary);
-      box-shadow: 0 0 10px rgba(255, 215, 0, 0.7);
-    }
-
-    /* NAV */
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(20,20,20,0.95);
-      backdrop-filter: blur(12px);
-      border-bottom: 1px solid rgba(51,51,51,0.5);
-      padding: 1.5rem 1rem;
-    }
-
-    .nav-container {
-      max-width: 80rem;
-      margin: 0 auto;
-    }
-
-    .nav-grid {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0.75rem;
-    }
-
-    @media (min-width: 768px) {
-      .nav-grid {
-        grid-template-columns: repeat(7, 1fr);
-        gap: 1rem;
-      }
-    }
-
-    .nav-button {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.5rem;
-      border-radius: 0.75rem;
-      background: transparent;
-      border: none;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .nav-button:hover {
-      box-shadow: 0 0 0 2px rgba(255,215,0,0.5);
-    }
-
-    .nav-button.active {
-      box-shadow: 0 0 0 2px var(--primary), 0 0 20px rgba(255,215,0,0.3);
-    }
-
-    /* MAIN / GRID / CARD / FOOTER CSS BURADA DEVAM EDECEK */
-
-    @keyframes fadeUp {
-      from {
-    .nav {
-      position: sticky;
-      top: 0;
-      z-index: 50;
-      background: rgba(17, 17, 17, 0.92);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid rgba(51,51,51,0.5);
-      padding: 1rem 1rem 1.25rem;
-    }
-
-    .nav-container {
-      max-width: 80rem;
-      margin: 0 auto;
-    }
-
-    .nav-grid {
-      display: flex;
-      gap: 0.75rem;
-      flex-wrap: wrap;
-      justify-content: center;
-    }
-
-    .nav-button {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.6rem;
-      padding: 0.55rem 1rem;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.03);
-      border: 1px solid rgba(255, 255, 255, 0.08);
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .nav-button:hover {
-      border-color: rgba(255,215,0,0.6);
-      box-shadow: 0 6px 18px rgba(255,215,0,0.2);
-      transform: translateY(-1px);
-    }
-
-    .nav-button.active {
-      border-color: var(--primary);
-      background: rgba(255, 215, 0, 0.12);
-      box-shadow: 0 0 0 1px var(--primary), 0 10px 24px rgba(255,215,0,0.25);
-    }
-
-    .main {
-      max-width: 80rem;
-      margin: 0 auto;
-      padding: 2.75rem 1.5rem 4.5rem;
-      display: grid;
-      gap: 2.5rem;
-    }
-
-    .section {
-      scroll-margin-top: 8rem;
-    }
-
-    .menu-card {
-      background: rgba(31, 31, 31, 0.9);
-      border: 1px solid rgba(255, 255, 255, 0.06);
-      border-radius: 1.75rem;
-      overflow: hidden;
-      box-shadow: 0 25px 50px rgba(0,0,0,0.35);
-      position: relative;
-    }
-
-    .menu-card::after {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 2px;
-      background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.7), transparent);
-    }
-
-    .menu-header {
-      padding: 1.75rem 2rem 1.25rem;
-      background: linear-gradient(110deg, rgba(255,215,0,0.2), rgba(255,215,0,0));
-      font-family: 'Playfair Display', serif;
-      font-size: 1.6rem;
-      color: var(--primary);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1rem;
-    }
-
-    .menu-header span {
-      font-size: 0.75rem;
-      color: var(--muted-foreground);
-      font-family: 'Inter', sans-serif;
-      text-transform: uppercase;
-      letter-spacing: 0.2em;
-    }
-
-    .menu-items {
-      padding: 0.75rem 0;
-    }
-
-    .menu-item {
-      display: flex;
-      justify-content: space-between;
-      gap: 1.5rem;
-      align-items: center;
-      padding: 1rem 2rem;
-      border-top: 1px dashed rgba(255, 255, 255, 0.08);
-    }
-
-    .menu-item:first-child {
-      border-top: none;
-    }
-
-    .item-name {
-      font-weight: 500;
-      color: rgba(255, 255, 255, 0.9);
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .item-name::before {
-      content: "";
-      width: 0.5rem;
-      height: 0.5rem;
-      border-radius: 50%;
-      background: rgba(255, 215, 0, 0.5);
-      box-shadow: 0 0 8px rgba(255, 215, 0, 0.5);
-    }
-
-    .item-price {
-      color: var(--primary);
-      font-weight: 600;
-      font-size: 1rem;
-      padding: 0.4rem 0.85rem;
-      border-radius: 999px;
-      background: rgba(255, 215, 0, 0.14);
-      border: 1px solid rgba(255, 215, 0, 0.35);
-      white-space: nowrap;
-    }
-
-    .footer {
-      text-align: center;
-      padding: 2.5rem 1rem 3rem;
-      border-top: 1px solid rgba(255, 255, 255, 0.05);
-      color: var(--muted-foreground);
-      font-size: 0.85rem;
-      background: linear-gradient(to top, rgba(255,215,0,0.06), transparent);
-    }
-
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<title>BLACKCHEF CAFE</title>
+<style>
+body{margin:0;font-family:Arial;background:#1a1a1a;color:#fff}
+.header{background:#2c3e50;padding:50px 20px;text-align:center}
+.logo{font-size:42px;font-weight:bold;color:#f1c40f;letter-spacing:4px}
+.tagline{color:#f1c40f;margin-top:10px}
+.tabs{background:#34495e;padding:15px;text-align:center;position:sticky;top:0}
+.tab{background:#455a64;color:#fff;border:none;padding:10px 20px;margin:5px;border-radius:20px;cursor:pointer}
+.tab.active{background:#f1c40f;color:#2c3e50;font-weight:bold}
+.container{max-width:1200px;margin:30px auto;padding:0 20px}
+.section{display:none}
+.section.active{display:block}
+.title{font-size:32px;color:#f1c40f;text-align:center;margin-bottom:30px}
+.subtitle{font-size:22px;color:#f1c40f;margin:25px 0 15px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:15px;margin-bottom:25px}
+.item{background:rgba(44,62,80,0.5);border:1px solid rgba(241,196,15,0.3);border-radius:8px;padding:18px;display:flex;justify-content:space-between}
+.item:hover{background:rgba(44,62,80,0.8);border-color:#f1c40f}
+.price{color:#f1c40f;font-weight:bold;font-size:17px}
+.footer{background:#2c3e50;padding:30px;text-align:center;margin-top:50px;color:#f1c40f}
+</style>
 </head>
 <body>
 
-  <!-- HEADER -->
-  <header class="header" id="top">
-    <div class="header-content">
-      <div class="logo-container">
-        <div class="logo-glow"></div>
-        <!-- LOGO GÖRSELİ VARSA BURAYA IMG KOYABİLİRSİN -->
-        <h1 style="color: var(--primary); font-size: 2.5rem; letter-spacing: 0.2em;">
-          BLACK CHEF
-        </h1>
-      </div>
+<div class="header">
+<div class="logo">BLACKCHEF</div>
+<div class="tagline">Premium Cafe Experience</div>
+</div>
 
-      <p class="tagline">Cafe & Restaurant</p>
+<div class="tabs">
+<button class="tab active" onclick="changeTab(0)">Soğuk İçecekler</button>
+<button class="tab" onclick="changeTab(1)">Milkshake & Frozen</button>
+<button class="tab" onclick="changeTab(2)">Sıcak İçecekler</button>
+<button class="tab" onclick="changeTab(3)">Tavuk Yemekleri</button>
+<button class="tab" onclick="changeTab(4)">Makarnalar</button>
+<button class="tab" onclick="changeTab(5)">Aparatifler</button>
+</div>
 
-      <div class="decorative-line">
-        <span></span><span></span><span></span>
-      </div>
-  <!-- HEADER -->
-  <header class="header" id="top">
-    <div class="header-content">
-      <div class="logo-container">
-        <span class="logo-dot"></span>
-        <h1 class="header-title">
-          BLACK CHEF
-        </h1>
-        <span class="logo-dot"></span>
-      </div>
+<div class="container">
 
-      <p class="tagline">Cafe & Restaurant</p>
-      <p class="header-subtitle">El yapımı lezzetler, taze kahveler ve özenle hazırlanan menülerle kusursuz bir deneyim.</p>
+<div class="section active">
+<h2 class="title">Soğuk İçecekler</h2>
+<div class="grid">
+<div class="item"><span>Kutu Kola</span><span class="price">100 ₺</span></div>
+<div class="item"><span>Şişe Kola</span><span class="price">95 ₺</span></div>
+<div class="item"><span>Meyve Suyu</span><span class="price">100 ₺</span></div>
+<div class="item"><span>Meyveli Soda</span><span class="price">85 ₺</span></div>
+<div class="item"><span>Fuse Tea</span><span class="price">100 ₺</span></div>
+<div class="item"><span>Su</span><span class="price">30 ₺</span></div>
+<div class="item"><span>Gazoz</span><span class="price">100 ₺</span></div>
+<div class="item"><span>Limonata</span><span class="price">100 ₺</span></div>
+<div class="item"><span>Sprite</span><span class="price">100 ₺</span></div>
+<div class="item"><span>Ayran</span><span class="price">85 ₺</span></div>
+<div class="item"><span>Churchill</span><span class="price">140 ₺</span></div>
+</div>
+</div>
 
-      <div class="decorative-line">
-        <span></span><span></span><span></span>
-      </div>
-    </div>
-  </header>
+<div class="section">
+<h2 class="title">Milkshake & Frozen</h2>
+<h3 class="subtitle">Milkshake</h3>
+<div class="grid">
+<div class="item"><span>Çilek</span><span class="price">150 ₺</span></div>
+<div class="item"><span>Çikolata</span><span class="price">150 ₺</span></div>
+<div class="item"><span>Karadut</span><span class="price">150 ₺</span></div>
+<div class="item"><span>Muz</span><span class="price">150 ₺</span></div>
+</div>
+<h3 class="subtitle">Frozen</h3>
+<div class="grid">
+<div class="item"><span>Çilek</span><span class="price">150 ₺</span></div>
+<div class="item"><span>Kivi</span><span class="price">150 ₺</span></div>
+<div class="item"><span>Karpuz</span><span class="price">150 ₺</span></div>
+<div class="item"><span>Muz</span><span class="price">150 ₺</span></div>
+</div>
+</div>
 
-  <!-- NAV -->
-  <nav class="nav">
-    <div class="nav-container">
-      <div class="nav-grid" id="categoryNav">
-        <!-- JS BURAYI DOLDURACAK -->
-      </div>
-    </div>
-  </nav>
+<div class="section">
+<h2 class="title">Sıcak İçecekler</h2>
+<div class="grid">
+<div class="item"><span>Türk Kahvesi</span><span class="price">100 ₺</span></div>
+<div class="item"><span>Sütlü Türk Kahvesi</span><span class="price">110 ₺</span></div>
+<div class="item"><span>Dibek Kahvesi</span><span class="price">100 ₺</span></div>
+<div class="item"><span>Menengiç Kahvesi</span><span class="price">130 ₺</span></div>
+<div class="item"><span>Damla Sakızlı Türk Kahvesi</span><span class="price">110 ₺</span></div>
+<div class="item"><span>Dağ Çilekli Türk Kahvesi</span><span class="price">120 ₺</span></div>
+<div class="item"><span>Filtre Kahve</span><span class="price">130 ₺</span></div>
+<div class="item"><span>Sütlü Filtre Kahve</span><span class="price">150 ₺</span></div>
+<div class="item"><span>Cappuccino</span><span class="price">100 ₺</span></div>
+<div class="item"><span>Sıcak Çikolata</span><span class="price">130 ₺</span></div>
+<div class="item"><span>Salep</span><span class="price">130 ₺</span></div>
+<div class="item"><span>Çay</span><span class="price">25 ₺</span></div>
+<div class="item"><span>Bitki Suyu Çayı</span><span class="price">50 ₺</span></div>
+<div class="item"><span>Bitki Demlik Çayı</span><span class="price">140 ₺</span></div>
+<div class="item"><span>Nescafe Gold</span><span class="price">100 ₺</span></div>
+<div class="item"><span>Hazır Nescafe</span><span class="price">90 ₺</span></div>
+<div class="item"><span>Sütlü Nescafe</span><span class="price">110 ₺</span></div>
+<div class="item"><span>Süt</span><span class="price">90 ₺</span></div>
+<div class="item"><span>Ballı Süt</span><span class="price">130 ₺</span></div>
+</div>
+</div>
 
-  <!-- MAIN APP -->
-  <main id="app" style="max-width: 80rem; margin: 0 auto; padding: 2rem 1rem;">
-    <!-- KATEGORİLER VE MENÜ KARTLARI JS İLE RENDER EDİLECEK -->
-  </main>
+<div class="section">
+<h2 class="title">Tavuk Yemekleri</h2>
+<div class="grid">
+<div class="item"><span>Köri Soslu Tavuk</span><span class="price">300 ₺</span></div>
+<div class="item"><span>Mexican Soslu Tavuk</span><span class="price">300 ₺</span></div>
+<div class="item"><span>Soya Soslu Tavuk</span><span class="price">300 ₺</span></div>
+<div class="item"><span>Kremalı Mantarlı Tavuk</span><span class="price">300 ₺</span></div>
+<div class="item"><span>Tavuk Kavurma</span><span class="price">300 ₺</span></div>
+<div class="item"><span>Kremitte Tavuk Sote</span><span class="price">300 ₺</span></div>
+<div class="item"><span>Tavuk Çökertme</span><span class="price">300 ₺</span></div>
+<div class="item"><span>Tavuk Fajita</span><span class="price">300 ₺</span></div>
+<div class="item"><span>Barbekü Soslu Tavuk</span><span class="price">300 ₺</span></div>
+<div class="item"><span>Tavuk Bonfile</span><span class="price">300 ₺</span></div>
+<div class="item"><span>Tavuk Şnitzel</span><span class="price">300 ₺</span></div>
+<div class="item"><span>Tavuk Sote</span><span class="price">300 ₺</span></div>
+</div>
+</div>
 
-  <!-- FOOTER -->
-  <footer style="
-    text-align: center;
-    padding: 2rem 1rem;
-    border-top: 1px solid var(--border);
-    color: var(--muted-foreground);
-    font-size: 0.85rem;
-  ">
-    © 2025 Black Chef Cafe • Tüm hakları saklıdır
-  </footer>
-  </nav>
+<div class="section">
+<h2 class="title">Makarnalar</h2>
+<div class="grid">
+<div class="item"><span>Penne Alfredo Fettucini</span><span class="price">300 ₺</span></div>
+<div class="item"><span>Etli Penne Arabiata</span><span class="price">300 ₺</span></div>
+<div class="item"><span>Spagetti Alfredo Fettucini</span><span class="price">300 ₺</span></div>
+<div class="item"><span>Spagetti Bolonez</span><span class="price">300 ₺</span></div>
+<div class="item"><span>Mantı Pesto Soslu</span><span class="price">300 ₺</span></div>
+</div>
+</div>
 
-  <!-- MAIN APP -->
-  <main id="app" class="main">
-    <!-- KATEGORİLER VE MENÜ KARTLARI JS İLE RENDER EDİLECEK -->
-  </main>
+<div class="section">
+<h2 class="title">Aparatifler</h2>
+<div class="grid">
+<div class="item"><span>Kavurmalı Menemen</span><span class="price">300 ₺</span></div>
+<div class="item"><span>Karışık Menemen</span><span class="price">200 ₺</span></div>
+<div class="item"><span>Kaşarlı Gözleme</span><span class="price">200 ₺</span></div>
+<div class="item"><span>Karışık Tost</span><span class="price">200 ₺</span></div>
+<div class="item"><span>Patates Cips</span><span class="price">120 ₺</span></div>
+</div>
+</div>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    © 2025 Black Chef Cafe • Tüm hakları saklıdır
-  </footer>
+</div>
+
+<div class="footer">Afiyet Olsun</div>
+
 <script>
-  const menuData = [
-    {
-      id: "hot-drinks",
-      title: "Sıcak İçecekler",
-      items: [
-        ["Türk Kahvesi", "100 ₺"],
-        ["Sütlü Türk Kahvesi", "110 ₺"],
-        ["Dibek Kahvesi", "100 ₺"],
-        ["Menengiç Kahvesi", "130 ₺"],
-        ["Cappuccino", "100 ₺"],
-        ["Sıcak Çikolata", "130 ₺"],
-        ["Salep", "130 ₺"],
-        ["Çay", "25 ₺"]
-      ]
-    },
-    {
-      id: "cold-drinks",
-      title: "Soğuk İçecekler",
-      items: [
-        ["Kutu Kola", "100 ₺"],
-        ["Şişe Kola", "95 ₺"],
-        ["Meyve Suyu", "100 ₺"],
-        ["Fuse Tea", "100 ₺"],
-        ["Limonata", "100 ₺"],
-@@ -312,75 +448,81 @@
-      title: "Makarnalar",
-      items: [
-        ["Penne Alfredo", "300 ₺"],
-        ["Spagetti Bolonez", "300 ₺"],
-        ["Mantı Pesto Soslu", "300 ₺"]
-      ]
-    },
-    {
-      id: "snacks",
-      title: "Aparatifler",
-      items: [
-        ["Karışık Menemen", "200 ₺"],
-        ["Kaşarlı Gözleme", "200 ₺"],
-        ["Karışık Tost", "200 ₺"],
-        ["Patates Cips", "120 ₺"]
-      ]
-    }
-  ];
-
-  const app = document.getElementById("app");
-  const nav = document.getElementById("categoryNav");
-
-  menuData.forEach(category => {
-    /* NAV BUTTON */
-    const btn = document.createElement("button");
-    btn.className = "nav-button";
-    btn.innerHTML = `<span style="font-size:0.8rem;color:var(--muted-foreground)">${category.title}</span>`;
-    btn.onclick = () => {
-      document.getElementById(category.id).scrollIntoView({ behavior: "smooth" });
-    };
-    nav.appendChild(btn);
-
-    /* CATEGORY SECTION */
-    const section = document.createElement("section");
-    section.id = category.id;
-    section.style.marginBottom = "3rem";
-
-    section.innerHTML = `
-      <div style="
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 1rem;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      ">
-        <div style="
-          padding: 1.25rem;
-          background: linear-gradient(to right, rgba(255,215,0,0.15), transparent);
-          font-family: 'Playfair Display', serif;
-          font-size: 1.4rem;
-          color: var(--primary);
-        ">
-          ${category.title}
-        </div>
-
-        ${category.items.map(item => `
-          <div style="
-            display:flex;
-            justify-content:space-between;
-            padding:0.9rem 1.25rem;
-            border-top:1px dashed var(--border);
-          ">
-            <span>${item[0]}</span>
-            <span style="color:var(--primary);font-weight:600">${item[1]}</span>
-          </div>
-        `).join("")}
-      </div>
-    `;
-
-    app.appendChild(section);
-  });
-</script>
-    btn.className = "nav-button";
-    btn.innerHTML = `<span style="font-size:0.8rem;color:var(--muted-foreground)">${category.title}</span>`;
-    btn.onclick = () => {
-      document.getElementById(category.id).scrollIntoView({ behavior: "smooth" });
-    };
-    nav.appendChild(btn);
-
-    /* CATEGORY SECTION */
-    const section = document.createElement("section");
-    section.id = category.id;
-    section.className = "section";
-
-    section.innerHTML = `
-      <div class="menu-card">
-        <div class="menu-header">
-          ${category.title}
-          <span>İmza Lezzetler</span>
-        </div>
-        <div class="menu-items">
-          ${category.items.map(item => `
-            <div class="menu-item">
-              <span class="item-name">${item[0]}</span>
-              <span class="item-price">${item[1]}</span>
-            </div>
-          `).join("")}
-        </div>
-      </div>
-    `;
-
-    app.appendChild(section);
-  });
-
-  const sections = Array.from(document.querySelectorAll(".section"));
-  const buttons = Array.from(document.querySelectorAll(".nav-button"));
-
-  const setActive = () => {
-    const current = sections.find(section => {
-      const rect = section.getBoundingClientRect();
-      return rect.top <= 200 && rect.bottom >= 200;
-    });
-
-    if (!current) return;
-
-    buttons.forEach(btn => btn.classList.remove("active"));
-    const index = sections.indexOf(current);
-    if (buttons[index]) {
-      buttons[index].classList.add("active");
-    }
-  };
-
-  window.addEventListener("scroll", setActive);
-  window.addEventListener("load", setActive);
+function changeTab(n){
+var s=document.getElementsByClassName('section');
+var t=document.getElementsByClassName('tab');
+for(var i=0;i<s.length;i++){s[i].className='section'}
+for(var j=0;j<t.length;j++){t[j].className='tab'}
+s[n].className='section active';
+t[n].className='tab active';
+}
 </script>
 
 </body>
