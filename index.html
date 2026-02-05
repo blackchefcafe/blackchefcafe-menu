@@ -49,6 +49,7 @@
       color: var(--foreground);
       line-height: 1.6;
       min-height: 100vh;
+      letter-spacing: 0.01em;
     }
 
     h1, h2, h3, h4, h5, h6 {
@@ -73,7 +74,7 @@
     /* HEADER */
     .header {
       position: relative;
-      padding: 2rem 1rem;
+      padding: 3.5rem 1.5rem 2.5rem;
       text-align: center;
       overflow: hidden;
       background: linear-gradient(to bottom, #101010, var(--background));
@@ -103,7 +104,7 @@
     .logo-container {
       position: relative;
       display: inline-block;
-      margin-bottom: 1rem;
+      margin-bottom: 0.75rem;
     }
 
     .logo-glow {
@@ -116,10 +117,23 @@
 
     .tagline {
       color: var(--muted-foreground);
-      font-size: 1rem;
-      font-weight: 300;
-      letter-spacing: 0.2em;
+      font-size: 0.95rem;
+      font-weight: 400;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
+    }
+
+    .header-title {
+      color: var(--primary);
+      font-size: clamp(2rem, 4vw, 3rem);
+      letter-spacing: 0.28em;
+      font-weight: 700;
+    }
+
+    .header-subtitle {
+      margin-top: 1rem;
+      color: rgba(255, 255, 255, 0.72);
+      font-size: 1rem;
     }
 
     .decorative-line {
@@ -182,23 +196,117 @@
       flex-direction: column;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.5rem;
+      padding: 0.75rem;
       border-radius: 0.75rem;
-      background: transparent;
-      border: none;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid transparent;
       cursor: pointer;
       transition: all 0.3s ease;
     }
 
     .nav-button:hover {
-      box-shadow: 0 0 0 2px rgba(255,215,0,0.5);
+      border-color: rgba(255,215,0,0.6);
+      box-shadow: 0 0 20px rgba(255,215,0,0.2);
+      transform: translateY(-2px);
     }
 
     .nav-button.active {
-      box-shadow: 0 0 0 2px var(--primary), 0 0 20px rgba(255,215,0,0.3);
+      border-color: var(--primary);
+      background: rgba(255, 215, 0, 0.08);
+      box-shadow: 0 0 0 1px var(--primary), 0 0 24px rgba(255,215,0,0.3);
     }
 
-    /* MAIN / GRID / CARD / FOOTER CSS BURADA DEVAM EDECEK */
+    .main {
+      max-width: 80rem;
+      margin: 0 auto;
+      padding: 2.5rem 1.5rem 4rem;
+      display: grid;
+      gap: 2.5rem;
+    }
+
+    .section {
+      scroll-margin-top: 7rem;
+    }
+
+    .menu-card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 1.5rem;
+      overflow: hidden;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.35);
+      position: relative;
+    }
+
+    .menu-card::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.6), transparent);
+    }
+
+    .menu-header {
+      padding: 1.5rem 1.75rem 1.25rem;
+      background: linear-gradient(to right, rgba(255,215,0,0.18), rgba(255,215,0,0));
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .menu-header span {
+      font-size: 0.9rem;
+      color: var(--muted-foreground);
+      font-family: 'Inter', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+    }
+
+    .menu-items {
+      padding: 0.5rem 0;
+    }
+
+    .menu-item {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: center;
+      padding: 0.95rem 1.75rem;
+      border-top: 1px dashed var(--border);
+    }
+
+    .menu-item:first-child {
+      border-top: none;
+    }
+
+    .item-name {
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .item-price {
+      color: var(--primary);
+      font-weight: 600;
+      font-size: 1rem;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(255, 215, 0, 0.1);
+      border: 1px solid rgba(255, 215, 0, 0.3);
+    }
+
+    .footer {
+      text-align: center;
+      padding: 2.5rem 1rem 3rem;
+      border-top: 1px solid var(--border);
+      color: var(--muted-foreground);
+      font-size: 0.85rem;
+      background: linear-gradient(to top, rgba(255,215,0,0.05), transparent);
+    }
 
     @keyframes fadeUp {
       from {
@@ -220,12 +328,13 @@
       <div class="logo-container">
         <div class="logo-glow"></div>
         <!-- LOGO GÖRSELİ VARSA BURAYA IMG KOYABİLİRSİN -->
-        <h1 style="color: var(--primary); font-size: 2.5rem; letter-spacing: 0.2em;">
+        <h1 class="header-title">
           BLACK CHEF
         </h1>
       </div>
 
       <p class="tagline">Cafe & Restaurant</p>
+      <p class="header-subtitle">El yapımı lezzetler, taze kahveler ve özenle hazırlanan menüler.</p>
 
       <div class="decorative-line">
         <span></span><span></span><span></span>
@@ -243,18 +352,12 @@
   </nav>
 
   <!-- MAIN APP -->
-  <main id="app" style="max-width: 80rem; margin: 0 auto; padding: 2rem 1rem;">
+  <main id="app" class="main">
     <!-- KATEGORİLER VE MENÜ KARTLARI JS İLE RENDER EDİLECEK -->
   </main>
 
   <!-- FOOTER -->
-  <footer style="
-    text-align: center;
-    padding: 2rem 1rem;
-    border-top: 1px solid var(--border);
-    color: var(--muted-foreground);
-    font-size: 0.85rem;
-  ">
+  <footer class="footer">
     © 2025 Black Chef Cafe • Tüm hakları saklıdır
   </footer>
 <script>
@@ -344,42 +447,48 @@
     /* CATEGORY SECTION */
     const section = document.createElement("section");
     section.id = category.id;
-    section.style.marginBottom = "3rem";
+    section.className = "section";
 
     section.innerHTML = `
-      <div style="
-        background: var(--card);
-        border: 1px solid var(--border);
-        border-radius: 1rem;
-        overflow: hidden;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.3);
-      ">
-        <div style="
-          padding: 1.25rem;
-          background: linear-gradient(to right, rgba(255,215,0,0.15), transparent);
-          font-family: 'Playfair Display', serif;
-          font-size: 1.4rem;
-          color: var(--primary);
-        ">
+      <div class="menu-card">
+        <div class="menu-header">
           ${category.title}
+          <span>Seçkin Tatlar</span>
         </div>
-
-        ${category.items.map(item => `
-          <div style="
-            display:flex;
-            justify-content:space-between;
-            padding:0.9rem 1.25rem;
-            border-top:1px dashed var(--border);
-          ">
-            <span>${item[0]}</span>
-            <span style="color:var(--primary);font-weight:600">${item[1]}</span>
-          </div>
-        `).join("")}
+        <div class="menu-items">
+          ${category.items.map(item => `
+            <div class="menu-item">
+              <span class="item-name">${item[0]}</span>
+              <span class="item-price">${item[1]}</span>
+            </div>
+          `).join("")}
+        </div>
       </div>
     `;
 
     app.appendChild(section);
   });
+
+  const sections = Array.from(document.querySelectorAll(".section"));
+  const buttons = Array.from(document.querySelectorAll(".nav-button"));
+
+  const setActive = () => {
+    const current = sections.find(section => {
+      const rect = section.getBoundingClientRect();
+      return rect.top <= 200 && rect.bottom >= 200;
+    });
+
+    if (!current) return;
+
+    buttons.forEach(btn => btn.classList.remove("active"));
+    const index = sections.indexOf(current);
+    if (buttons[index]) {
+      buttons[index].classList.add("active");
+    }
+  };
+
+  window.addEventListener("scroll", setActive);
+  window.addEventListener("load", setActive);
 </script>
 
 </body>
